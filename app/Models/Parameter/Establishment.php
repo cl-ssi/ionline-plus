@@ -2,7 +2,7 @@
 
 namespace App\Models\Parameter;
 
-use App\Models\Commune;
+use App\Models\Parameter\Commune;
 use App\Models\Parameter\EstablishmentType;
 use App\Models\Parameter\HealthService;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

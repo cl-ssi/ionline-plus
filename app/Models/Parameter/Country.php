@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Parameter;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Country extends Model
@@ -16,4 +18,9 @@ class Country extends Model
         'name',
         'id_minsal',
     ];
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
 }

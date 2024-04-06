@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('communes', function (Blueprint $table) {
+        Schema::create('cl_communes', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('code_deis')->nullable();
+            $table->foreignId('region_id')->constrained('cl_regions');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('communes');
+        Schema::dropIfExists('cl_communes');
     }
 };

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('code_deis')->nullable();
             $table->foreignId('region_id')->constrained('cl_regions');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

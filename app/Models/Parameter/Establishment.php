@@ -63,8 +63,8 @@ class Establishment extends Model
         return $this->belongsTo(EstablishmentType::class);
     }
 
-    // public function fatherOrganizationalUnit(): BelongsTo
-    // {
-    //     return $this->belongsTo(OrganizationalUnit::class, 'father_organizational_unit_id');
-    // }
+    public function fatherOrganizationalUnit(): BelongsTo
+    {
+        return $this->belongsTo(OrganizationalUnit::class, 'father_organizational_unit_id');
+    }
 }

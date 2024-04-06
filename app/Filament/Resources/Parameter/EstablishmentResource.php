@@ -101,8 +101,8 @@ class EstablishmentResource extends Resource
                 Forms\Components\TextInput::make('mail_director')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('father_organizational_unit_id')
-                    ->numeric()
+                Forms\Components\Select::make('father_organizational_unit_id')
+                    ->relationship('fatherOrganizationalUnit', 'name')
                     ->default(null),
             ]);
     }
@@ -168,7 +168,7 @@ class EstablishmentResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('mail_director')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('father_organizational_unit_id')
+                Tables\Columns\TextColumn::make('fatherOrganizationalUnit.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

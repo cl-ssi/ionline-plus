@@ -86,6 +86,9 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\Toggle::make('external')
                     ->required(),
+                Forms\Components\Select::make('roles')
+                    ->multiple()
+                    ->relationship('roles', 'name'),
             ]);
     }
 

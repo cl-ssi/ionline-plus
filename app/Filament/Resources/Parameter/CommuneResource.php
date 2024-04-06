@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Parameter;
 
-use App\Filament\Resources\RegionResource\Pages;
-use App\Filament\Resources\RegionResource\RelationManagers;
-use App\Models\Region;
+use App\Filament\Resources\Parameter\CommuneResource\Pages;
+use App\Filament\Resources\Parameter\CommuneResource\RelationManagers;
+use App\Models\Parameter\Commune;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class RegionResource extends Resource
+class CommuneResource extends Resource
 {
-    protected static ?string $model = Region::class;
+    protected static ?string $model = Commune::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,7 +26,10 @@ class RegionResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('id_minsal')
+                Forms\Components\Select::make('region_id')
+                    ->relationship('region', 'name')
+                    ->required(),
+                Forms\Components\TextInput::make('code_deis')
                     ->maxLength(255)
                     ->default(null),
             ]);
@@ -38,7 +41,10 @@ class RegionResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('id_minsal')
+                Tables\Columns\TextColumn::make('region.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('code_deis')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -76,9 +82,9 @@ class RegionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRegions::route('/'),
-            'create' => Pages\CreateRegion::route('/create'),
-            'edit' => Pages\EditRegion::route('/{record}/edit'),
+            'index' => Pages\ListCommunes::route('/'),
+            'create' => Pages\CreateCommune::route('/create'),
+            'edit' => Pages\EditCommune::route('/{record}/edit'),
         ];
     }
 }

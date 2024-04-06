@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\CommuneResource\Pages;
+namespace App\Filament\Resources\Parameter\CommuneResource\Pages;
 
-use App\Filament\Resources\CommuneResource;
+use App\Filament\Resources\Parameter\CommuneResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

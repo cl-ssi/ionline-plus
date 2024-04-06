@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Parameter;
 
-use App\Filament\Resources\CommuneResource\Pages;
-use App\Filament\Resources\CommuneResource\RelationManagers;
-use App\Models\Commune;
+use App\Filament\Resources\Parameter\RegionResource\Pages;
+use App\Filament\Resources\Parameter\RegionResource\RelationManagers;
+use App\Models\Parameter\Region;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CommuneResource extends Resource
+class RegionResource extends Resource
 {
-    protected static ?string $model = Commune::class;
+    protected static ?string $model = Region::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,12 +26,9 @@ class CommuneResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('code_deis')
+                Forms\Components\TextInput::make('id_minsal')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\Select::make('region_id')
-                    ->required()
-                    ->relationship('region','name'),
             ]);
     }
 
@@ -41,10 +38,8 @@ class CommuneResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('code_deis')
+                Tables\Columns\TextColumn::make('id_minsal')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('region.name')
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -81,9 +76,9 @@ class CommuneResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCommunes::route('/'),
-            'create' => Pages\CreateCommune::route('/create'),
-            'edit' => Pages\EditCommune::route('/{record}/edit'),
+            'index' => Pages\ListRegions::route('/'),
+            'create' => Pages\CreateRegion::route('/create'),
+            'edit' => Pages\EditRegion::route('/{record}/edit'),
         ];
     }
 }

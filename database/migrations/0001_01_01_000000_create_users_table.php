@@ -13,12 +13,31 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->char('dv',1);
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('fathers_family');
+            $table->string('mothers_family');
+            $table->string('gender')->nullable();
+            $table->date('birthday')->nullable();
+            $table->string('address')->nullable();
+            $table->foreignId('commune_id')->nullable()->counstrained('cl_comunes');
+            $table->foreignId('country_id')->nullable()->constrained('countries');
+            $table->string('phone_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('email_personal')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->timestamp('password_changed_at')->nullable();
+            $table->foreignId('organizational_unit_id')->nullable()->constrained('organizational_units');
+            $table->string('position')->nullable();
+            $table->string('vc_link')->nullable();
+            $table->string('vc_alias')->nullable();
+            $table->boolean('active')->default(true);
+            $table->boolean('gravatar')->default(false);
+            $table->boolean('external')->default(false);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

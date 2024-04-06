@@ -3,7 +3,7 @@
 namespace App\Models\Parameter;
 
 use App\Models\Parameter\Establishment;
-use App\Models\Region;
+use App\Models\Parameter\Region;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

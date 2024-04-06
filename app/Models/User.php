@@ -3,8 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Commune;
-use App\Models\Country;
+use App\Models\Parameter\Commune;
+use App\Models\Parameter\Country;
 use App\Models\Parameter\OrganizationalUnit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

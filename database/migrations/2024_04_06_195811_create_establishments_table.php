@@ -41,6 +41,7 @@ return new class extends Migration
             $table->string('mail_director');
             $table->foreignId('father_organizational_unit_id')->constrained('organizational_units');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

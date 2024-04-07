@@ -6,6 +6,8 @@ namespace App\Models;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
 use App\Models\Parameter\OrganizationalUnit;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -14,9 +16,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable, HasRoles, SoftDeletes;
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return str_ends_with($this->email, '@redsalud.gob.cl');
+    }
 
     /**
      * The attributes that are mass assignable.

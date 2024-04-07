@@ -12,7 +12,7 @@ RUN apk add --no-cache \
         freetype-dev \
         libxml2-dev \
         libzip-dev \
-        libicu-dev \
+        icu-dev \
         mdbtools-utils \
         poppler-utils
 

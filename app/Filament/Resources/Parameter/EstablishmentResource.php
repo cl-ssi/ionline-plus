@@ -57,8 +57,8 @@ class EstablishmentResource extends Resource
                 Forms\Components\TextInput::make('dependency')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('health_services_id')
-                    ->numeric()
+                Forms\Components\Select::make('health_service_id')
+                    ->relationship('healthService', 'name')
                     ->default(null),
                 Forms\Components\TextInput::make('official_name')
                     ->maxLength(255)
@@ -139,7 +139,7 @@ class EstablishmentResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('dependency')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('health_services_id')
+                Tables\Columns\TextColumn::make('healthService.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('official_name')

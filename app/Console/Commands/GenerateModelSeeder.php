@@ -43,14 +43,18 @@ class GenerateModelSeeder extends Command
         $modelInstances = $modelClass::all();
         // Generar el nombre de la clase Seeder usando solo el nombre del modelo sin el espacio de nombres
         $className = class_basename($modelName) . "Seeder";
-        $seederContent = "<?php\n\nuse Illuminate\\Database\\Seeder;\nuse {$modelClass};\n\nclass {$className} extends Seeder\n{\n    public function run()\n    {\n";
+        $seederContent = "<?php\n\nnamespace Database\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse {$modelClass};\n\nclass {$className} extends Seeder\n{\n    public function run()\n    {\n";
 
         foreach ($modelInstances as $instance) {
             $attributes = $instance->getAttributes();
 
             // Omitir el ID del array de atributos
             unset($attributes['id']);
-
+            unset($attributes['created_at']);
+            unset($attributes['updated_at']);
+            unset($attributes['deleted_at']);
+            // unset($attributes['father_organizational_unit_id']);
+            
             $attributesArrayString = var_export($attributes, true);
             $seederContent .= "        {$model}::create(" . var_export($attributes, true) . ");\n";
         }

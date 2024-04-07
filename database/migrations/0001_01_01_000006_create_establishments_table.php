@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('alias')->nullable();
             $table->string('type');
-            $table->string('mother_code');
-            $table->string('new_mother_code');
+            $table->string('mother_code')->nullable();
+            $table->string('new_mother_code')->nullable();
             $table->foreignId('establishment_type_id')->nullable()->constrained('establishment_types');
             $table->string('deis')->nullable();
             $table->string('new_deis')->nullable();
@@ -39,7 +39,6 @@ return new class extends Migration
             $table->string('level_of_complexity')->nullable();
             $table->string('provider_type_health_system')->nullable();
             $table->string('mail_director')->nullable();
-            $table->foreignId('father_organizational_unit_id')->nullable()->constrained('organizational_units');
             $table->timestamps();
             $table->softDeletes();
         });

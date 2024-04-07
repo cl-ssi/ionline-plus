@@ -17,15 +17,15 @@ return new class extends Migration
             $table->string('level');
             $table->foreignId('organizational_unit_id')->nullable()->constrained('organizational_units');
             $table->foreignId('establishment_id')->constrained('establishments');
-            $table->string('sirh_function');
-            $table->string('sirh_ou_id');
-            $table->string('sirh_cost_center');
+            $table->string('sirh_function')->nullable();
+            $table->string('sirh_ou_id')->nullable();
+            $table->string('sirh_cost_center')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
 
         Schema::table('establishments', function (Blueprint $table) {
-            $table->foreignId('father_organizational_unit_id')->after('mail_director')->nullable()->constrained('organizational_units');
+            $table->foreignId('father_organizational_unit_id')->nullable()->after('mail_director')->constrained('organizational_units');
         });
     }
 

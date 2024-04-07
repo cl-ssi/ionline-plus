@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedTnteger('id_minsal')->nullable();
+            $table->unsignedInteger('id_minsal')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

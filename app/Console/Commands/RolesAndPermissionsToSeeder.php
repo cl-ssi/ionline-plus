@@ -30,7 +30,7 @@ class RolesAndPermissionsToSeeder extends Command
      */
     public function handle()
     {
-        $seederContent = "<?php\n\nuse Illuminate\\Database\\Seeder;\nuse Spatie\Permission\Models\Role;\nuse Spatie\Permission\Models\Permission;\n\nclass RoleAndPermissionSeeder extends Seeder\n{\n    public function run()\n    {\n";
+        $seederContent = "<?php\n\nnamespace Database\Seeders;\n\nuse Illuminate\\Database\\Seeder;\nuse Spatie\Permission\Models\Role;\nuse Spatie\Permission\Models\Permission;\n\nclass RoleAndPermissionSeeder extends Seeder\n{\n    public function run()\n    {\n";
     
         $seederContent .= "        Permission::create(['name' => 'be god', 'description' => 'God Mode !']);\n";
         $seederContent .= "        Permission::create(['name' => 'dev', 'description' => 'Developer']);\n";

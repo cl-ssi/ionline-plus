@@ -21,11 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EstablishmentSeeder::class);
         $this->call(OrganizationalUnitSeeder::class);
         $this->call(RoleAndPermissionSeeder::class);
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        $this->call(UserSeeder::class);
     }
 }

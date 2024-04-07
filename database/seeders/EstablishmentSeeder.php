@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Parameter\Establishment;
 
@@ -34,9 +36,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Alta Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 1,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2021-02-17 08:17:01',
 ));
         Establishment::create(array (
   'name' => 'Cirujano Aguirre',
@@ -65,9 +64,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Cirujano Videla',
@@ -96,9 +92,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Cirujano Guzmán',
@@ -127,9 +120,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Sur de Iquique',
@@ -158,9 +148,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Cerro Esmeralda',
@@ -189,9 +176,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Chanavayita',
@@ -220,9 +204,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'San Marcos',
@@ -251,9 +232,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Prais Iquique',
@@ -282,9 +260,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pedro Pulgar (CESFAM)',
@@ -313,9 +288,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'SAPU Pedro Pulgar M.',
@@ -344,9 +316,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => NULL,
   'provider_type_health_system' => NULL,
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Dr. Héctor Reyno G.',
@@ -375,9 +344,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2021-02-17 08:17:13',
 ));
         Establishment::create(array (
   'name' => 'El Boro',
@@ -406,9 +372,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'La Tortuga',
@@ -437,9 +400,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Camiña',
@@ -468,9 +428,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Moquella',
@@ -499,9 +456,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Colchane',
@@ -530,9 +484,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Enquelga',
@@ -561,9 +512,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Cariquima',
@@ -592,9 +540,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Huara',
@@ -623,9 +568,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pisagua',
@@ -654,9 +596,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => NULL,
   'provider_type_health_system' => NULL,
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Tarapacá',
@@ -685,9 +624,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pachica',
@@ -716,9 +652,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Chiapa',
@@ -747,9 +680,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Sibaya',
@@ -778,9 +708,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pica',
@@ -809,9 +736,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Cancosa',
@@ -840,9 +764,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Matilla',
@@ -871,9 +792,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pozo Almonte (CESFAM)',
@@ -902,9 +820,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Mamiña',
@@ -933,9 +848,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'La Tirana',
@@ -964,9 +876,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'La Huayca',
@@ -995,9 +904,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Pozo Almonte (SAPU)',
@@ -1026,9 +932,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Jorge Seguel C.',
@@ -1057,9 +960,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Mediana Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Salvador Allende',
@@ -1088,9 +988,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Mediana Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Dr. Enrique Paris',
@@ -1119,9 +1016,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Mediana Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Dr. Yandry Añazco Montero',
@@ -1150,9 +1044,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-09-21 15:40:13',
-  'updated_at' => '2020-09-21 15:40:13',
 ));
         Establishment::create(array (
   'name' => 'Servicio de Salud Tarapacá',
@@ -1181,9 +1072,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => NULL,
   'provider_type_health_system' => 'Público ',
   'mail_director' => 'director.ssi@redsalud.gob.cl, director.ssi@redsalud.gov.cl',
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-12-29 19:25:47',
-  'updated_at' => '2021-02-17 08:17:58',
 ));
         Establishment::create(array (
   'name' => 'Centro Diurno Casa Club',
@@ -1212,9 +1100,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => NULL,
   'provider_type_health_system' => NULL,
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => NULL,
-  'updated_at' => NULL,
 ));
         Establishment::create(array (
   'name' => 'Medio Privativo Libertad',
@@ -1243,9 +1128,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => NULL,
   'provider_type_health_system' => NULL,
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => NULL,
-  'updated_at' => NULL,
 ));
         Establishment::create(array (
   'name' => 'Hospital Alto Hospicio',
@@ -1274,9 +1156,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Mediana Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => 'director.hah@redsalud.gob.cl',
-  'father_organizational_unit_id' => 1,
-  'created_at' => '2023-01-17 07:53:43',
-  'updated_at' => '2023-06-13 12:37:38',
 ));
         Establishment::create(array (
   'name' => 'Clínica Dental Móvil',
@@ -1305,9 +1184,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => NULL,
-  'updated_at' => '2023-02-06 18:09:04',
 ));
         Establishment::create(array (
   'name' => 'SAPU Cirujano Aguirre',
@@ -1336,9 +1212,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 08:33:26',
-  'updated_at' => '2023-02-10 08:33:26',
 ));
         Establishment::create(array (
   'name' => 'SAPU-Videla',
@@ -1367,9 +1240,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:00:46',
-  'updated_at' => '2023-02-10 09:00:46',
 ));
         Establishment::create(array (
   'name' => 'SAPU Cirujano Guzmán',
@@ -1398,9 +1268,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:08:10',
-  'updated_at' => '2023-02-10 09:08:10',
 ));
         Establishment::create(array (
   'name' => 'SAPU-SUR',
@@ -1429,9 +1296,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:16:48',
-  'updated_at' => '2023-02-10 09:16:48',
 ));
         Establishment::create(array (
   'name' => 'SAPU El Boro',
@@ -1460,9 +1324,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:39:40',
-  'updated_at' => '2023-02-10 09:39:40',
 ));
         Establishment::create(array (
   'name' => 'SAPU Huara',
@@ -1491,9 +1352,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:42:58',
-  'updated_at' => '2023-02-10 09:42:58',
 ));
         Establishment::create(array (
   'name' => 'SAR La Tortuga',
@@ -1522,9 +1380,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:46:29',
-  'updated_at' => '2023-02-10 09:46:29',
 ));
         Establishment::create(array (
   'name' => 'SAPU Dr. Héctor Reyno Gutiérrez',
@@ -1553,9 +1408,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-02-10 09:49:24',
-  'updated_at' => '2023-02-10 09:49:24',
 ));
         Establishment::create(array (
   'name' => 'Hospital De Dia Infanto Adolescente',
@@ -1584,9 +1436,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'No Aplica',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => 3,
-  'created_at' => NULL,
-  'updated_at' => '2023-05-03 06:04:15',
 ));
         Establishment::create(array (
   'name' => 'Pozo Almonte (SAR)',
@@ -1615,9 +1464,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'Baja Complejidad',
   'provider_type_health_system' => 'Público ',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2020-08-26 14:41:23',
-  'updated_at' => '2020-08-26 14:41:23',
 ));
         Establishment::create(array (
   'name' => 'Secretaría Regional Ministerial de Salud de Tarapacá',
@@ -1646,9 +1492,6 @@ class EstablishmentSeeder extends Seeder
   'level_of_complexity' => 'No Aplica',
   'provider_type_health_system' => 'Público',
   'mail_director' => NULL,
-  'father_organizational_unit_id' => NULL,
-  'created_at' => '2023-11-16 13:07:50',
-  'updated_at' => '2023-11-16 13:08:42',
 ));
     }
 }

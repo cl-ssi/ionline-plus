@@ -12,6 +12,7 @@ RUN apk add --no-cache \
         freetype-dev \
         libxml2-dev \
         libzip-dev \
+        libicu-dev \
         mdbtools-utils \
         poppler-utils
 
@@ -30,7 +31,11 @@ RUN docker-php-ext-install zip
 
 RUN docker-php-ext-install bcmath
 
-RUN docker-php-ext-configure intl && docker-php-ext-install intl
+RUN docker-php-ext-configure intl
+
+RUN docker-php-ext-install intl
+
+RUN docker-php-ext-enable intl
 
 RUN mkdir -p /run/nginx
 

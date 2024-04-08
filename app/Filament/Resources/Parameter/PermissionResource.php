@@ -21,6 +21,14 @@ class PermissionResource extends Resource
 
     protected static ?string $navigationGroup = 'Settings';
 
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can([
+            'be god',
+            'dev',
+        ]);
+    }
+
     public static function form(Form $form): Form
     {
         return $form

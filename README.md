@@ -6,6 +6,15 @@ iOnline Plus, is a Laravel 11 y Filamentphp version of the tradicional iOnline p
 ## Dependencias
 - php 8.2
 
+## Development Roadmap
+- [ ] Agenda Telefónica
+- [ ] Partes
+- [ ] Autoridades
+- [ ] Documentos ( fix editor )
+- [ ] Solitud de firma (Autoridades) (Approval)
+- [ ] Sgr (Cuco)
+
+
 ## Deployment
 
 To deploy this project run

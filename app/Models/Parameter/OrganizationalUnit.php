@@ -2,6 +2,7 @@
 
 namespace App\Models\Parameter;
 
+use App\Models\Authority;
 use App\Models\Parameter\Establishment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -48,5 +49,10 @@ class OrganizationalUnit extends Model
     public function childs(): HasMany
     {
         return $this->hasMany(OrganizationalUnit::class, 'organizational_unit_id');
+    }
+
+    public function authorities(): HasMany
+    {
+        return $this->hasMany(Authority::class);
     }
 }

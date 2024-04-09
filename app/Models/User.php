@@ -8,6 +8,7 @@ use App\Models\Parameter\Country;
 use App\Models\Parameter\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -96,5 +97,53 @@ class User extends Authenticatable implements FilamentUser
     public function organizationalUnit(): BelongsTo
     {
         return $this->belongsTo(OrganizationalUnit::class);
+    }
+
+    /**
+     * Definición del accessor para obtener el nombre corto del modelo.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function shortName(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => implode(' ', [
+                $this->firstName,
+                mb_convert_case($this->fathers_family, MB_CASE_TITLE, 'UTF-8'),
+                mb_convert_case($this->mothers_family, MB_CASE_TITLE, 'UTF-8'),
+            ]),
+        );
+    }
+
+    /**
+     * Definición del accessor para obtener el primer nombre del modelo.
+     *
+     * @return \Illuminate\Database\Eloquent\Casts\Attribute
+     */
+    protected function firstName(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                $names = explode(' ', trim(mb_convert_case($this->name, MB_CASE_TITLE, 'UTF-8')));
+    
+                // Considera solo los nombres que empiezan con María (o Maria) y pueden incluir
+                // prefijos como De, Del, Los, Las.
+                $allowedPrefixes = ['De', 'Del', 'Los', 'Las'];
+                $firstName = $names[0]; // El primer nombre por defecto
+
+                if ($firstName === 'María' || $firstName === 'Maria') {
+                    // Añade los nombres/prefijos adicionales según las condiciones.
+                    for ($i = 1; $i < min(4, count($names)); $i++) {
+                        if (in_array($names[$i], $allowedPrefixes) || $i === 1) {
+                            $firstName .= " {$names[$i]}";
+                        } else {
+                            break; // Sal del bucle si el nombre no cumple con los criterios.
+                        }
+                    }
+                }
+    
+                return $firstName;
+            },
+        );
     }
 }

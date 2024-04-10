@@ -4,6 +4,7 @@ namespace App\Models\Parameter;
 
 use App\Models\Authority;
 use App\Models\Parameter\Establishment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,5 +55,10 @@ class OrganizationalUnit extends Model
     public function authorities(): HasMany
     {
         return $this->hasMany(Authority::class);
+    }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
     }
 }

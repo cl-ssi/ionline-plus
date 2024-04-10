@@ -5,9 +5,12 @@ namespace App\Filament\Resources\Parameter;
 use App\Filament\Resources\Parameter\OrganizationalUnitResource\Pages;
 use App\Filament\Resources\Parameter\OrganizationalUnitResource\RelationManagers;
 use App\Models\Parameter\OrganizationalUnit;
+use App\Models\Parameter\Establishment;
+use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\FontFamily;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,27 +36,52 @@ class OrganizationalUnitResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('level')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\Select::make('organizational_unit_id')
-                    ->relationship('organizationalUnit', 'name')
-                    ->default(null),
-                Forms\Components\Select::make('establishment_id')
-                    ->relationship('establishment', 'name')
-                    ->default(null),
-                Forms\Components\TextInput::make('sirh_function')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('sirh_ou_id')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('sirh_cost_center')
-                    ->maxLength(255)
-                    ->default(null),
+                Forms\Components\Grid::make(12)
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nombre')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnSpan(11),
+                        Forms\Components\TextInput::make('level')
+                            ->numeric()
+                            ->disabled()
+                            ->default(null),
+                    ]),
+                Forms\Components\Grid::make(3)
+                    ->schema([
+                        Forms\Components\Select::make('establishment_id')
+                            ->label('Establecimiento')
+                            ->options(Establishment::whereIn('id',json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
+                            ->default(auth()->user()->organizationalUnit->establishment_id)
+                            ->live(),
+                        SelectTree::make('organizational_unit_id')
+                            ->label('Unidad Organizacional')
+                            ->relationship(relationship: 'father', 
+                                titleAttribute: 'name', 
+                                parentAttribute: 'organizational_unit_id', 
+                                modifyQueryUsing: fn($query, $get) => $query->where('establishment_id',$get('establishment_id'))->orderBy('name'),
+                                modifyChildQueryUsing: fn($query, $get) => $query->where('establishment_id',$get('establishment_id'))->orderBy('name')
+                                )
+                            ->searchable()
+                            ->parentNullValue(null)
+                            ->hiddenOptions([76])
+                            ->enableBranchNode()
+                            ->defaultOpenLevel(1)
+                            ->columnSpan(2),
+                    ]),
+                Forms\Components\Grid::make(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('sirh_function')
+                            ->maxLength(255)
+                            ->default(null),
+                        Forms\Components\TextInput::make('sirh_ou_id')
+                            ->maxLength(255)
+                            ->default(null),
+                        Forms\Components\TextInput::make('sirh_cost_center')
+                            ->maxLength(255)
+                            ->default(null),
+                        ]),
             ]);
     }
 
@@ -62,22 +90,12 @@ class OrganizationalUnitResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('level')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('organizationalUnit.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('establishment.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('sirh_function')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('sirh_ou_id')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('sirh_cost_center')
-                    ->searchable(),
+                    ->prefix(fn (OrganizationalUnit $record): string => str_repeat('- ', $record->level))
+                    ->searchable()
+                    ->fontFamily(FontFamily::Mono),
+                // Tables\Columns\TextColumn::make('level')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -107,7 +125,8 @@ class OrganizationalUnitResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\UsersRelationManager::class,
+            RelationManagers\AuthoritiesRelationManager::class,
         ];
     }
 

@@ -3,6 +3,7 @@
 namespace App\Models\Parameter;
 
 use App\Models\Authority;
+use App\Models\Document\Document;
 use App\Models\Parameter\Establishment;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -61,4 +62,10 @@ class OrganizationalUnit extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function documents(): HasMany
+    {
+        return $this->hasMany(Document::class);
+    }
+
 }

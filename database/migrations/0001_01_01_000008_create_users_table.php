@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('fathers_family');
             $table->string('mothers_family');
+            $table->string('full_name')->storedAs("CONCAT(name, ' ', fathers_family, ' ', mothers_family)");
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
             $table->string('address')->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamp('password_changed_at')->nullable();
+            $table->foreignId('establishment_id')->nullable()->constrained('establishments');
             $table->foreignId('organizational_unit_id')->nullable()->constrained('organizational_units');
             $table->string('position')->nullable();
             $table->string('vc_link')->nullable();

@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
+use App\Models\Parameter\Establishment;
 use App\Models\Parameter\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -48,6 +49,7 @@ class User extends Authenticatable implements FilamentUser
         'phone_number',
         'password',
         'password_changed_at',
+        'establishment_id',
         'organizational_unit_id',
         'position',
         'vc_link',
@@ -92,6 +94,11 @@ class User extends Authenticatable implements FilamentUser
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function establishment(): BelongsTo
+    {
+        return $this->belongsTo(Establishment::class);
     }
 
     public function organizationalUnit(): BelongsTo

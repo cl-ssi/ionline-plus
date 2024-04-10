@@ -53,31 +53,20 @@ class AuthoritiesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('date')
             ->columns([
-                Tables\Columns\TextColumn::make('date')
-                    ->date('Y-m-d')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('user.short_name')
-                    ->numeric()
-                    ->sortable(),
-                // Tables\Columns\TextColumn::make('organizationalUnit.name')
-                //     ->numeric()
-                //     ->sortable(),
-                Tables\Columns\TextColumn::make('position')
-                    ->searchable(),
-                // Tables\Columns\TextColumn::make('type')
-                //     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\Layout\Stack::make([
+                    Tables\Columns\TextColumn::make('date')
+                        ->date('Y-m-d')
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('user.short_name')
+                        ->numeric()
+                        ->sortable(),
+                    Tables\Columns\TextColumn::make('position')
+                        ->searchable(),
+                ]),
+            ])
+            ->contentGrid([
+                'md' => 7,
+                'xl' => 7,
             ])
             ->filters([
                 Tables\Filters\Filter::make('date')
@@ -101,12 +90,9 @@ class AuthoritiesRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+
             ])
             ->paginated(false);
     }

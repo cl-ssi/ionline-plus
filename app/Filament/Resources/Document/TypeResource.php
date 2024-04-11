@@ -19,6 +19,8 @@ class TypeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Documentos';
+
     public static function canViewAny(): bool
     {
         return auth()->user()->can([

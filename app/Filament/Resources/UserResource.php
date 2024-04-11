@@ -21,6 +21,8 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'SDGP';
+
     public static function canViewAny(): bool
     {
         return auth()->user()->can([

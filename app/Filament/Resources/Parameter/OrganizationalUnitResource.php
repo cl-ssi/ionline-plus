@@ -22,7 +22,7 @@ class OrganizationalUnitResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'SDGP';
 
     public static function canViewAny(): bool
     {
@@ -65,7 +65,6 @@ class OrganizationalUnitResource extends Resource
                                 )
                             ->searchable()
                             ->parentNullValue(null)
-                            ->hiddenOptions([76])
                             ->enableBranchNode()
                             ->defaultOpenLevel(1)
                             ->columnSpan(2),

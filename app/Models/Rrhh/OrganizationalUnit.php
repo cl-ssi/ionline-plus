@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Parameter;
+namespace App\Models\Rrhh;
 
-use App\Models\Authority;
+use App\Models\Rrhh\Authority;
 use App\Models\Document\Document;
 use App\Models\Parameter\Establishment;
 use App\Models\User;

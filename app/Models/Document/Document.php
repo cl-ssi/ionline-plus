@@ -4,7 +4,7 @@ namespace App\Models\Document;
 
 use App\Models\Document\Type;
 use App\Models\Parameter\Establishment;
-use App\Models\Parameter\OrganizationalUnit;
+use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

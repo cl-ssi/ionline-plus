@@ -6,7 +6,7 @@ namespace App\Models;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
 use App\Models\Parameter\Establishment;
-use App\Models\Parameter\OrganizationalUnit;
+use App\Models\Rrhh\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Casts\Attribute;

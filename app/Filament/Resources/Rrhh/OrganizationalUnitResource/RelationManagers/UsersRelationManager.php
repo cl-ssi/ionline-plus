@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Parameter\OrganizationalUnitResource\RelationManagers;
+namespace App\Filament\Resources\Rrhh\OrganizationalUnitResource\RelationManagers;
 
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;

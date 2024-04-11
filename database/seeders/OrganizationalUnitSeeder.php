@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Parameter\OrganizationalUnit;
+use App\Models\Rrhh\OrganizationalUnit;
 
 class OrganizationalUnitSeeder extends Seeder
 {

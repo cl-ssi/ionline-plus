@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Parameter;
+namespace App\Filament\Resources\Rrhh;
 
-use App\Filament\Resources\Parameter\OrganizationalUnitResource\Pages;
-use App\Filament\Resources\Parameter\OrganizationalUnitResource\RelationManagers;
-use App\Models\Parameter\OrganizationalUnit;
+use App\Filament\Resources\Rrhh\OrganizationalUnitResource\Pages;
+use App\Filament\Resources\Rrhh\OrganizationalUnitResource\RelationManagers;
+use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\Parameter\Establishment;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;

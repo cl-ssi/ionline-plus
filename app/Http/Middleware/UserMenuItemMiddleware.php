@@ -21,11 +21,11 @@ class UserMenuItemMiddleware
     {
         Filament::registerUserMenuItems([
             UserMenuItem::make()
-                ->url(fn (): string => route('filament.admin.pages.dashboard', ['user_id' => auth()->loginUsingId(session()->get('god'), session()->pull('god'))]))
                 ->label('God Mode')
                 ->color('danger')
                 ->icon('heroicon-o-eye')
-                ->visible(session()->has('god')),
+                ->visible(session()->has('god'))
+                ->url(route('switch-user')),
             MenuItem::make()
                 ->label('iOnline')
                 ->url(fn (): string => route('return-to-ionline'))

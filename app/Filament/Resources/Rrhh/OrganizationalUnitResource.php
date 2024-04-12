@@ -36,17 +36,17 @@ class OrganizationalUnitResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Grid::make(12)
+                Forms\Components\Grid::make(8)
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nombre')
                             ->required()
                             ->maxLength(255)
-                            ->columnSpan(11),
+                            ->columnSpan(7),
                         Forms\Components\TextInput::make('level')
                             ->numeric()
-                            ->disabled()
-                            ->default(null),
+                            ->default(null)
+                            ->columnSpan(1),
                     ]),
                 Forms\Components\Grid::make(3)
                     ->schema([

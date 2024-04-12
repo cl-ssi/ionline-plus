@@ -6,12 +6,14 @@ namespace App\Models;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
 use App\Models\Parameter\Establishment;
+use App\Models\Rrhh\Authority;
 use App\Models\Rrhh\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -106,6 +108,44 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(OrganizationalUnit::class);
     }
+
+    /**
+     * Organizational Units where the user is manager.
+     */
+    public function isManagerOf(): BelongsToMany
+    {
+        return $this->belongsToMany(OrganizationalUnit::class,'rrhh_authorities','user_id','organizational_unit_id')
+            ->as('authority')
+            ->withPivot('position','type','decree','representation_id')
+            ->wherePivot('type', Authority::TYPE_MANAGER)
+            ->wherePivot('date', now()->startOfDay());
+    }
+
+    /**
+     * Organizational Units where the user is secretary.
+     */
+    public function isSecretaryOf(): BelongsToMany
+    {
+        return $this->belongsToMany(OrganizationalUnit::class,'rrhh_authorities','user_id','organizational_unit_id')
+            ->as('authority')
+            ->withPivot('position','type','decree','representation_id')
+            ->wherePivot('type', Authority::TYPE_SECRETARY)
+            ->wherePivot('date', now()->startOfDay());
+    }
+
+    /**
+     * Organizational Units where the user is delegate.
+     */
+    public function isDelegateOf(): BelongsToMany
+    {
+        return $this->belongsToMany(OrganizationalUnit::class,'rrhh_authorities','user_id','organizational_unit_id')
+            ->as('authority')
+            ->withPivot('position','type','decree','representation_id')
+            ->wherePivot('type', Authority::TYPE_DELEGATE)
+            ->wherePivot('date', now()->startOfDay());
+    }
+
+
 
     /**
      * Definición del accessor para obtener el nombre corto del modelo.

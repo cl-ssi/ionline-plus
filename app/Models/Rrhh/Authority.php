@@ -15,6 +15,10 @@ class Authority extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     use HasFactory, SoftDeletes;
 
+    const TYPE_MANAGER = 'manager';
+    const TYPE_SECRETARY = 'secretary';
+    const TYPE_DELEGATE = 'delegate';
+
     protected $table = 'rrhh_authorities';
 
     protected $fillable = [

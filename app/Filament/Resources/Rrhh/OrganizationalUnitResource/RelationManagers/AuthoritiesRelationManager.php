@@ -22,8 +22,8 @@ class AuthoritiesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->searchable(['name', 'mothers_family','fathers_family'])
+                    ->relationship('user', 'full_name')
+                    ->searchable()
                     ->required()
                     ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
                 Forms\Components\Select::make('organizational_unit_id')
@@ -34,15 +34,21 @@ class AuthoritiesRelationManager extends RelationManager
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\TextInput::make('type')
-                    ->maxLength(255)
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'manager' => 'Jefetura',
+                        'delegate' => 'Delegado/a',
+                        'secretary' => 'Secretario/a',
+                    ])
+                    ->hiddenOn('edit')
+                    ->required()
                     ->default(null),
                 Forms\Components\TextInput::make('decree')
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\Select::make('representation_id')
-                    ->relationship('representation', 'name')
-                    ->searchable(['name', 'mothers_family','fathers_family'])
+                    ->relationship('representation', 'full_name')
+                    ->searchable()
                     ->default(null)
                     ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
             ]);

@@ -37,6 +37,8 @@ RUN docker-php-ext-install intl
 
 RUN docker-php-ext-enable intl
 
+RUN docker-php-ext-install opcache
+
 RUN mkdir -p /run/nginx
 
 COPY docker/nginx.conf /etc/nginx/nginx.conf

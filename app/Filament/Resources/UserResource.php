@@ -205,6 +205,8 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                \App\Filament\Actions\SwitchUser::make()
+                    ->successRedirectUrl(route('filament.admin.pages.dashboard')),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

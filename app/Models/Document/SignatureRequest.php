@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Models\Document;
+
+use App\Models\Document\Approval;
+use App\Models\Document\Type;
+use App\Models\Rrhh\OrganizationalUnit;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
+class SignatureRequest extends Model
+{
+    use HasFactory;
+
+    protected $table = 'doc_signature_requests';
+
+    protected $fillable = [
+        'request_date',
+        'original_file',
+        'url',
+        'status',
+        'user_id',
+        'organizational_unit_id',
+        'type_id',
+        'subject',
+        'description',
+        'recipients',
+        'distribution',
+        'reserved',
+        'oficial',
+        'sensitive',
+        'signature_page',
+        'response_within_days',
+        'ensorse_type',
+        'verification_code',
+        'last_approval_id',
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
+        'reserved' => 'boolean',
+        'oficial' => 'boolean',
+        'sensitive' => 'boolean',
+    ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function organizationalUnit(): BelongsTo
+    {
+        return $this->belongsTo(OrganizationalUnit::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
+    public function lastApproval()
+    {
+        return $this->belongsTo(Approval::class, 'last_approval_id');
+    }
+
+    /**
+     * Get all of the approvations of a model.
+     */
+    public function approvals(): MorphMany
+    {
+        return $this->morphMany(Approval::class, 'approvable');
+    }
+
+
+}

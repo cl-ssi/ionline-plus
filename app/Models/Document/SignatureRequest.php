@@ -4,6 +4,7 @@ namespace App\Models\Document;
 
 use App\Models\Document\Approval;
 use App\Models\Document\Type;
+use App\Models\File;
 use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,7 +35,7 @@ class SignatureRequest extends Model
         'sensitive',
         'signature_page',
         'response_within_days',
-        'ensorse_type',
+        'endorse_type_id',
         'verification_code',
         'last_approval_id',
     ];
@@ -56,12 +57,12 @@ class SignatureRequest extends Model
         return $this->belongsTo(OrganizationalUnit::class);
     }
 
-    public function type()
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }
 
-    public function lastApproval()
+    public function lastApproval(): BelongsTo
     {
         return $this->belongsTo(Approval::class, 'last_approval_id');
     }
@@ -74,5 +75,14 @@ class SignatureRequest extends Model
         return $this->morphMany(Approval::class, 'approvable');
     }
 
+    public function files(): MorphMany
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
+
+    public function endorseType(): BelongsTo
+    {
+        return $this->belongsTo(EndorseType::class);
+    }
 
 }

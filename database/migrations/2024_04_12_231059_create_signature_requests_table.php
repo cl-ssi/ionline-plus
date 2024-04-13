@@ -29,7 +29,7 @@ return new class extends Migration
             $table->boolean('sensitive')->default(false);
             $table->unsignedTinyInteger('signature_page')->default(0);
             $table->unsignedTinyInteger('response_within_days')->nullable();
-            $table->unsignedTinyInteger('ensorse_type');
+            $table->foreignId('endorse_type_id')->constrained('doc_endorse_types');
             $table->string('verification_code')->nullable();
             $table->foreignId('last_approval_id')->nullable()->constrained('sign_approvals');
             $table->timestamps();

@@ -39,7 +39,7 @@ class SignatureRequestResource extends Resource
                     ->relationship('type', 'name')
                     ->required(),
                 Forms\Components\FileUpload::make('original_file')
-                    ->directory('ionline/signature_requests/original_files')
+                    ->directory('signature_requests/original_files')
                     ->required(),
                 Forms\Components\FileUpload::make('anexos')
                     ->multiple(),

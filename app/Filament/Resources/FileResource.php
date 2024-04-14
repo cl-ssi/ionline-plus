@@ -31,7 +31,9 @@ class FileResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('storage_path'),
+                Forms\Components\FileUpload::make('storage_path')
+                    ->directory('files')
+                    ->required(),
                 Forms\Components\Toggle::make('stored')
                     ->required(),
                 Forms\Components\TextInput::make('name')

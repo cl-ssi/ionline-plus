@@ -81,7 +81,9 @@ class FileResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('storage_path')
-                    ->searchable(),
+                    ->formatStateUsing(fn ($record) => $record->name)
+                    ->url(fn ($record) => Storage::url($record->storage_path), true)
+                    ->icon('heroicon-o-document'),
                 Tables\Columns\IconColumn::make('stored')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('name')
@@ -133,6 +135,11 @@ class FileResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                // Tables\Actions\LinkAction::make('download')
+                //     ->label('Download')
+                //     ->url(fn ($record) => Storage::url($record->storage_path))
+                //     ->icon('heroicon-o-document')
+                //     ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

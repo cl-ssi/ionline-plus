@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FileResource\Pages;
 use App\Filament\Resources\FileResource\RelationManagers;
+use App\Models\Document\SignatureRequest;
 use App\Models\File;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -56,15 +57,15 @@ class FileResource extends Resource
                 Forms\Components\TextInput::make('max_file_size')
                     ->numeric()
                     ->default(null),
-                Forms\Components\TextInput::make('stored_by_id')
-                    ->numeric()
+                Forms\Components\Select::make('stored_by_id')
+                    ->relationship('storedBy', 'full_name')
+                    ->searchable()
                     ->default(null),
-                Forms\Components\TextInput::make('fileable_type')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('fileable_id')
-                    ->numeric()
-                    ->default(null),
+                Forms\Components\MorphToSelect::make('fileable')
+                    ->types([
+                        Forms\Components\MorphToSelect\Type::make(SignatureRequest::class)
+                            ->titleAttribute('subject'),
+                    ])
             ]);
     }
 
@@ -91,7 +92,7 @@ class FileResource extends Resource
                 Tables\Columns\TextColumn::make('max_file_size')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('stored_by_id')
+                Tables\Columns\TextColumn::make('storedBy.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('fileable_type')
@@ -135,9 +136,9 @@ class FileResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListFiles::route('/'),
+            'index'  => Pages\ListFiles::route('/'),
             'create' => Pages\CreateFile::route('/create'),
-            'edit' => Pages\EditFile::route('/{record}/edit'),
+            'edit'   => Pages\EditFile::route('/{record}/edit'),
         ];
     }
 }

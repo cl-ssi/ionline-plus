@@ -49,12 +49,16 @@ class TypeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\IconColumn::make('doc_digital')
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\IconColumn::make('partes_exclusive')
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -70,7 +74,10 @@ class TypeResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('doc_digital')
+                    ->query(fn (Builder $query) => $query->where('doc_digital',true)),
+                Tables\Filters\Filter::make('partes_exclusive')
+                    ->query(fn (Builder $query) => $query->where('partes_exclusive',true)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -79,7 +86,9 @@ class TypeResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->paginated(false)
+            ->defaultSort('name', 'asc');
     }
 
     public static function getRelations(): array

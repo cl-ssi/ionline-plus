@@ -20,7 +20,8 @@ class SignatureRequest extends Model
 
     protected $fillable = [
         'request_date',
-        'original_file',
+        'original_file_path',
+        'original_file_name',
         'url',
         'status',
         'user_id',

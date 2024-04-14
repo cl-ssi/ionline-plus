@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('doc_signature_requests', function (Blueprint $table) {
             $table->id();
             $table->dateTime('request_date');
-            $table->string('original_file');
+            $table->foreignId('type_id')->constrained('doc_types');
+            $table->string('original_file_path');
+            $table->string('original_file_name');
             $table->string('url')->nullable();
             $table->boolean('status')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('organizational_unit_id')->constrained('organizational_units');
-            $table->foreignId('type_id')->constrained('doc_types');
             $table->string('subject');
             $table->text('description')->nullable();
             $table->text('recipients')->nullable();

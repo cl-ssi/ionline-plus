@@ -35,7 +35,7 @@ class FileResource extends Resource
             ->schema([
                 Forms\Components\FileUpload::make('storage_path')
                     ->storeFileNamesIn('name')
-                    ->directory('files')
+                    ->directory('ionline/files')
                     ->openable()
                     ->required()
                     ->visibility('private')

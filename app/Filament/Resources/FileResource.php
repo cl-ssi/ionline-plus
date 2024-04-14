@@ -33,13 +33,15 @@ class FileResource extends Resource
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('storage_path')
+                    ->storeFileNamesIn('name')
                     ->directory('files')
+                    // ->downloadable()
                     ->required(),
                 Forms\Components\Toggle::make('stored')
                     ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->maxLength(255)
-                    ->default(null),
+                // Forms\Components\TextInput::make('name')
+                //     ->maxLength(255)
+                //     ->default(null),
                 Forms\Components\TextInput::make('type')
                     ->maxLength(255)
                     ->default(null),
@@ -113,8 +115,16 @@ class FileResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('id', 'desc')
             ->filters([
-                //
+                Tables\Filters\Filter::make('fileable_type_null')
+                    ->query(fn (Builder $query) => $query->whereNull('fileable_type')),
+                Tables\Filters\SelectFilter::make('filable_type')
+                    ->options([
+                        'draft'     => 'Draft',
+                        'reviewing' => 'Reviewing',
+                        'published' => 'Published',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -1,5 +1,6 @@
 <?php
 
+use Actived\MicrosoftTeamsNotifier\LogMonolog;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -68,7 +69,7 @@ return [
         # ACTIVED MICROSOFT TEAMS NOTIFIER
         'teams' => [
             'driver' => 'custom',
-            'via' => \Actived\MicrosoftTeamsNotifier\LogMonolog::class,
+            'via' => LogMonolog::class,
             'webhookDsn' => env('LOG_TEAMS_WEBHOOK_URL'),
             'level'  => env('LOG_LEVEL', 'debug'), // or simply 'debug'
             'title'  => 'Log iOnline Plus', // can be NULL

@@ -65,6 +65,19 @@ return [
             'replace_placeholders' => true,
         ],
 
+        # ACTIVED MICROSOFT TEAMS NOTIFIER
+        'teams' => [
+            'driver' => 'custom',
+            'via' => \Actived\MicrosoftTeamsNotifier\LogMonolog::class,
+            'webhookDsn' => env('LOG_TEAMS_WEBHOOK_URL'),
+            'level'  => env('LOG_LEVEL', 'debug'), // or simply 'debug'
+            'title'  => 'Log iOnline Plus', // can be NULL
+            'subject'  => 'Message Subject', // can be NULL
+            'emoji'  => '&#x1F3C1', // can be NULL
+            'color'  => '#fd0404', // can be NULL
+            'format' => '[%datetime%] %channel%.%level_name%: %message%' // can be NULL
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),

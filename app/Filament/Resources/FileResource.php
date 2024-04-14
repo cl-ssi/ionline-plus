@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class FileResource extends Resource
 {
@@ -35,8 +36,12 @@ class FileResource extends Resource
                 Forms\Components\FileUpload::make('storage_path')
                     ->storeFileNamesIn('name')
                     ->directory('files')
-                    // ->downloadable()
-                    ->required(),
+                    ->openable()
+                    ->required()
+                    ->visibility('private')
+                    ->deleteUploadedFileUsing(function (File $record) {
+                        Storage::delete($record->storage_path);
+                    }),
                 Forms\Components\Toggle::make('stored')
                     ->required(),
                 // Forms\Components\TextInput::make('name')

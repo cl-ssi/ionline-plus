@@ -39,10 +39,15 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan filament:upgrade",
-            "@php artisan icons:cache",
-            "@php artisan filament:cache-components"
+            "@php artisan package:discover --ansi"
+        ],
+        "post-install-cmd": [
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan filament:upgrade || echo 'Skipping filament upgrade in development mode'",
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan icons:cache || echo 'Skipping icons cache in development mode'",
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan filament:cache-components || echo 'Skipping filament cache components in development mode'",
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan route:cache || echo 'Skipping route cache in development mode'",
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan view:cache || echo 'Skipping view cache in development mode'",
+            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan event:cache || echo 'Skipping event cache in development mode'"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

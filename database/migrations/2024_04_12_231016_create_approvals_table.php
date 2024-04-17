@@ -38,10 +38,10 @@ return new class extends Migration
             $table->unsignedBigInteger('approvable_id')->nullable();
             $table->string('approvable_type')->nullable();
             $table->boolean('digital_signature')->default(0);
-            $table->string('position')->nullable();
-            $table->integer('startY')->nullable();
-            $table->string('filename')->nullable();
             $table->boolean('endorse')->default(0);
+            $table->string('position')->nullable();
+            $table->integer('start_y')->nullable();
+            $table->string('filename')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

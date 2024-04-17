@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ApprovalsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'approvals';
+    protected static string $relationship = 'signatures';
 
     public function form(Form $form): Form
     {
@@ -86,19 +86,18 @@ class ApprovalsRelationManager extends RelationManager
             ->recordTitleAttribute('subject')
             ->columns([
                 Tables\Columns\TextColumn::make('module')
-                ->searchable(),
-                Tables\Columns\TextColumn::make('module_icon')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subject')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_route_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_route_params')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_pdf_path')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('module_icon')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('subject')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('document_route_name')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('document_route_params')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('document_pdf_path')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('sentToOu.name')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('sentToUser.name')
                     ->numeric()
@@ -116,10 +115,10 @@ class ApprovalsRelationManager extends RelationManager
                     ->sortable(),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('callback_controller_method')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('callback_controller_params')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('callback_controller_method')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('callback_controller_params')
+                //     ->searchable(),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('previousApproval.id')

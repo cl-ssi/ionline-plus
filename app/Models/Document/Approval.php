@@ -39,10 +39,10 @@ class Approval extends Model
         'approvable_id',
         'approvable_type',
         'digital_signature',
-        'position',
-        'startY',
-        'filename',
         'endorse',
+        'position',
+        'start_y',
+        'filename',
     ];
 
     protected $casts = [

@@ -104,6 +104,7 @@ class ApprovalResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('module')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('module_icon')
                     ->searchable(),
@@ -153,6 +154,7 @@ class ApprovalResource extends Resource
                 Tables\Columns\TextColumn::make('filename')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('approvable_type')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('approvable_id')
                     ->numeric()

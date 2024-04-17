@@ -68,8 +68,9 @@ class AuthoritiesRelationManager extends RelationManager
                         ->sortable(),
                     Tables\Columns\TextColumn::make('position')
                         ->searchable(),
-                ]),
+                ])
             ])
+            ->recordClasses(fn ($record) => $record->date->isToday() ? 'border-2 border-primary-600' : '')
             ->contentGrid([
                 'md' => 7,
                 'xl' => 7,

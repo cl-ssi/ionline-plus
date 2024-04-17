@@ -9,6 +9,9 @@ use App\Models\Parameter\Establishment;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
+use Filament\Pages\SubNavigationPosition;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontFamily;
 use Filament\Tables;
@@ -23,6 +26,8 @@ class OrganizationalUnitResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'SDGP';
+
+    protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
     public static function canViewAny(): bool
     {
@@ -81,6 +86,18 @@ class OrganizationalUnitResource extends Resource
                             ->maxLength(255)
                             ->default(null),
                         ]),
+                        Forms\Components\Section::make()
+                        ->schema([
+                            Forms\Components\Placeholder::make('manager')
+                                ->label('Autoridad')
+                                ->content(fn (OrganizationalUnit $record): ?string => $record->manager?->full_name),
+                            Forms\Components\Placeholder::make('delegate')
+                                ->label('Delegado/a')
+                                ->content(fn (OrganizationalUnit $record): ?string => $record->delegate?->full_name),
+                            Forms\Components\Placeholder::make('secretary')
+                                ->label('Secretario/a')
+                                ->content(fn (OrganizationalUnit $record): ?string => $record->secretary?->full_name),
+                        ])
             ]);
     }
 
@@ -112,6 +129,7 @@ class OrganizationalUnitResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -120,6 +138,14 @@ class OrganizationalUnitResource extends Resource
                 ]),
             ])
             ->paginated(false);
+    }
+
+    public static function getRecordSubNavigation(\Filament\Pages\Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\ViewOrganizationalUnit::class,
+            Pages\EditOrganizationalUnit::class,
+        ]);
     }
 
     public static function getRelations(): array
@@ -136,6 +162,16 @@ class OrganizationalUnitResource extends Resource
             'index' => Pages\ListOrganizationalUnits::route('/'),
             'create' => Pages\CreateOrganizationalUnit::route('/create'),
             'edit' => Pages\EditOrganizationalUnit::route('/{record}/edit'),
+            'view' => Pages\ViewOrganizationalUnit::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('manager.full_name')
+                    ->label('Autoridad'),
+            ]);
     }
 }

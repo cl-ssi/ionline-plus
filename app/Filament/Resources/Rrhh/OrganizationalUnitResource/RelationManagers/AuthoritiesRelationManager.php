@@ -22,10 +22,11 @@ class AuthoritiesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'full_name')
+                    ->relationship(name: 'user', titleAttribute: 'full_name')
+                    // ->options(User::all()->pluck('full_name', 'id'))
                     ->searchable()
-                    ->required()
-                    ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
+                    ->required(),
+                    // ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
                 Forms\Components\Select::make('organizational_unit_id')
                     ->relationship('organizationalUnit', 'name')
                     ->default(null),
@@ -82,7 +83,12 @@ class AuthoritiesRelationManager extends RelationManager
                             ->type('month')
                             ->default(Carbon::now()->startOfMonth()->format('Y-m')),
                     ])
-                    ->query(fn (Builder $query, array $data): Builder => $query->whereBetween('date', [Carbon::parse($data['date'])->startOfMonth(),Carbon::parse($data['date'])->endOfMonth()])),
+                    ->query(function (Builder $query, array $data) {
+                        $startOfMonth = Carbon::parse($data['date'])->startOfMonth();
+                        $endOfMonth   = Carbon::parse($data['date'])->endOfMonth();
+                        $startOfMonth->subDays($startOfMonth->dayOfWeek  - 1);
+                        $query->whereBetween('date', [$startOfMonth, $endOfMonth]);
+                    }),
                 Tables\Filters\SelectFilter::make('type')
                     ->options([
                         'manager' => 'Jefetura',

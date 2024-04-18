@@ -101,7 +101,7 @@ class SignatureRequestResource extends Resource
                     ->relationship('endorseType', 'name')
                     ->required()
                     ->live()
-                    ->default(1)
+                    // ->default(1)
                     ->columnSpan(4),
                 Forms\Components\Repeater::make('visations')
                     ->label('Visaciones')
@@ -127,13 +127,25 @@ class SignatureRequestResource extends Resource
                                     ->enableBranchNode()
                                     ->defaultOpenLevel(1)
                                     ->columnSpan(2),
+                                Forms\Components\Section::make()
+                                    ->description('O enviar a un usuario específico')
+                                    ->schema([
+                                        Forms\Components\Select::make('sent_to_user_id')
+                                            ->relationship('sentToUser', 'full_name')
+                                            ->label('Usuario (solo para casos en no sea una jefatura)')
+                                            ->searchable()
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->collapsed()
+                                    ->compact()
                             ])
                     ])
+                    ->visible(fn(\Filament\Forms\Get $get) => $get('endorse_type_id') == 2 or $get('endorse_type_id') == 3)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
-                        // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la queery a OUs
-                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
+                        // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la query a OUs
+                        $data['establishment_id']  = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
                         $data['digital_signature'] = true;
-                        $data['endorse'] = true;
+                        $data['endorse']           = true;
                         return $data;
                     })
                     ->mutateRelationshipDataBeforeCreateUsing(function (array $data): array {
@@ -143,10 +155,8 @@ class SignatureRequestResource extends Resource
                         return $data;
                     })
                     ->maxItems(8)
-                    ->columnSpanFull()
-                    ->visible(fn (\Filament\Forms\Get $get) => $get('endorse_type_id') !== 1)
-                    ,
-                    // ->visible(fn (\Filament\Forms\Get $get) => $get('endorse_type_id') == 1),
+                    ->defaultItems(1)
+                    ->columnSpanFull(),
                 Forms\Components\Repeater::make('signatures')
                     ->label('Firmas')
                     ->relationship('signatures')
@@ -171,13 +181,24 @@ class SignatureRequestResource extends Resource
                                     ->enableBranchNode()
                                     ->defaultOpenLevel(1)
                                     ->columnSpan(2),
+                                Forms\Components\Section::make()
+                                    ->description('O enviar a un usuario específico')
+                                    ->schema([
+                                        Forms\Components\Select::make('sent_to_user_id')
+                                            ->relationship('sentToUser', 'full_name')
+                                            ->label('Usuario (solo para casos en no sea una jefatura)')
+                                            ->searchable()
+                                            ->columnSpanFull(),
+                                    ])
+                                    ->collapsed()
+                                    ->compact()
                             ])
                     ])
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la queery a OUs
-                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
+                        $data['establishment_id']  = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
                         $data['digital_signature'] = true;
-                        $data['endorse'] = false;
+                        $data['endorse']           = false;
                         return $data;
                     })
                     ->mutateRelationshipDataBeforeCreateUsing(function (array $data): array {

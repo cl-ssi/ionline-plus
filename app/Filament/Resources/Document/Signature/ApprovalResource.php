@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Document;
+namespace App\Filament\Resources\Document\Signature;
 
-use App\Filament\Resources\Document\ApprovalResource\Pages;
-use App\Filament\Resources\Document\ApprovalResource\RelationManagers;
-use App\Models\Document\Approval;
+use App\Filament\Resources\Document\Signature\ApprovalResource\Pages;
+use App\Filament\Resources\Document\Signature\ApprovalResource\RelationManagers;
+use App\Models\Document\Signature\Approval;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

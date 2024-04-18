@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Document\SignatureRequestResource\RelationManagers;
+namespace App\Filament\Resources\Document\Signature\SignatureRequestResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;

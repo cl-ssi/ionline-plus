@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Document;
+namespace App\Models\Document\Signature;
 
 use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\User;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Document\SignatureRequestResource\Pages;
+namespace App\Filament\Resources\Document\Signature\SignatureRequestResource\Pages;
 
-use App\Filament\Resources\Document\SignatureRequestResource;
+use App\Filament\Resources\Document\Signature\SignatureRequestResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

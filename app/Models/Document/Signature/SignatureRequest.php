@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Document;
+namespace App\Models\Document\Signature;
 
-use App\Models\Document\Approval;
+use App\Models\Document\Signature\Approval;
 use App\Models\Document\Type;
 use App\Models\File;
 use App\Models\Rrhh\OrganizationalUnit;
@@ -16,7 +16,7 @@ class SignatureRequest extends Model
 {
     use HasFactory;
 
-    protected $table = 'doc_signature_requests';
+    protected $table = 'sign_signature_requests';
 
     protected $fillable = [
         'request_date',

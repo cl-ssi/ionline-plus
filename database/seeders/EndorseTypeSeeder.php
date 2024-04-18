@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Document\EndorseType;
+use App\Models\Document\Signature\EndorseType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

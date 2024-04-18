@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\FileResource\Pages;
 use App\Filament\Resources\FileResource\RelationManagers;
-use App\Models\Document\SignatureRequest;
+use App\Models\Document\Signature\SignatureRequest;
 use App\Models\File;
 use Filament\Forms;
 use Filament\Forms\Form;

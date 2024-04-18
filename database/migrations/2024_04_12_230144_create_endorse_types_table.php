@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doc_endorse_types', function (Blueprint $table) {
+        Schema::create('sign_endorse_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doc_endorse_types');
+        Schema::dropIfExists('sign_endorse_types');
     }
 };

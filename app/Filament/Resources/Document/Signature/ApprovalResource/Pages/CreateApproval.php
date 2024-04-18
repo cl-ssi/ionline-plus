@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Document\ApprovalResource\Pages;
+namespace App\Filament\Resources\Document\Signature\ApprovalResource\Pages;
 
-use App\Filament\Resources\Document\ApprovalResource;
+use App\Filament\Resources\Document\Signature\ApprovalResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

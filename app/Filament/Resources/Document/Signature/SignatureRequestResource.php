@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Document;
+namespace App\Filament\Resources\Document\Signature;
 
-use App\Filament\Resources\Document\SignatureRequestResource\Pages;
-use App\Filament\Resources\Document\SignatureRequestResource\RelationManagers;
-use App\Models\Document\SignatureRequest;
+use App\Filament\Resources\Document\Signature\SignatureRequestResource\Pages;
+use App\Filament\Resources\Document\Signature\SignatureRequestResource\RelationManagers;
+use App\Models\Document\Signature\SignatureRequest;
 use App\Models\Parameter\Establishment;
 use App\Models\Rrhh\OrganizationalUnit;
 use CodeWithDennis\FilamentSelectTree\SelectTree;

@@ -39,6 +39,7 @@ class DocumentResource extends Resource
                 Forms\Components\TextInput::make('number')
                     ->maxLength(50)
                     ->default(null)
+                    ->disabled()
                     ->columnSpan(2),
                 Forms\Components\DatePicker::make('date')
                     ->columnSpan(2),
@@ -100,10 +101,12 @@ class DocumentResource extends Resource
                     ->translateLabel()
                     ->rows(5)
                     ->columnSpan(6),
-                Forms\Components\TextInput::make('file')
-                    ->maxLength(255)
-                    ->default(null)
+                Forms\Components\FileUpload::make('file')
                     ->translateLabel()
+                    ->directory('ionline/documents/documents/')
+                    ->deleteUploadedFileUsing(function ($record) {
+                        \Illuminate\Support\Facades\Storage::delete($record->file);
+                    })
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('internal_number')
                     ->numeric()

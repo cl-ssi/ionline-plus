@@ -12,7 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
+use AmidEsfahani\FilamentTinyEditor\TinyEditor;
 
 class DocumentResource extends Resource
 {
@@ -76,13 +76,22 @@ class DocumentResource extends Resource
                     ->required()
                     ->columnSpan(6),
                 TinyEditor::make('content')
+                    // ->fileAttachmentsDisk('public')
+                    // ->fileAttachmentsVisibility('public')
+                    // ->fileAttachmentsDirectory('uploads')
                     ->profile('ionline')
-                    ->template('example')
+                    ->columnSpanFull()
                     ->showMenuBar()
-                    ->translateLabel()
-                    ->required()
                     ->minHeight(940)
-                    ->columnSpanFull(),
+                    ->required(),
+                // TinyEditor::make('content')
+                    // ->profile('ionline')
+                    // ->template('example')
+                    // ->showMenuBar()
+                    // ->translateLabel()
+                    // ->required()
+                    // ->minHeight(940)
+                    // ->columnSpanFull(),
                 Forms\Components\Textarea::make('distribution')
                     ->translateLabel()
                     ->rows(5)

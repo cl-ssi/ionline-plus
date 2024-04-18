@@ -1,0 +1,18 @@
+{
+    "User": "Usuario",
+    "Organizational unit": "Unidad Organizacional",
+
+    "Status": "Estado",
+    "Request date": "Fecha de solicitud",
+    "Type": "Tipo",
+    "Subject": "Asunto",
+    "Original file path": "Archivo original",
+    "Description": "Descripción",
+    "Recipients": "Destinatarios",
+    "Distribution": "Distribución",
+    "Reserved": "Reservado",
+    "Sensitive": "Contenido Sensible",
+    "Signature page": "Página de firma",
+    "Response within days": "Respuesta en días",
+    "Endorse type": "Tipo de visación"
+}

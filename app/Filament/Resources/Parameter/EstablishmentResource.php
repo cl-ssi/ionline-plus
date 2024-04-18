@@ -19,7 +19,7 @@ class EstablishmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Settings';
+    protected static ?string $navigationGroup = 'Parámetros';
 
     public static function canViewAny(): bool
     {

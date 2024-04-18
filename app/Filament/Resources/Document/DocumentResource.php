@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class DocumentResource extends Resource
 {
@@ -20,6 +21,8 @@ class DocumentResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Documentos';
+
+    protected static ?string $label = 'Documentos';
 
     public static function canViewAny(): bool
     {
@@ -35,100 +38,146 @@ class DocumentResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('number')
                     ->maxLength(50)
-                    ->default(null),
-                Forms\Components\TextInput::make('internal_number')
-                    ->numeric()
-                    ->default(null),
-                Forms\Components\DatePicker::make('date'),
+                    ->default(null)
+                    ->columnSpan(2),
+                Forms\Components\DatePicker::make('date')
+                    ->columnSpan(2),
                 Forms\Components\Select::make('type_id')
                     ->relationship('type', 'name', function ($query) {
                         return $query->where('doc_digital', true);
                     })
-                    ->default(null),
-                Forms\Components\Toggle::make('reserved'),
+                    ->default(null)
+                    ->columnSpan(3),
+                Forms\Components\Toggle::make('reserved')
+                    ->inline(false)
+                    ->columnSpan(1),
                 Forms\Components\Textarea::make('antecedent')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('responsible')
-                    ->columnSpanFull(),
+                    ->rows(3)
+                    ->columnSpan(4),
                 Forms\Components\TextInput::make('subject')
                     ->maxLength(255)
-                    ->default(null),
+                    ->translateLabel()
+                    ->default(null)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('from')
                     ->maxLength(255)
-                    ->default(null),
+                    ->default(null)
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('for')
                     ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('greater_hierarchy')
-                    ->required(),
-                Forms\Components\Textarea::make('distribution')
+                    ->default(null)
                     ->columnSpanFull(),
-                Forms\Components\RichEditor::make('content')
+                Forms\Components\Radio::make('greater_hierarchy')
+                    ->options([
+                        'from' => 'De',
+                        'for' => 'Para',
+                    ])
+                    ->inline()
                     ->required()
+                    ->columnSpan(6),
+                TinyEditor::make('content')
+                    ->profile('ionline')
+                    ->template('example')
+                    ->showMenuBar()
+                    ->translateLabel()
+                    ->required()
+                    ->minHeight(940)
                     ->columnSpanFull(),
+                Forms\Components\Textarea::make('distribution')
+                    ->translateLabel()
+                    ->rows(5)
+                    ->columnSpan(6),
+                Forms\Components\Textarea::make('responsible')
+                    ->translateLabel()
+                    ->rows(5)
+                    ->columnSpan(6),
                 Forms\Components\TextInput::make('file')
                     ->maxLength(255)
-                    ->default(null),
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'full_name')
-                    ->searchable()
-                    ->required(),
-                Forms\Components\Select::make('organizational_unit_id')
-                    ->relationship('organizationalUnit', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('file_to_sign_id')
+                    ->default(null)
+                    ->translateLabel()
+                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('internal_number')
                     ->numeric()
-                    ->default(null),
-                Forms\Components\Select::make('establishment_id')
-                    ->relationship('establishment', 'name')
-                    ->default(null),
-                Forms\Components\TextInput::make('signature_id')
-                    ->numeric()
-                    ->default(null),
-            ]);
+                    ->default(null)
+                    ->columnSpan(2),
+                // Forms\Components\Select::make('user_id')
+                //     ->relationship('user', 'full_name')
+                //     ->searchable()
+                //     ->required(),
+                // Forms\Components\Select::make('organizational_unit_id')
+                //     ->relationship('organizationalUnit', 'name')
+                //     ->required(),
+                // Forms\Components\TextInput::make('file_to_sign_id')
+                //     ->numeric()
+                //     ->default(null),
+                // Forms\Components\Select::make('establishment_id')
+                //     ->relationship('establishment', 'name')
+                //     ->default(null),
+                // Forms\Components\TextInput::make('signature_id')
+                //     ->numeric()
+                //     ->default(null),
+            ])
+            ->columns(12);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('number')
+                Tables\Columns\TextColumn::make('id')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('internal_number')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('date')
-                    ->date()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('type.name')
                     ->numeric()
+                    ->sortable()
+                    ->translateLabel(),
+                Tables\Columns\TextColumn::make('number')
+                    ->translateLabel()
+                    ->searchable(),
+                // Tables\Columns\TextColumn::make('internal_number')
+                //     ->numeric()
+                //     ->sortable(),
+                Tables\Columns\TextColumn::make('date')
+                    ->date()
+                    ->translateLabel()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('reserved')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('antecedent')
+                    ->searchable()
+                    ->wrap()
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('subject')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap()
+                    ->translateLabel(),
                 Tables\Columns\TextColumn::make('from')
+                    ->label('De / Para')
+                    ->description(fn (Document $record): string => $record->for?? '', position: 'above')
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('for')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('greater_hierarchy'),
-                Tables\Columns\TextColumn::make('file')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('user.name')
+                // Tables\Columns\TextColumn::make('for')
+                //     ->searchable(),
+                Tables\Columns\IconColumn::make('reserved')
+                    ->translateLabel()
+                    ->boolean(),
+                // Tables\Columns\TextColumn::make('greater_hierarchy'),
+                // Tables\Columns\TextColumn::make('file')
+                //     ->searchable(),
+                Tables\Columns\TextColumn::make('user.full_name')
                     ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('organizationalUnit.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('file_to_sign_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('establishment.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('signature_id')
-                    ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->wrap()
+                    ->translateLabel(),
+                // Tables\Columns\TextColumn::make('organizationalUnit.name')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('file_to_sign_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('establishment.name')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('signature_id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -152,7 +201,8 @@ class DocumentResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     public static function getRelations(): array

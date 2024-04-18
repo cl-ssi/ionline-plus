@@ -19,6 +19,10 @@ class ApprovalResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Documentos';
+
+    protected static ?string $label = 'Aprobaciones';
+
     public static function canViewAny(): bool
     {
         return auth()->user()->can([
@@ -80,6 +84,8 @@ class ApprovalResource extends Resource
                     ->relationship('previousApproval', 'id')
                     ->default(null),
                 Forms\Components\Toggle::make('digital_signature')
+                    ->required(),
+                Forms\Components\Toggle::make('endorse')
                     ->required(),
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255)
@@ -145,6 +151,8 @@ class ApprovalResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('digital_signature')
+                    ->boolean(),
+                Tables\Columns\IconColumn::make('endorse')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('position')
                     ->searchable(),

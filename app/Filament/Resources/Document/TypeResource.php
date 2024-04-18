@@ -19,7 +19,9 @@ class TypeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Documentos';
+    protected static ?string $label = 'Tipos de Documentos';
+
+    protected static ?string $navigationGroup = 'Parámetros';
 
     public static function canViewAny(): bool
     {

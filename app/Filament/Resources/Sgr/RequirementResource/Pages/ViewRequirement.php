@@ -4,17 +4,16 @@ namespace App\Filament\Resources\Sgr\RequirementResource\Pages;
 
 use App\Filament\Resources\Sgr\RequirementResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ViewRecord;
 
-class EditRequirement extends EditRecord
+class ViewRequirement extends ViewRecord
 {
     protected static string $resource = RequirementResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\ViewAction::make(),
-            Actions\DeleteAction::make(),
+            Actions\EditAction::make(),
         ];
     }
 }

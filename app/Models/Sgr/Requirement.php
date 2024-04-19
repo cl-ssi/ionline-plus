@@ -4,7 +4,9 @@ namespace App\Models\Sgr;
 
 use App\Models\User;
 use App\Models\Sgr\Event;
+use App\Models\Sgr\Label;
 use App\Models\Sgr\Category;
+use App\Models\Sgr\EventType;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,13 +30,12 @@ class Requirement extends Model implements Auditable
         'id',
         'subject',
         'priority',
-        'status',
+        'event_type_id',
         'limit_at',
         'user_id',
         'parte_id',
         'group_number',
-        'to_authority',
-        'category_id'
+        'category_id',
     ];
 
     /**
@@ -54,19 +55,27 @@ class Requirement extends Model implements Auditable
         return $this->belongsTo(Category::class);
     }
 
+    public function eventType(): BelongTo {
+        return $this->belongsTo(EventType::class);
+    }
+
+    public function labels(): HasMany {
+        return $this->hasMany(Label::class);
+    }
+
     public function events(): HasMany {
         return $this->hasMany(Event::class);
     }
 
     // funciones
 
-    public function firstEvent(): HasOne
-    {
-        return $this->hasOne(Event::class)->where('status','creado');
-    }
+    // public function firstEvent(): HasOne
+    // {
+    //     return $this->hasOne(Event::class)->where('status','creado');
+    // }
 
-    public function lastEvent(): HasOne
-    {
-        return $this->hasOne(Event::class)->latest();
-    }
+    // public function lastEvent(): HasOne
+    // {
+    //     return $this->hasOne(Event::class)->latest();
+    // }
 }

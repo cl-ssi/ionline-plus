@@ -18,7 +18,7 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
-        'ou_id'
+        'organizational_unit_id'
     ];
 
     /**
@@ -31,6 +31,6 @@ class Category extends Model
     // relaciones
 
     public function organizationalUnit(): BelongsTo {
-        return $this->belongsTo(OrganizationalUnit::class, 'ou_id');
+        return $this->belongsTo(OrganizationalUnit::class);
     }
 }

@@ -28,9 +28,9 @@ class RequirementResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('priority')
                     ->required(),
-                Forms\Components\TextInput::make('event_type_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('event_type_id')
+                    ->relationship('eventType', 'name')
+                    ->required(),
                 Forms\Components\DateTimePicker::make('limit_at'),
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
@@ -39,8 +39,8 @@ class RequirementResource extends Resource
                     ->numeric(),
                 Forms\Components\TextInput::make('group_number')
                     ->numeric(),
-                Forms\Components\TextInput::make('category_id')
-                    ->numeric(),
+                Forms\Components\Select::make('category_id')
+                    ->relationship('category', 'name'),
             ]);
     }
 
@@ -50,7 +50,7 @@ class RequirementResource extends Resource
             ->columns([
                 Tables\Columns\IconColumn::make('priority')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('event_type_id')
+                Tables\Columns\TextColumn::make('eventType.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('limit_at')
@@ -65,7 +65,7 @@ class RequirementResource extends Resource
                 Tables\Columns\TextColumn::make('group_number')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category_id')
+                Tables\Columns\TextColumn::make('category.name')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

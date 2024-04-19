@@ -13,7 +13,7 @@ class CreateLabel extends CreateRecord
     protected function mutateFormDataBeforeCreate(array $data): array
     {
         $data['user_id'] = auth()->user()->id;
-        $data['ou_id'] = auth()->user()->organizational_unit_id;
+        $data['organizational_unit_id'] = auth()->user()->organizational_unit_id;
 
         return $data;
     }

@@ -51,11 +51,11 @@ class Requirement extends Model implements Auditable
         return $this->belongsTo(User::class);
     }
 
-    public function category(): BelongTo {
+    public function category(): BelongsTo {
         return $this->belongsTo(Category::class);
     }
 
-    public function eventType(): BelongTo {
+    public function eventType(): BelongsTo {
         return $this->belongsTo(EventType::class);
     }
 

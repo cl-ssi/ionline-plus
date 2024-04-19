@@ -32,9 +32,9 @@ class LabelResource extends Resource
                 // Forms\Components\Select::make('user_id')
                 //     ->relationship('user', 'name')
                 //     ->required(),
-                // Forms\Components\TextInput::make('ou_id')
-                //     ->required()
-                //     ->numeric(),
+                // Forms\Components\Select::make('organizational_unit_id')
+                //     ->relationship('organizationalUnit', 'name')
+                //     ->required(),
             ]);
     }
 
@@ -49,7 +49,7 @@ class LabelResource extends Resource
                 // Tables\Columns\TextColumn::make('user.name')
                 //     ->numeric()
                 //     ->sortable(),
-                // Tables\Columns\TextColumn::make('ou_id')
+                // Tables\Columns\TextColumn::make('organizationalUnit.name')
                 //     ->numeric()
                 //     ->sortable(),
                 // Tables\Columns\TextColumn::make('created_at')

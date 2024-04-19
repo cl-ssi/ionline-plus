@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sgr_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('ou_id')->nullable()->constrained('organizational_units');
+            $table->foreignId('organizational_unit_id')->nullable()->constrained('organizational_units');
             $table->timestamps();
         });
     }

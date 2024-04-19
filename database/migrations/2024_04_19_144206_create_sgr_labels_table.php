@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('color');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('ou_id')->constrained('organizational_units');
+            $table->foreignId('organizational_unit_id')->constrained('organizational_units');
             $table->timestamps();
         });
     }

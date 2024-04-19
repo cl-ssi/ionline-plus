@@ -9,4 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateRequirement extends CreateRecord
 {
     protected static string $resource = RequirementResource::class;
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['organizational_unit_id'] = auth()->user()->organizational_unit_id;
+
+        return $data;
+    }
 }

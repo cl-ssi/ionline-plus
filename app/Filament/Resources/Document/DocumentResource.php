@@ -24,23 +24,15 @@ class DocumentResource extends Resource
 
     protected static ?string $label = 'Documentos';
 
-    public static function canViewAny(): bool
-    {
-        return auth()->user()->can([
-            'be god',
-            'dev',
-        ]);
-    }
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('number')
-                    ->maxLength(50)
-                    ->default(null)
-                    ->disabled()
-                    ->columnSpan(2),
+                // Forms\Components\TextInput::make('number')
+                //    ->maxLength(50)
+                //    ->default(null)
+                //    ->disabled()
+                //    ->columnSpan(2),
                 Forms\Components\DatePicker::make('date')
                     ->columnSpan(2),
                 Forms\Components\Select::make('type_id')
@@ -54,7 +46,7 @@ class DocumentResource extends Resource
                     ->columnSpan(1),
                 Forms\Components\Textarea::make('antecedent')
                     ->rows(3)
-                    ->columnSpan(4),
+                    ->columnSpan(5),
                 Forms\Components\TextInput::make('subject')
                     ->maxLength(255)
                     ->translateLabel()
@@ -169,7 +161,9 @@ class DocumentResource extends Resource
                 //     ->searchable(),
                 Tables\Columns\IconColumn::make('reserved')
                     ->translateLabel()
-                    ->boolean(),
+                    ->boolean()
+                    ->trueIcon('heroicon-c-lock-closed')
+                    ->falseIcon(''),
                 // Tables\Columns\TextColumn::make('greater_hierarchy'),
                 // Tables\Columns\TextColumn::make('file')
                 //     ->searchable(),
@@ -207,7 +201,14 @@ class DocumentResource extends Resource
                 //
             ])
             ->actions([
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('pdf') 
+                    ->label('PDF')
+                    ->color('success')
+                    ->icon('heroicon-o-document')
+                    ->url(fn (Document $record) => route('document.documents.show', $record))
+                    ->openUrlInNewTab(), 
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -229,6 +230,7 @@ class DocumentResource extends Resource
         return [
             'index' => Pages\ListDocuments::route('/'),
             'create' => Pages\CreateDocument::route('/create'),
+            //'view' => Pages\ViewDocument::route('/{record}'),
             'edit' => Pages\EditDocument::route('/{record}/edit'),
         ];
     }

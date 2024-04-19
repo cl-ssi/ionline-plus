@@ -15,7 +15,7 @@ class FilePolicy
      */
     public function before(User $user, string $ability): bool|null
     {
-        if ( $user->can('be god','dev') ) {
+        if ( $user->can('be god') ) {
             return true;
         }
 
@@ -27,7 +27,7 @@ class FilePolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return $user->can('dev');
     }
 
     /**

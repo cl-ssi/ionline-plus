@@ -69,5 +69,65 @@ class Document extends Model implements Auditable
     {
         return $this->belongsTo(Establishment::class);
     }
-    
+
+
+
+
+    /**
+     * Get View Name from document type
+     */
+    public function getViewNameAttribute(): string
+    {
+        if ( $this->type ) {
+            $name = $this->type->name;
+            // Reemplaza los acentos con caracteres no acentuados
+            $name = iconv('UTF-8', 'ASCII//TRANSLIT', $name);
+            // Convierte a minúsculas y reemplaza espacios con guiones bajos
+            $name = strtolower(str_replace(' ', '_', $name));
+            // Elimina cualquier otro carácter no alfanumérico
+            $name = preg_replace('/[^a-z0-9_]/', '', $name);
+            return $name;
+        } else {
+            return 'show';
+        }
+    }
+
+    public function getFromHtmlAttribute(): string
+    {
+        return $this->from ? str_replace("/", "<br>", $this->from) : '';
+    }
+
+    public function getForHtmlAttribute(): string
+    {
+        return $this->for ? str_replace("/", "<br>", $this->for) : '';
+    }
+
+    public function getAntecedentHtmlAttribute(): string
+    {
+        return str_replace("/", "<br>", $this->antecedent);
+    }
+
+    public function getResponsiblesArrayAttribute(): array
+    {
+        return explode("\n", $this->responsible);
+    }
+
+    public function getResponsibleHtmlAttribute(): string
+    {
+        return $this->responsible ? str_replace("\n", "<br>", $this->responsible) : '';
+    }
+
+    public function getContentHtmlAttribute(): string
+    {
+        return str_replace("<!-- pagebreak -->", '<div style="page-break-after: always;"></div>', $this->content);
+    }
+
+    public function getDistributionHtmlAttribute(): string
+    {
+        $chars     = ["<", ">", "\n"];
+        $htmlChars = ["&lt;", "&gt;", "<br>"];
+
+        return str_replace($chars, $htmlChars, $this->distribution);
+    }
+
 }

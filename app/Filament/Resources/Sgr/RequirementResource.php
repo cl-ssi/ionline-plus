@@ -26,20 +26,19 @@ class RequirementResource extends Resource
                 Forms\Components\Textarea::make('subject')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('priority')
+                Forms\Components\Toggle::make('priority')
                     ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
+                Forms\Components\TextInput::make('event_type_id')
+                    ->required()
+                    ->numeric(),
                 Forms\Components\DateTimePicker::make('limit_at'),
                 Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'full_name')
-                    ->searchable()
+                    ->relationship('user', 'name')
                     ->required(),
                 Forms\Components\TextInput::make('parte_id')
                     ->numeric(),
                 Forms\Components\TextInput::make('group_number')
                     ->numeric(),
-                Forms\Components\Toggle::make('to_authority'),
                 Forms\Components\TextInput::make('category_id')
                     ->numeric(),
             ]);
@@ -49,50 +48,44 @@ class RequirementResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->label('N°'),
-                Tables\Columns\TextColumn::make('subject'),
-                Tables\Columns\TextColumn::make('firstEvent.from_user.shortName')
-                                        ->label('Creado')
-                                        ->description('Creador por', position: 'above'),
-                // Tables\Columns\TextColumn::make('lastEvent.status')
-                //                         ->label('Último evento')
-                //                         ->description('lastEvent.id'),
-                // Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\IconColumn::make('priority')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('event_type_id')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('limit_at')
                     ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('parte_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('group_number')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('category_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
                     ->sortable()
-                    ->label('Fecha límite'),
-                // Tables\Columns\TextColumn::make('user.name')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\TextColumn::make('parte_id')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\TextColumn::make('group_number')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\IconColumn::make('to_authority')
-                //     ->boolean(),
-                // Tables\Columns\TextColumn::make('category_id')
-                //     ->numeric()
-                //     ->sortable(),
-                // Tables\Columns\TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // Tables\Columns\TextColumn::make('deleted_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -114,6 +107,7 @@ class RequirementResource extends Resource
         return [
             'index' => Pages\ListRequirements::route('/'),
             'create' => Pages\CreateRequirement::route('/create'),
+            'view' => Pages\ViewRequirement::route('/{record}'),
             'edit' => Pages\EditRequirement::route('/{record}/edit'),
         ];
     }

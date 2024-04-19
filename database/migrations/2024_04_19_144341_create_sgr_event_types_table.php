@@ -16,6 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        // Insertar filas
+        DB::table('sgr_event_types')->insert([
+            ['name' => 'Creado'],
+            ['name' => 'Respondido'],
+            ['name' => 'Derivado'],
+            ['name' => 'Cerrado'],
+            ['name' => 'Reabierto'],
+        ]);
     }
 
     /**

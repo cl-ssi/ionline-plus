@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Sgr;
 
-use App\Filament\Resources\Sgr\CategoryResource\Pages;
-use App\Filament\Resources\Sgr\CategoryResource\RelationManagers;
-use App\Models\Sgr\Category;
+use App\Filament\Resources\Sgr\EventTypeResource\Pages;
+use App\Filament\Resources\Sgr\EventTypeResource\RelationManagers;
+use App\Models\Sgr\EventType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class EventTypeResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = EventType::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -26,8 +26,6 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                // Forms\Components\TextInput::make('ou_id')
-                //     ->numeric(),
             ]);
     }
 
@@ -37,9 +35,6 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('ou_id')
-                //     ->numeric()
-                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -73,10 +68,10 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'view' => Pages\ViewCategory::route('/{record}'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListEventTypes::route('/'),
+            'create' => Pages\CreateEventType::route('/create'),
+            'view' => Pages\ViewEventType::route('/{record}'),
+            'edit' => Pages\EditEventType::route('/{record}/edit'),
         ];
     }
 }

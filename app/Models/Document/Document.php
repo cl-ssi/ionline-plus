@@ -50,6 +50,15 @@ class Document extends Model implements Auditable
         'date' => 'date',
     ];
 
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'content',
+    ];
+
     public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class)->withTrashed();

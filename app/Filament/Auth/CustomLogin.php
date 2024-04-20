@@ -6,6 +6,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Form;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Support\Htmlable;
 
 class CustomLogin extends Login
 {
@@ -53,5 +54,10 @@ class CustomLogin extends Login
         throw ValidationException::withMessages([
             'data.run' => __('filament-panels::pages/auth/login.messages.failed'),
         ]);
+    }
+
+    public function getHeading(): string | Htmlable
+    {
+        return env('APP_SS');
     }
 }

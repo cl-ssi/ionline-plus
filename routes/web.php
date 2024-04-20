@@ -4,9 +4,8 @@ use App\Http\Controllers\IonlineController;
 use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/* Redirección de la raíz a la página de inicio de filament */
+Route::redirect('/', '/admin',301);
 
 Route::get('/login', function () { return redirect('/admin'); })->name('login');
 

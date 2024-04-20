@@ -174,4 +174,14 @@ class OrganizationalUnitResource extends Resource
                     ->label('Autoridad'),
             ]);
     }
+
+    public static function getLabel(): string
+    {
+        return 'Unidad Organizacional';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Unidades Organizacionales';
+    }
 }

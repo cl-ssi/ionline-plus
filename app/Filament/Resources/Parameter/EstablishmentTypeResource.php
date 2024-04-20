@@ -86,4 +86,14 @@ class EstablishmentTypeResource extends Resource
             'edit' => Pages\EditEstablishmentType::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Tipo de Establecimiento';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Tipos de Establecimientos';
+    }
 }

@@ -85,4 +85,14 @@ class EstamentResource extends Resource
             'edit' => Pages\EditEstament::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Estamento';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Estamentos';
+    }
 }

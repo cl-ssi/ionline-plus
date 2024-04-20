@@ -92,4 +92,14 @@ class CountryResource extends Resource
             'edit' => Pages\EditCountry::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'País';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Paises';
+    }
 }

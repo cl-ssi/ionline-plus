@@ -21,8 +21,6 @@ class ApprovalResource extends Resource
 
     protected static ?string $navigationGroup = 'Documentos';
 
-    protected static ?string $label = 'Aprobaciones';
-
     public static function canViewAny(): bool
     {
         return auth()->user()->can([
@@ -207,5 +205,15 @@ class ApprovalResource extends Resource
             'create' => Pages\CreateApproval::route('/create'),
             'edit' => Pages\EditApproval::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Aprobación';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Aprobaciones';
     }
 }

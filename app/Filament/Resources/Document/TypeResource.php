@@ -19,8 +19,6 @@ class TypeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $label = 'Tipos de Documentos';
-
     protected static ?string $navigationGroup = 'Parámetros';
 
     public static function canViewAny(): bool
@@ -107,5 +105,15 @@ class TypeResource extends Resource
             'create' => Pages\CreateType::route('/create'),
             'edit' => Pages\EditType::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Tipo de Documento';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Tipos de Documentos';
     }
 }

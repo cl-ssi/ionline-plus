@@ -218,4 +218,14 @@ class EstablishmentResource extends Resource
             'edit' => Pages\EditEstablishment::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Establecimiento';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Establecimientos';
+    }
 }

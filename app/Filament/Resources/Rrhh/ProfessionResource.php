@@ -113,4 +113,14 @@ class ProfessionResource extends Resource
             'edit' => Pages\EditProfession::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Profesión';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Profesiones';
+    }
 }

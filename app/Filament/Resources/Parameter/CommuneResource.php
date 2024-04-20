@@ -98,4 +98,14 @@ class CommuneResource extends Resource
             'edit' => Pages\EditCommune::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Comuna';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Comunas';
+    }
 }

@@ -91,4 +91,14 @@ class RegionResource extends Resource
             'edit' => Pages\EditRegion::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Región';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Regiones';
+    }
 }

@@ -22,8 +22,6 @@ class DocumentResource extends Resource
 
     protected static ?string $navigationGroup = 'Documentos';
 
-    protected static ?string $label = 'Documentos';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -233,5 +231,15 @@ class DocumentResource extends Resource
             //'view' => Pages\ViewDocument::route('/{record}'),
             'edit' => Pages\EditDocument::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Documento';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Documentos';
     }
 }

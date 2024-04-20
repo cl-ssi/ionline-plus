@@ -24,8 +24,6 @@ class SignatureRequestResource extends Resource
 
     protected static ?string $navigationGroup = 'Documentos';
 
-    protected static ?string $label = 'Solicitudes de Firma';
-
     public static function canViewAny(): bool
     {
         return auth()->user()->can([
@@ -323,5 +321,15 @@ class SignatureRequestResource extends Resource
             'create' => Pages\CreateSignatureRequest::route('/create'),
             'edit'   => Pages\EditSignatureRequest::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Solicitud de Firma';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Solicitudes de Firma';
     }
 }

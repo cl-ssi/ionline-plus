@@ -100,4 +100,14 @@ class RoleResource extends Resource
             'edit' => Pages\EditRole::route('/{record}/edit'),
         ];
     }
+
+    public static function getLabel(): string
+    {
+        return 'Rol';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Roles';
+    }
 }

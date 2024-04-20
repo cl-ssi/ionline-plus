@@ -58,6 +58,6 @@ class CustomLogin extends Login
 
     public function getHeading(): string | Htmlable
     {
-        return env('APP_SS');
+        return env('APP_SS') ?? 'Variable APP_SS no está definida';
     }
 }

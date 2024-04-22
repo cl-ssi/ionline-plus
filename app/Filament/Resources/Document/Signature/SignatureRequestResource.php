@@ -234,53 +234,69 @@ class SignatureRequestResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('request_date')
                     ->dateTime()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('organizationalUnit.name')
-                    ->numeric()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('type.name')
-                    ->numeric()
                     ->sortable()
                     ->translateLabel(),
                 Tables\Columns\TextColumn::make('subject')
                     ->searchable()
                     ->translateLabel(),
-                Tables\Columns\IconColumn::make('reserved')
-                    ->boolean()
+                Tables\Columns\TextColumn::make('description')
+                    ->searchable()
                     ->translateLabel(),
-                Tables\Columns\IconColumn::make('oficial')
+                Tables\Columns\TextColumn::make('user.short_name')
+                    ->label('Creador')
+                    ->numeric()
+                    ->sortable()
+                    ->translateLabel(),
+                Tables\Columns\IconColumn::make('status')
+                    ->translateLabel()
                     ->boolean(),
-                Tables\Columns\IconColumn::make('sensitive')
+                Tables\Columns\TextColumn::make('signatures.sentToOu.name')
+                    ->label('Firmantes')
+                    ->bulleted(),
+                Tables\Columns\IconColumn::make('signatures.status')
+                    ->label('')
                     ->boolean()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('signature_page')
-                    ->numeric()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('response_within_days')
-                    ->numeric()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('endorseType.name')
-                    ->numeric()
-                    ->sortable()
-                    ->translateLabel(),
-                Tables\Columns\TextColumn::make('verification_code')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('lastApproval.id')
-                    ->numeric()
-                    ->sortable(),
+                    ->listWithLineBreaks(),
+
+                // Tables\Columns\TextColumn::make('organizationalUnit.name')
+                //     ->numeric()
+                //     ->sortable()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('type.name')
+                //     ->numeric()
+                //     ->sortable()
+                //     ->translateLabel(),
+                    // ->badge(),
+                // ->listWithLineBreaks()
+                // ->bulleted(),
+                // Tables\Columns\IconColumn::make('reserved')
+                //     ->boolean()
+                //     ->translateLabel(),
+                // Tables\Columns\IconColumn::make('oficial')
+                //     ->boolean(),
+                // Tables\Columns\IconColumn::make('sensitive')
+                //     ->boolean()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('signature_page')
+                //     ->numeric()
+                //     ->sortable()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('response_within_days')
+                //     ->numeric()
+                //     ->sortable()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('endorseType.name')
+                //     ->numeric()
+                //     ->sortable()
+                //     ->translateLabel(),
+                // Tables\Columns\TextColumn::make('verification_code')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('lastApproval.id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

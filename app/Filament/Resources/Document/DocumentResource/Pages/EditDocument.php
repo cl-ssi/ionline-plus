@@ -23,13 +23,13 @@ class EditDocument extends EditRecord
                 ->url(fn (Document $record) => route('document.documents.show', $record))
                 ->openUrlInNewTab(), 
             Actions\DeleteAction::make(),
-            Action::make('limpiarEstilos') 
+            Actions\Action::make('LimpiarFormatos') 
                 ->icon('heroicon-o-document')
-                ->action('removeStylesFromContent'), 
+                ->action('removeStylesFromContent')
         ];
     }
 
-    public function removeStylesFromContent(): void
+    public function removeStylesFromContent()
     {
         $record = $this->record; // Obtén el registro actual
         $content = $record->content;
@@ -87,8 +87,9 @@ class EditDocument extends EditRecord
             $content
         );
 
-        // Eliminar etiquetas HTML vacías
-        $content = preg_replace('/<(\w+)(\s+[^>]*)?>\s*<\/\1>/is', '', $content);
+        // Eliminar etiquetas HTML vacías, excepto las etiquetas de tabla (table, tr, th, td)
+        $content = preg_replace('/<((?!table|tr|th|td)\w+)(\s+[^>]*)?>\s*<\/\1>/is', '', $content);
+
 
         // Añadir estilos a las etiquetas <p>
         $content = preg_replace_callback(
@@ -155,5 +156,7 @@ class EditDocument extends EditRecord
             ->title('Estilos eliminados correctamente.')
             ->success()
             ->send();
+
+        return redirect()->route('filament.admin.resources.document.documents.edit', $record);
     }
 }

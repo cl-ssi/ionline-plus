@@ -30,6 +30,12 @@ class User extends Authenticatable implements FilamentUser
         // return str_ends_with($this->email, '@redsalud.gob.cl');
     }
 
+    public function canBeImpersonated()
+    {
+        // Let's prevent impersonating other users at our own company
+        return auth()->user()->can('be god');
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -33,16 +33,4 @@ class IonlineController extends Controller
         Auth::logout();
         return redirect(env('IONLINE_URL').'/home');
     }
-
-    public function switchUser() {
-        if ( session()->has('god') ) {
-            /* Clean session god (user_id) */
-            auth()->loginUsingId(session()->get('god'));
-            session()->pull('god');
-        } else {
-            /* set god session to user_id */
-            session(['god' => auth()->id()]);
-        }
-        return redirect()->route('filament.admin.pages.dashboard');
-    }
 }

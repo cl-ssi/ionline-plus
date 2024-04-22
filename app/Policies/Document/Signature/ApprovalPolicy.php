@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Document\Signature;
 
 use App\Models\Document\Signature\Approval;
 use App\Models\User;
@@ -8,13 +8,28 @@ use Illuminate\Auth\Access\Response;
 
 class ApprovalPolicy
 {
+
+    /**
+     * Perform pre-authorization checks.
+     * For administrative purposes, the user with the 'be god' ability can do anything.
+     * If null is returned, the authorization check will fall through to the policy method
+     */
+    public function before(User $user, string $ability): bool|null
+    {
+        if ( $user->can('dev') ) {
+            return true;
+        }
+
+        return null;
+    }
+
     /**
      * Determine whether the user can view any models.
      */
-    // public function viewAny(User $user): bool
-    // {
-    //     return true;
-    // }
+    public function viewAny(User $user): bool
+    {
+        return false;
+    }
 
     /**
      * Determine whether the user can view the model.

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Sgr;
 
-use App\Models\File;
+use App\Models\Sgr\Event;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class FilePolicy
+class EventPolicy
 {
     /**
      * Perform pre-authorization checks.
@@ -33,7 +33,7 @@ class FilePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, File $file): bool
+    public function view(User $user, Event $event): bool
     {
         return false;
     }
@@ -43,13 +43,13 @@ class FilePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, File $file): bool
+    public function update(User $user, Event $event): bool
     {
         return false;
     }
@@ -57,7 +57,7 @@ class FilePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, File $file): bool
+    public function delete(User $user, Event $event): bool
     {
         return false;
     }
@@ -65,7 +65,7 @@ class FilePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, File $file): bool
+    public function restore(User $user, Event $event): bool
     {
         return false;
     }
@@ -73,7 +73,7 @@ class FilePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, File $file): bool
+    public function forceDelete(User $user, Event $event): bool
     {
         return false;
     }

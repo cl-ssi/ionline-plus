@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Parameter;
 
-use App\Models\Document\Document;
+use App\Models\Parameter\EstablishmentType;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class DocumentPolicy
+class EstablishmentTypePolicy
 {
     /**
      * Perform pre-authorization checks.
@@ -27,15 +27,15 @@ class DocumentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Document $document): bool
+    public function view(User $user, EstablishmentType $establishmentType): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -43,37 +43,37 @@ class DocumentPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Document $document): bool
+    public function update(User $user, EstablishmentType $establishmentType): bool
     {
-        return $user->id === $document->user_id;
+        return false;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Document $document): bool
+    public function delete(User $user, EstablishmentType $establishmentType): bool
     {
-        return $user->id === $document->user_id;
+        return false;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Document $document): bool
+    public function restore(User $user, EstablishmentType $establishmentType): bool
     {
-        return $user->id === $document->user_id;
+        return false;
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Document $document): bool
+    public function forceDelete(User $user, EstablishmentType $establishmentType): bool
     {
         return false;
     }

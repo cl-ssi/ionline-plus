@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Policies;
+namespace App\Policies\Parameter;
 
-use App\Models\File;
+use App\Models\Parameter\Region;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class FilePolicy
+class RegionPolicy
 {
     /**
      * Perform pre-authorization checks.
@@ -15,7 +15,7 @@ class FilePolicy
      */
     public function before(User $user, string $ability): bool|null
     {
-        if ( $user->can('dev') ) {
+        if ( $user->can('be god') ) {
             return true;
         }
 
@@ -33,7 +33,7 @@ class FilePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, File $file): bool
+    public function view(User $user, Region $region): bool
     {
         return false;
     }
@@ -43,13 +43,13 @@ class FilePolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return false;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, File $file): bool
+    public function update(User $user, Region $region): bool
     {
         return false;
     }
@@ -57,7 +57,7 @@ class FilePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, File $file): bool
+    public function delete(User $user, Region $region): bool
     {
         return false;
     }
@@ -65,7 +65,7 @@ class FilePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, File $file): bool
+    public function restore(User $user, Region $region): bool
     {
         return false;
     }
@@ -73,7 +73,7 @@ class FilePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, File $file): bool
+    public function forceDelete(User $user, Region $region): bool
     {
         return false;
     }

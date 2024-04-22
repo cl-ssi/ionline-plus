@@ -29,14 +29,6 @@ class OrganizationalUnitResource extends Resource
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::Top;
 
-    public static function canViewAny(): bool
-    {
-        return auth()->user()->can([
-            'be god',
-            'dev',
-        ]);
-    }
-
     public static function form(Form $form): Form
     {
         return $form

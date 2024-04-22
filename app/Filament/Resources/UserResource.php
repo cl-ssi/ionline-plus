@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
 {
@@ -22,14 +23,6 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'SDGP';
-
-    public static function canViewAny(): bool
-    {
-        return auth()->user()->can([
-            'be god',
-            'dev',
-        ]);
-    }
 
     public static function form(Form $form): Form
     {
@@ -205,9 +198,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                \App\Filament\Actions\SwitchUser::make()
-                    ->successRedirectUrl(route('filament.admin.pages.dashboard'))
-                    ->hidden(session()->has('god')),
+                Impersonate::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -220,6 +211,7 @@ class UserResource extends Resource
     {
         return [
             RelationManagers\RolesRelationManager::class,
+            RelationManagers\PermissionsRelationManager::class,
         ];
     }
 

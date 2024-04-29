@@ -26,11 +26,14 @@ class NewsResource extends Resource
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->directory('ionline/news')
+                    ->image()
+                    ->required(),
                 Forms\Components\Select::make('type')
                     ->options([
                         'news' => 'News',
-                    ]),
+                    ])
+                    ->required(),
                 Forms\Components\TextInput::make('title')
                     ->maxLength(255)
                     ->default(null),

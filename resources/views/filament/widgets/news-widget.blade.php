@@ -1,12 +1,12 @@
 <x-filament-widgets::widget>
     <x-filament::section>
-        <div class="p-4" x-data="{ activeSlide: 0, slides: @js($newsItems), next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, previous() { this.activeSlide = (this.activeSlide + this.slides.length - 1) % this.slides.length; } }">
+        <div class="p-0" x-data="{ activeSlide: 0, slides: @js($newsItems), next() { this.activeSlide = (this.activeSlide + 1) % this.slides.length; }, previous() { this.activeSlide = (this.activeSlide + this.slides.length - 1) % this.slides.length; } }">
             <div class="flex overflow-hidden relative">
                 <template x-for="(slide, index) in slides" :key="index">
                     <img :src="slide.url" class="w-full h-64 object-cover transition-transform duration-500 ease-in-out" x-show="activeSlide === index" style="display: none;">
                 </template>
             </div>
-            <div class="flex justify-center space-x-2 mt-2">
+            <div class="flex justify-center space-x-2 mt-0">
                 <template x-for="(slide, index) in slides" :key="index">
                     <button
                         class="w-2 h-2 bg-gray-400 rounded-full"

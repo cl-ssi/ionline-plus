@@ -10,6 +10,8 @@ class NewsWidget extends Widget
 {
     protected static string $view = 'filament.widgets.news-widget';
 
+    protected int | string | array $columnSpan = 2;
+
     public $newsItems;
 
     public function mount(): void

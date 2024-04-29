@@ -158,7 +158,7 @@ class SignatureRequestResource extends Resource
                                     ->compact()
                             ])
                     ])
-                    ->itemLabel(fn (array $state): ?string => 'Visador: ' . OrganizationalUnit::find($state['sent_to_ou_id'])->manager?->short_name ?? null)
+                    ->itemLabel(fn (array $state): ?string => 'Visador: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
                     ->visible(fn(\Filament\Forms\Get $get) => $get('endorse_type_id') == 2 or $get('endorse_type_id') == 3)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la query a OUs
@@ -215,7 +215,7 @@ class SignatureRequestResource extends Resource
                                     ->compact()
                             ])
                     ])
-                    ->itemLabel(fn (array $state): ?string => 'Firmante: ' . OrganizationalUnit::find($state['sent_to_ou_id'])->manager?->short_name ?? null)
+                    ->itemLabel(fn (array $state): ?string => 'Firmante: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la queery a OUs
                         $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;

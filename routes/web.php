@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IonlineController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /* Redirección de la raíz a la página de inicio de filament */
@@ -12,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/ionline/login/{id}', [IonlineController::class,'login']);
 Route::get('/ionline/return-to-ionline', [IonlineController::class,'returnToIonline'])->name('return-to-ionline');
 
-Route::get('/switch-user', [IonlineController::class,'switchUser'])->name('switch-user');
 
 Route::get('/document/documents/{document}', [PdfController::class,'document'])->name('document.documents.show');
+
+Route::controller(TestController::class)->middleware(['auth'])->prefix('test')->name('test')->group(function () {
+    Route::get('/image', 'image');
+ 
+    // Route::get('/user/profile', function () {
+    //     // Uses first & second middleware...
+    // });
+});

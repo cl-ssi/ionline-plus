@@ -7,6 +7,7 @@ use App\Models\Document\Type;
 use App\Models\File;
 use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\User;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,9 +43,9 @@ class SignatureRequest extends Model
     ];
 
     protected $casts = [
-        'status' => 'boolean',
-        'reserved' => 'boolean',
-        'oficial' => 'boolean',
+        'status'    => 'boolean',
+        'reserved'  => 'boolean',
+        'oficial'   => 'boolean',
         'sensitive' => 'boolean',
     ];
 
@@ -88,6 +89,15 @@ class SignatureRequest extends Model
     public function endorseType(): BelongsTo
     {
         return $this->belongsTo(EndorseType::class);
+    }
+
+    public function sign($otp)
+    {
+        // dd();
+        Notification::make()
+            ->title('sign: ' . $this->id . ' - ' . $otp)
+            ->success()
+            ->send();
     }
 
 }

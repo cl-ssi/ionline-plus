@@ -8,13 +8,18 @@ use App\Models\Document\Signature\SignatureRequest;
 use App\Models\Parameter\Establishment;
 use App\Models\Rrhh\OrganizationalUnit;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
 
 class SignatureRequestResource extends Resource
 {
@@ -55,7 +60,7 @@ class SignatureRequestResource extends Resource
                     ->columnSpanFull()
                     ->translateLabel(),
                 Forms\Components\FileUpload::make('original_file_path')
-                    ->directory('signature_requests/original_files')
+                    ->directory('ionline/signature_requests/original_files')
                     ->storeFileNamesIn('original_file_name')
                     ->required()
                     // ->fetchFileInformation(false)
@@ -67,11 +72,11 @@ class SignatureRequestResource extends Resource
                     ->schema([
                         Forms\Components\FileUpload::make('storage_path')
                             ->storeFileNamesIn('name')
-                            ->directory('signature_requests/anexos')
+                            ->directory('ionline/signature_requests/anexos')
                             ->openable()
                             ->fetchFileInformation(false)
                             ->deleteUploadedFileUsing(function (\App\Models\File $record) {
-                                \Illuminate\Support\Facades\Storage::delete($record->storage_path);
+                                Storage::delete($record->storage_path);
                             }),
                     ])
                     ->mutateRelationshipDataBeforeSaveUsing(function (array $data): array {
@@ -158,7 +163,7 @@ class SignatureRequestResource extends Resource
                                     ->compact()
                             ])
                     ])
-                    ->itemLabel(fn (array $state): ?string => 'Visador: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
+                    ->itemLabel(fn(array $state): ?string => 'Visador: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
                     ->visible(fn(\Filament\Forms\Get $get) => $get('endorse_type_id') == 2 or $get('endorse_type_id') == 3)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la query a OUs
@@ -215,7 +220,7 @@ class SignatureRequestResource extends Resource
                                     ->compact()
                             ])
                     ])
-                    ->itemLabel(fn (array $state): ?string => 'Firmante: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
+                    ->itemLabel(fn(array $state): ?string => 'Firmante: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la queery a OUs
                         $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
@@ -272,8 +277,8 @@ class SignatureRequestResource extends Resource
                 // Tables\Columns\TextColumn::make('type.name')
                 //     ->numeric()
                 //     ->sortable()
-                //     ->translateLabel(),
-                    // ->badge(),
+                //     ->translateLabel()
+                //     ->badge(),
                 // ->listWithLineBreaks()
                 // ->bulleted(),
                 // Tables\Columns\IconColumn::make('reserved')
@@ -319,6 +324,24 @@ class SignatureRequestResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('signature')
+                    ->form([
+                        Forms\Components\TextInput::make('otp')
+                            ->label('OTP')
+                            ->numeric()
+                            ->required(),
+                    ])
+                    ->label('Firmar')
+                    ->icon('heroicon-o-pencil')
+                    ->action(function (array $data, SignatureRequest $record): void {
+                        $record->sign($data['otp']);
+                    })
+                    ->modalButton('Firmar')
+                    ->modalWidth(MaxWidth::SevenExtraLarge)
+                    ->modalContent(fn(SignatureRequest $record): View => view('filament.documents.pdf-viewer-modal', [
+                        'pdfUrl' => Storage::url($record->original_file_path),
+                    ])),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

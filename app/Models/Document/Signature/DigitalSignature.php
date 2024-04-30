@@ -161,7 +161,6 @@ class DigitalSignature extends Model
         $coordinates = $this->calculateSignaturesCoordinates($positions);
 
         $this->data['files'] = $this->generateFilesData($files, $coordinates);
-        // dd($this->data);
 
         return $this->sendToSign($otp);
     }
@@ -271,7 +270,7 @@ class DigitalSignature extends Model
                 $position['row'] = 'first';
             }
             if( !key_exists('margin-bottom',$position) ) {
-                $position['margin-bottom'] = 0;
+                $position['margin-bottom'] = 20;
             }
 
             switch($position['column']) {

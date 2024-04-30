@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Document\Signature;
 
 use App\Filament\Resources\Document\Signature\SignatureRequestResource\Pages;
 use App\Filament\Resources\Document\Signature\SignatureRequestResource\RelationManagers;
+use App\Models\Document\Signature\DigitalSignature;
 use App\Models\Document\Signature\SignatureRequest;
 use App\Models\Parameter\Establishment;
 use App\Models\Rrhh\OrganizationalUnit;
@@ -168,7 +169,7 @@ class SignatureRequestResource extends Resource
                     ->visible(fn(\Filament\Forms\Get $get) => $get('endorse_type_id') == 2 or $get('endorse_type_id') == 3)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la query a OUs
-                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
+                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])?->establishment_id;
 
                         return $data;
                     })
@@ -224,7 +225,7 @@ class SignatureRequestResource extends Resource
                     ->itemLabel(fn(array $state): ?string => 'Firmante: ' . OrganizationalUnit::find($state['sent_to_ou_id'])?->manager?->short_name ?? null)
                     ->mutateRelationshipDataBeforeFillUsing(function (array $data): array {
                         // TODO: Averiguar si se puede acceder al record, para usar la relacion en vez de hacer la queery a OUs
-                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])->establishment_id;
+                        $data['establishment_id'] = OrganizationalUnit::find($data['sent_to_ou_id'])?->establishment_id;
                         return $data;
                     })
                     ->mutateRelationshipDataBeforeCreateUsing(function (array $data): array {
@@ -336,15 +337,44 @@ class SignatureRequestResource extends Resource
                     ->icon('heroicon-o-pencil')
                     ->color('success')
                     ->action(function (array $data, SignatureRequest $record): void {
-                        $record->sign($data['otp']);
+                        $digitalSignature = new DigitalSignature();
+                        $status = $digitalSignature->signature(
+                            auth()->user(), 
+                            $data['otp'], 
+                            array(Storage::get($record->original_file_path)), 
+                            array(['margin-bottom' => 20])
+                        );
+                
+                        if($status == true) {
+                            $digitalSignature->storeFirstSignedFile('ionline/signature_requests/signed_files/'.basename($record->original_file_path));
+                            $record->update(['status' => true]);
+                            Notification::make()
+                                ->title('Archivo firmado correctamente')
+                                ->success()
+                                ->send();
+                        }
+                        else {
+                            Notification::make()
+                                ->title($digitalSignature->error)
+                                ->danger()
+                                ->send();
+                        }
                     })
                     ->modalButton('Firmar')
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     ->modalContent(fn(SignatureRequest $record): View => view('filament.documents.pdf-viewer-modal', [
                         'pdfUrl' => Storage::url($record->original_file_path),
-                    ])),
-
+                    ]))
+                    ->hidden(fn (SignatureRequest $record): bool => $record->status ?? false),
+                Tables\Actions\Action::make('pdf') 
+                    ->label('Firmado')
+                    ->color('success')
+                    ->icon('heroicon-o-document')
+                    ->url(fn (SignatureRequest $record) => Storage::url('ionline/signature_requests/signed_files/'.basename($record->original_file_path)))
+                    ->openUrlInNewTab()
+                    ->visible(fn (SignatureRequest $record): bool => $record->status ?? false),
             ])
+            
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

@@ -91,21 +91,4 @@ class SignatureRequest extends Model
         return $this->belongsTo(EndorseType::class);
     }
 
-    public function sign($otp)
-    {
-        // dd();
-        Notification::make()
-            ->title('sign: ' . $this->id . ' - ' . $otp)
-            ->success()
-            ->send();
-    }
-    public static function bulkSign($records, $otp)
-    {
-        // dd();
-        Notification::make()
-            ->title('sign: ' . count($records) . ' - ' . $otp)
-            ->success()
-            ->send();
-    }
-
 }

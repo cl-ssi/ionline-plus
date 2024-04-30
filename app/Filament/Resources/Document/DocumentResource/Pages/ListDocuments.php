@@ -21,11 +21,16 @@ class ListDocuments extends ListRecords
 
     public function getTabs(): array
     {
-        return [
-            'Mis documentos' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('user_id', auth()->id())),
-            'Documentos de mi unidad' => Tab::make()
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('organizational_unit_id', auth()->user()->organizational_unit_id)),
-        ];
+        $tabs['Mis documentos'] = 
+            Tab::make()->modifyQueryUsing(fn (Builder $query) => $query->where('user_id', auth()->id()));
+        $tabs['Documentos de mi unidad'] = 
+            Tab::make()->modifyQueryUsing(fn (Builder $query) => $query->where('organizational_unit_id', auth()->user()->organizational_unit_id));
+        
+        if(auth()->user()->can('be god')) {
+            $tabs['Todos los documentos'] = 
+                Tab::make()->modifyQueryUsing(fn (Builder $query) => $query);
+        }
+
+        return $tabs;
     }
 }

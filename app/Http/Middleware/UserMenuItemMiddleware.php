@@ -20,12 +20,6 @@ class UserMenuItemMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         Filament::registerUserMenuItems([
-            UserMenuItem::make()
-                ->label('God Mode')
-                ->color('danger')
-                ->icon('heroicon-o-eye')
-                ->visible(session()->has('god'))
-                ->url(route('switch-user')),
             MenuItem::make()
                 ->label('iOnline')
                 ->url(fn (): string => route('return-to-ionline'))

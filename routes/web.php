@@ -18,6 +18,7 @@ Route::get('/document/documents/{document}', [PdfController::class,'document'])-
 
 Route::controller(TestController::class)->middleware(['auth'])->prefix('test')->name('test')->group(function () {
     Route::get('/image', 'image');
+    Route::get('/signature/{otp}', 'signature');
  
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...

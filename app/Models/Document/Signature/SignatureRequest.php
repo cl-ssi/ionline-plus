@@ -99,5 +99,13 @@ class SignatureRequest extends Model
             ->success()
             ->send();
     }
+    public static function bulkSign($records, $otp)
+    {
+        // dd();
+        Notification::make()
+            ->title('sign: ' . count($records) . ' - ' . $otp)
+            ->success()
+            ->send();
+    }
 
 }

@@ -139,7 +139,7 @@ class DocumentResource extends Resource
                 //     ->numeric()
                 //     ->sortable(),
                 Tables\Columns\TextColumn::make('date')
-                    ->date()
+                    ->date('Y-m-d')
                     ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('antecedent')
@@ -157,15 +157,15 @@ class DocumentResource extends Resource
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('for')
                 //     ->searchable(),
-                Tables\Columns\IconColumn::make('reserved')
-                    ->translateLabel()
-                    ->boolean()
-                    ->trueIcon('heroicon-c-lock-closed')
-                    ->falseIcon(''),
+                // Tables\Columns\IconColumn::make('reserved')
+                //     ->translateLabel()
+                //     ->boolean()
+                //     ->trueIcon('heroicon-c-lock-closed')
+                //     ->falseIcon(''),
                 // Tables\Columns\TextColumn::make('greater_hierarchy'),
                 // Tables\Columns\TextColumn::make('file')
                 //     ->searchable(),
-                Tables\Columns\TextColumn::make('user.full_name')
+                Tables\Columns\TextColumn::make('user.short_name')
                     ->numeric()
                     ->sortable()
                     ->wrap()

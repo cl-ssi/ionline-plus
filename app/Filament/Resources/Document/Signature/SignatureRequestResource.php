@@ -18,6 +18,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 
@@ -333,6 +334,7 @@ class SignatureRequestResource extends Resource
                     ])
                     ->label('Firmar')
                     ->icon('heroicon-o-pencil')
+                    ->color('success')
                     ->action(function (array $data, SignatureRequest $record): void {
                         $record->sign($data['otp']);
                     })
@@ -347,6 +349,17 @@ class SignatureRequestResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+                Tables\Actions\BulkAction::make('Firmar')
+                    ->form([
+                        Forms\Components\TextInput::make('otp')
+                            ->label('OTP')
+                            ->numeric()
+                            ->required(),
+                    ])
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-pencil')
+                    ->color('success')
+                    ->action(fn (array $data, Collection $records) => SignatureRequest::bulkSign($records,$data['otp'])),
             ]);
     }
 

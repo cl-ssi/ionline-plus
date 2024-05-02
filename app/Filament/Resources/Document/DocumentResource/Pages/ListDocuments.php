@@ -27,7 +27,7 @@ class ListDocuments extends ListRecords
             Tab::make()->modifyQueryUsing(fn (Builder $query) => $query->where('organizational_unit_id', auth()->user()->organizational_unit_id));
         
         if(auth()->user()->can('be god')) {
-            $tabs['Todos los documentos'] = 
+            $tabs['Todos los documentos (god)'] = 
                 Tab::make()->modifyQueryUsing(fn (Builder $query) => $query);
         }
 

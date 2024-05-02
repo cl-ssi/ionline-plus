@@ -210,7 +210,7 @@ class ApprovalResource extends Resource
                         );
                 
                         if($status == true) {
-                            $digitalSignature->storeFirstSignedFile('ionline/signature_requests/signed_files/'.basename($record->original_file_path));
+                            $digitalSignature->storeFirstSignedFile('ionline/approvals/signed_files/'.basename($record->original_file_path));
                             $record->update(['status' => true]);
                             Notification::make()
                                 ->title('Archivo firmado correctamente')

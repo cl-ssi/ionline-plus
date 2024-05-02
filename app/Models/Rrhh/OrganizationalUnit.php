@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -69,25 +70,35 @@ class OrganizationalUnit extends Model
         return $this->hasMany(Document::class);
     }
 
-    public function manager() : HasOneThrough
+    public function manager(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_MANAGER)
             ->where('date', now()->startOfDay());
     }
 
-    public function secretary() : HasOneThrough
+    public function secretary(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_SECRETARY)
             ->where('date', now()->startOfDay());
     }
 
-    public function delegate() : HasOneThrough
+    public function delegate(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_DELEGATE)
             ->where('date', now()->startOfDay());
+    }
+
+    public function subrogations(): HasMany
+    {
+        // return $this->hasManyThrough(User::class, Subrogation::class, 'organizational_unit_id', 'id', 'id', 'user_id')
+        //     ->where('type', Subrogation::TYPE_MANAGER)
+        //     ->orderBy('level', 'asc');
+        return $this->hasMany(Subrogation::class)
+            ->orderBy('type')
+            ->orderBy('level', 'asc');
     }
 
 }

@@ -145,6 +145,7 @@ class OrganizationalUnitResource extends Resource
         return [
             RelationManagers\UsersRelationManager::class,
             RelationManagers\AuthoritiesRelationManager::class,
+            RelationManagers\SubrogationsRelationManager::class,
         ];
     }
 

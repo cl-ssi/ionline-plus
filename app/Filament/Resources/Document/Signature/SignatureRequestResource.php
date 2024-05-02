@@ -21,6 +21,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Storage;
 
 class SignatureRequestResource extends Resource
@@ -249,23 +250,26 @@ class SignatureRequestResource extends Resource
                 Tables\Columns\TextColumn::make('request_date')
                     ->dateTime('Y-m-d')
                     ->sortable()
-                    ->translateLabel(),
+                    ->label('F.Solicitud'),
                 Tables\Columns\TextColumn::make('subject')
                     ->searchable()
-                    ->translateLabel(),
+                    ->translateLabel()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('description')
                     ->searchable()
-                    ->translateLabel(),
+                    ->translateLabel()
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('user.short_name')
                     ->label('Creador')
                     ->numeric()
                     ->sortable()
                     ->translateLabel(),
-                Tables\Columns\IconColumn::make('status')
-                    ->translateLabel()
-                    ->boolean(),
+                // Tables\Columns\IconColumn::make('status')
+                //     ->translateLabel()
+                //     ->boolean(),
                 Tables\Columns\TextColumn::make('signatures.sentToOu.name')
                     ->label('Firmantes')
+                    ->limit(40)
                     ->bulleted(),
                 Tables\Columns\IconColumn::make('signatures.status')
                     ->label('')
@@ -325,7 +329,6 @@ class SignatureRequestResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\Action::make('signature')
                     ->form([
                         Forms\Components\TextInput::make('otp')
@@ -335,7 +338,7 @@ class SignatureRequestResource extends Resource
                     ])
                     ->label('Firmar')
                     ->icon('heroicon-o-pencil')
-                    ->color('success')
+                    // ->color('success')
                     ->action(function (array $data, SignatureRequest $record): void {
                         $digitalSignature = new DigitalSignature();
                         $status = $digitalSignature->signature(
@@ -367,12 +370,14 @@ class SignatureRequestResource extends Resource
                     ]))
                     ->hidden(fn (SignatureRequest $record): bool => $record->status ?? false),
                 Tables\Actions\Action::make('pdf') 
-                    ->label('Firmado')
+                    ->label('')
                     ->color('success')
                     ->icon('heroicon-o-document')
                     ->url(fn (SignatureRequest $record) => Storage::url('ionline/signature_requests/signed_files/'.basename($record->original_file_path)))
                     ->openUrlInNewTab()
                     ->visible(fn (SignatureRequest $record): bool => $record->status ?? false),
+                Tables\Actions\EditAction::make(),
+                
             ])
             
             ->bulkActions([
@@ -418,4 +423,5 @@ class SignatureRequestResource extends Resource
     {
         return 'Solicitudes de Firma';
     }
+
 }

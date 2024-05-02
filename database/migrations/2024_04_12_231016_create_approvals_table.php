@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('module');
             $table->string('module_icon')->nullable();
             $table->string('subject');
-            $table->string('document_route_name');
+
+            /** Posibles origenes del documento a aprovar */
+            /** Generarlo en base a un controller */
+            $table->string('document_route_name')->nullable();
             $table->string('document_route_params')->nullable();
+            /** Archivo PDF directo */
             $table->string('document_pdf_path')->nullable();
 
             $table->foreignId('sent_to_ou_id')->nullable()->constrained('organizational_units');

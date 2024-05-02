@@ -5,13 +5,18 @@ namespace App\Filament\Resources\Document\Signature;
 use App\Filament\Resources\Document\Signature\ApprovalResource\Pages;
 use App\Filament\Resources\Document\Signature\ApprovalResource\RelationManagers;
 use App\Models\Document\Signature\Approval;
+use App\Models\Document\Signature\DigitalSignature;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\View\View;
 
 class ApprovalResource extends Resource
 {
@@ -107,64 +112,68 @@ class ApprovalResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('module')
                     ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('module_icon')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
+                // Tables\Columns\TextColumn::make('module_icon')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('subject')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_route_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_route_params')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('document_pdf_path')
-                    ->searchable(),
+                    ->searchable()
+                    ->wrap(),
+                // Tables\Columns\TextColumn::make('document_route_name')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('document_route_params')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('document_pdf_path')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('sentToOu.name')
-                    ->numeric()
+                    ->limit(40)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('sentToUser.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('approverOu.name')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('sentToUser.name')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('approverOu.name')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('approver.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('approver_observation')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('approver_at')
-                    ->dateTime()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('approver_observation')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('approver_at')
+                //     ->dateTime()
+                //     ->sortable(),
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('callback_controller_method')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('callback_controller_params')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('active')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('previousApproval.id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('digital_signature')
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('endorse')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('position')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('start_y')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('filename')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('approvable_type')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('approvable_id')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('callback_controller_method')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('callback_controller_params')
+                //     ->searchable(),
+                // Tables\Columns\IconColumn::make('active')
+                //     ->boolean(),
+                // Tables\Columns\TextColumn::make('previousApproval.id')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\IconColumn::make('digital_signature')
+                //     ->boolean(),
+                // Tables\Columns\IconColumn::make('endorse')
+                //     ->boolean(),
+                // Tables\Columns\TextColumn::make('position')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('start_y')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('filename')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('approvable_type')
+                //     ->sortable()
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('approvable_id')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -182,6 +191,52 @@ class ApprovalResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('signature')
+                    ->form([
+                        Forms\Components\TextInput::make('otp')
+                            ->label('OTP')
+                            ->numeric()
+                            ->required(),
+                    ])
+                    ->label('Firmar')
+                    ->icon('heroicon-o-pencil')
+                    ->action(function (array $data, Approval $record): void {
+                        $digitalSignature = new DigitalSignature();
+                        $status = $digitalSignature->signature(
+                            auth()->user(), 
+                            $data['otp'], 
+                            array(Storage::get($record->document_pdf_path)), 
+                            array(['margin-bottom' => 20])
+                        );
+                
+                        if($status == true) {
+                            $digitalSignature->storeFirstSignedFile('ionline/signature_requests/signed_files/'.basename($record->original_file_path));
+                            $record->update(['status' => true]);
+                            Notification::make()
+                                ->title('Archivo firmado correctamente')
+                                ->success()
+                                ->send();
+                        }
+                        else {
+                            Notification::make()
+                                ->title($digitalSignature->error)
+                                ->danger()
+                                ->send();
+                        }
+                    })
+                    ->modalButton('Firmar')
+                    ->modalWidth(MaxWidth::SevenExtraLarge)
+                    ->modalContent(fn(Approval $record): View => view('filament.documents.pdf-viewer-modal', [
+                        'pdfUrl' => Storage::url($record->original_file_path),
+                    ]))
+                    ->hidden(fn (Approval $record): bool => $record->status ?? false),
+                Tables\Actions\Action::make('pdf') 
+                    ->label('')
+                    ->color('success')
+                    ->icon('heroicon-o-document')
+                    ->url(fn (Approval $record) => Storage::url('ionline/signature_requests/signed_files/'.basename($record->original_file_path)))
+                    ->openUrlInNewTab()
+                    ->visible(fn (Approval $record): bool => $record->status ?? false),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

@@ -18,9 +18,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use HasFactory, Notifiable, HasRoles, SoftDeletes;
 
     public function canAccessPanel(Panel $panel): bool

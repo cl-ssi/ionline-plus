@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use AmidEsfahani\FilamentTinyEditor\TinyEditor;
+use Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager;
 
 class DocumentResource extends Resource
 {
@@ -219,7 +220,7 @@ class DocumentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AuditsRelationManager::class,
         ];
     }
 

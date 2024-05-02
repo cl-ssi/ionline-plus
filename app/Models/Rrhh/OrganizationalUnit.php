@@ -6,6 +6,7 @@ use App\Models\Rrhh\Authority;
 use App\Models\Document\Document;
 use App\Models\Parameter\Establishment;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -69,6 +70,26 @@ class OrganizationalUnit extends Model
     {
         return $this->hasMany(Document::class);
     }
+
+    /**
+     * Get the OU short name.
+     */
+    protected function shortName(): Attribute
+    {
+        return Attribute::make(
+            get: function (mixed $value, array $attributes) {
+                // Reemplaza las palabras antes de cortar el string
+                $value = $attributes['name'];
+                $value = str_replace('Departamento de', 'D.', $value);
+                $value = str_replace('Unidad de', 'U.', $value);
+                $value = str_replace('Subdirección de', 'SD.', $value);
+                
+                // Retorna los primeros 40 caracteres del string resultante
+                return substr($value, 0, 30).'.';
+            },
+        );
+    }
+    
 
     public function manager(): HasOneThrough
     {

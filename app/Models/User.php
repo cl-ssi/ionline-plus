@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
 use App\Models\Parameter\Establishment;
+use App\Models\Resource\Telephone;
 use App\Models\Rrhh\Authority;
 use App\Models\Rrhh\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
@@ -115,6 +116,11 @@ class User extends Authenticatable implements FilamentUser, Auditable
     public function organizationalUnit(): BelongsTo
     {
         return $this->belongsTo(OrganizationalUnit::class);
+    }
+
+    public function telephones(): BelongsToMany
+    {
+        return $this->belongsToMany(Telephone::class, 'res_telephone_user')->withTimestamps();
     }
 
     /**

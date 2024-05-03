@@ -28,6 +28,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('')
+            ->brandLogo(fn () => view('filament.admin.logo'))
             ->login(CustomLogin::class)
             ->colors([
                 'primary' => Color::Blue,
@@ -55,6 +56,7 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
                 UserMenuItemMiddleware::class,
             ])
-            ->databaseNotifications();
+            ->databaseNotifications()
+            ->favicon(asset('logo-ionline.ico'));;
     }
 }

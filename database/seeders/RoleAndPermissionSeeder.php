@@ -8,257 +8,259 @@ use Spatie\Permission\Models\Permission;
 
 class RoleAndPermissionSeeder extends Seeder
 {
-    public function run()
+    public function run() 
     {
-        Permission::create(['name' => 'be god', 'description' => 'God Mode !']);
-        Permission::create(['name' => 'dev', 'description' => 'Developer']);
+        $permissions = [
+            ['name' => 'be god', 'description' => 'God Mode !', 'guard_name' => 'web'],
+            ['name' => 'dev', 'description' => 'Developer', 'guard_name' => 'web'],
+            ['name' => 'Agenda UST: Administrador', 'description' => 'Permiso administrador de módulo reservas Unidad Salud del Trabajador', 'guard_name' => 'web'],
+            ['name' => 'Agenda UST: Funcionario', 'description' => 'Permiso funcionario de módulo reservas Unidad Salud del Trabajador', 'guard_name' => 'web'],
+            ['name' => 'Agenda UST: Secretaria', 'description' => 'Permiso secretaria de módulo reservas Unidad Salud del Trabajador', 'guard_name' => 'web'],
+            ['name' => 'Agreement: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Agreement: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Agreement: manage municipalities and signers', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Agreement: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Allowances: all', 'description' => 'Permite visualizar todos los viáticos', 'guard_name' => 'web'],
+            ['name' => 'Allowances: all establishment', 'description' => 'Permite visualizar todos los viáticos de todos los establecimientos', 'guard_name' => 'web'],
+            ['name' => 'Allowances: contabilidad', 'description' => 'Permite revisión inicial del formulario contabilidad', 'guard_name' => 'web'],
+            ['name' => 'Allowances: create', 'description' => 'Permite crear viáticos', 'guard_name' => 'web'],
+            ['name' => 'Allowances: director', 'description' => 'Permite visualizar viáticos que requieren firma de dirección', 'guard_name' => 'web'],
+            ['name' => 'Allowances: reports', 'description' => 'Permite acceder a los reportes del módulo', 'guard_name' => 'web'],
+            ['name' => 'Allowances: sirh', 'description' => 'Permite revisión inicial del formulario e ingreso de folio sirh', 'guard_name' => 'web'],
+            ['name' => 'amiPASS', 'description' => 'Permiso para acceder al modulo de bienestar/amipass', 'guard_name' => 'web'],
+            ['name' => 'Asignacion Estimulos', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Authorities: create', 'description' => 'Permite crear autoridades', 'guard_name' => 'web'],
+            ['name' => 'Authorities: edit', 'description' => 'Permite editar una autoridad (sólo para expertos)', 'guard_name' => 'web'],
+            ['name' => 'Authorities: view', 'description' => 'Permite ver el módulo de autoridades', 'guard_name' => 'web'],
+            ['name' => 'Calendar: aps', 'description' => 'Poder ver Mesa Técnica APS', 'guard_name' => 'web'],
+            ['name' => 'Calendar: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Communefiles: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Communefiles: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Communefiles: upload', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Communefiles: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Documents: add number', 'description' => 'Para oficina de partes o secretarias, asignar un número a un documento', 'guard_name' => 'web'],
+            ['name' => 'Documents: admin', 'description' => 'Permite eliminar número, archivo adjunto y documento completo', 'guard_name' => 'web'],
+            ['name' => 'Documents: create', 'description' => 'Permite crear un documento', 'guard_name' => 'web'],
+            ['name' => 'Documents: delete document', 'description' => 'Permite borrar un documento que no tenga archivo adjunto o firmas (Sólo Administradores)', 'guard_name' => 'web'],
+            ['name' => 'Documents: edit', 'description' => 'Permite editar un documento creado', 'guard_name' => 'web'],
+            ['name' => 'Documents: signatures and distribution', 'description' => 'Permite acceso al módulo de firmas y distribución', 'guard_name' => 'web'],
+            ['name' => 'Documents: signatures and distribution v2', 'description' => 'Permite acceder al crear solicitud de firma nuevo modulo v2', 'guard_name' => 'web'],
+            ['name' => 'Drugs', 'description' => 'Permite acceder al menú del módulo de drogas', 'guard_name' => 'web'],
+            ['name' => 'Drugs: add protocols', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: add results from ISP', 'description' => 'Permite poder agregar resultados de análisis realizado por el ISP', 'guard_name' => 'web'],
+            ['name' => 'Drugs: create receptions', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: delete destructions', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: destroy drugs', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: edit date receptions', 'description' => 'Permite editar la fecha de una recepción', 'guard_name' => 'web'],
+            ['name' => 'Drugs: edit receptions', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: manage courts', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: manage parameters', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: manage police units', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: manage substances', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: view receptions', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Drugs: view reports', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Ges: user', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Health Plan', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'HIS Modification Request: Manager', 'description' => 'Administrador de solicitudes de modificación del HIS APS (Referente SIDRA)', 'guard_name' => 'web'],
+            ['name' => 'HIS Modification Request: User', 'description' => 'Permite hacer solicitudes de modificación al HIS APS', 'guard_name' => 'web'],
+            ['name' => 'HotelBooking: Administrador', 'description' => 'Administrador del módulo de reserva de cabañas', 'guard_name' => 'web'],
+            ['name' => 'HotelBooking: User', 'description' => 'Permiso para los usuarios del modulo de reserva de cabañas', 'guard_name' => 'web'],
+            ['name' => 'Identify Need: create', 'description' => 'Permite crear procesos de Detección de Necesidades de Capacitación', 'guard_name' => 'web'],
+            ['name' => 'Indicators: manager', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Indicators: manager meta7', 'description' => 'Permiso para administrar meta 7 en Metas Sanitarias Ley N° 19.813', 'guard_name' => 'web'],
+            ['name' => 'Indicators: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Integrity: manage complaints', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Inventory', 'description' => 'Permite acceder al menú de inventario', 'guard_name' => 'web'],
+            ['name' => 'Inventory: edit', 'description' => 'Permite editar el item de inventario', 'guard_name' => 'web'],
+            ['name' => 'Inventory: edit act reception confirmation', 'description' => 'Permite editar los datos del acta de recepción de confirmación', 'guard_name' => 'web'],
+            ['name' => 'Inventory: index', 'description' => 'Permite visualizar todos los productos inventariados', 'guard_name' => 'web'],
+            ['name' => 'Inventory: last receptions', 'description' => 'Permite visualizar los últimos ingresos de la bodega', 'guard_name' => 'web'],
+            ['name' => 'Inventory: mainteners', 'description' => 'Permite acceder a los mantenedores de inventario', 'guard_name' => 'web'],
+            ['name' => 'Inventory: manager', 'description' => 'Permite acceder a todas las funcionalidades de inventario', 'guard_name' => 'web'],
+            ['name' => 'Inventory: pending inventory', 'description' => 'Permite visualizar todos los inventarios pendientes', 'guard_name' => 'web'],
+            ['name' => 'Inventory: place maintainer', 'description' => 'Permite acceder al mantenedor de lugares', 'guard_name' => 'web'],
+            ['name' => 'Job Position Profile: all', 'description' => 'Permite acceder a todo el listado de perfiles de cargo', 'guard_name' => 'web'],
+            ['name' => 'Job Position Profile: audit', 'description' => 'Permite acceder al registro de auditoría del módulo', 'guard_name' => 'web'],
+            ['name' => 'Job Position Profile: create', 'description' => 'Permite crear la creación de perfiles de cargo', 'guard_name' => 'web'],
+            ['name' => 'Job Position Profile: edit', 'description' => 'Permite editar cualquier perfil de cargo', 'guard_name' => 'web'],
+            ['name' => 'Job Position Profile: review', 'description' => 'Permite realizar la revisión del perfil de cargo para aprobación', 'guard_name' => 'web'],
+            ['name' => 'LE Extra Plan: Carga', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'LE Extra Plan: Monitoreo', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Mammography: admin', 'description' => 'Permite acceder a los resultados del booking de Mammography', 'guard_name' => 'web'],
+            ['name' => 'News: create', 'description' => 'Permite crear noticias', 'guard_name' => 'web'],
+            ['name' => 'OrganizationalUnits: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'OrganizationalUnits: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'OrganizationalUnits: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'OrganizationalUnits: sirh association', 'description' => 'Permite asociar unidades organizacionales ionline con unidades organizacionales sirh', 'guard_name' => 'web'],
+            ['name' => 'Parameters: Classification', 'description' => 'Permiso para poder clasificar el tipo de inventario', 'guard_name' => 'web'],
+            ['name' => 'Parameters: COMGES cutoffdates', 'description' => 'Mantenedor fecha de corte de COMGES', 'guard_name' => 'web'],
+            ['name' => 'Parameters: holidays', 'description' => 'Mantenedor de días feriados', 'guard_name' => 'web'],
+            ['name' => 'Parameters: locations', 'description' => 'Mantenedor de ubicaciones (edificios)', 'guard_name' => 'web'],
+            ['name' => 'Parameters: places', 'description' => 'Mantenedor de lugares (oficinas, pasillos, comedores, etc.)', 'guard_name' => 'web'],
+            ['name' => 'Parameters: professions', 'description' => 'Mantenedor de profesiones', 'guard_name' => 'web'],
+            ['name' => 'Parameters: programs', 'description' => 'Mantenedor de programas', 'guard_name' => 'web'],
+            ['name' => 'Parameters: UNSPSC', 'description' => 'Mantenedores de segmentos y productos del estandard UNSPSC que ocupa mercado público', 'guard_name' => 'web'],
+            ['name' => 'Partes: delete', 'description' => 'Permite borrar un parte', 'guard_name' => 'web'],
+            ['name' => 'Partes: director', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Partes: numerator', 'description' => 'Aquellos que pueden numerar un documento, les llega un mail por cada documento a enumerar', 'guard_name' => 'web'],
+            ['name' => 'Partes: oficina', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Partes: user', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Payments', 'description' => 'Permite acceso al módulo de Estados de pago', 'guard_name' => 'web'],
+            ['name' => 'Payments: cenabast bypass', 'description' => 'permiso para poder hacer bypass cuando se sube un documento ya firmado anteriormente por ende no debería entrar al proceso de firma por farmaceutico-jefe (carga retroactiva)', 'guard_name' => 'web'],
+            ['name' => 'Payments: return to review', 'description' => 'Retorna las facturas a la bandeja de revisión', 'guard_name' => 'web'],
+            ['name' => 'Payments: viewer', 'description' => 'Permite acceso al módulo de Estados de pago, pero solamente puede ver y no modificar nada', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy', 'description' => 'Permiso general para ingresar a módulo', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: Administrator', 'description' => 'administrador del sistema', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: change pharmacy', 'description' => 'Sirve para que usuario del hospital pueda cambiarse de farmacias segun requiera', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: create establishments', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: create products', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: create programs', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: create suppliers', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: deliver', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: dispatch', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: edit_delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: inventory adjustment', 'description' => 'permite realizar ajustes de inventario', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: mantenedores', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: purchase', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: receiving', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: reports', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: Servicios generales (id:4)', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: sign', 'description' => 'Permite firmar actas de recepción en modulo de compras.', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: transfer', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: transfer view AHO', 'description' => 'Vista perfil comuna Alto Hospicio ayudas técnicas', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: transfer view IQQ', 'description' => 'Vista perfil comuna de Iquique ayudas técnicas', 'guard_name' => 'web'],
+            ['name' => 'Pharmacy: transfer view ortesis', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProfessionalHour: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: audit', 'description' => 'Auditoría para el módulo de Programación Numérica', 'guard_name' => 'web'],
+            ['name' => 'Programming: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: create action type', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: create activity', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: create ministerial', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: create professional', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: report', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: status', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Programming: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingDay: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingItem: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingItem: duplicate', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingItem: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingItem: evaluate', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'ProgrammingItem: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Purchase Plan: all', 'description' => 'Permite visualizar todos los planes de compras', 'guard_name' => 'web'],
+            ['name' => 'Purchase Plan: create', 'description' => 'Permite crear planes de compras', 'guard_name' => 'web'],
+            ['name' => 'Purchase Plan: reports', 'description' => 'Permite acceder a los reportes del módulo de plan de compras', 'guard_name' => 'web'],
+            ['name' => 'Receptions: admin', 'description' => 'Usuario administrador', 'guard_name' => 'web'],
+            ['name' => 'Receptions: load file retroactive', 'description' => 'Permite cargar actas firmadas retroactivamente', 'guard_name' => 'web'],
+            ['name' => 'Receptions: load support file', 'description' => 'Permite cargar documentos de respaldo', 'guard_name' => 'web'],
+            ['name' => 'Receptions: upload to mercado público', 'description' => 'Permite marcar la recepción como subido a mercado público\'', 'guard_name' => 'web'],
+            ['name' => 'Receptions: user', 'description' => 'Usuario normal', 'guard_name' => 'web'],
+            ['name' => 'Rem: admin', 'description' => 'Administrador de carga de REMs', 'guard_name' => 'web'],
+            ['name' => 'Rem: user', 'description' => 'Usuario cargador de REMs', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: admin', 'description' => 'Administrador de staff de reemplazo', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: assign request', 'description' => 'Permite asignar solicitudes a funcionarios de la unidad de reclutamiento y selección', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: create request', 'description' => 'Permite crear solicitudes de reemplazo', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: create staff', 'description' => 'Permite crear staff (postulantes)', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: list rrhh', 'description' => 'Permite visualizar el listado de staff de reemplazo', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: manage', 'description' => 'Permite editar parámetros del módulo', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: personal sign', 'description' => 'Permite a funcionarios de unidad de personal aprobar o declinar solicitudes', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: staff manage', 'description' => 'Permite gestionar staff por unidad organizacional', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: technical evaluation', 'description' => 'Permite acceder al listado de solicitudes aceptadas para evaluación técnica', 'guard_name' => 'web'],
+            ['name' => 'Replacement Staff: view requests', 'description' => 'Permite visualizar requerimientos', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: all', 'description' => 'Ver todos los formularios de requerimiento independiente de su estado', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: audit', 'description' => 'Auditoría para el módulo de abastecimiento', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: boss', 'description' => 'Permisos para la jefatura de abastecimiento', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: config', 'description' => 'Permite editar mantenedores de Request Forms', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: purchaser', 'description' => 'Permite acceso a módulo de compradores', 'guard_name' => 'web'],
+            ['name' => 'Request Forms: reports', 'description' => 'Permite acceder a los reportes del módulo de abastecimiento', 'guard_name' => 'web'],
+            ['name' => 'Requirements: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Requirements: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Resolutions', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Resources: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Resources: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Resources: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Reviews: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Reviews: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Reviews: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Reviews: rectify', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Reviews: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'RNI Database: admin', 'description' => 'Acceso a carga de base datos RNI', 'guard_name' => 'web'],
+            ['name' => 'RNI Database: view', 'description' => 'Acceso a descarga de base datos RNI', 'guard_name' => 'web'],
+            ['name' => 'Rrhh: birthday', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Rrhh: wellfair', 'description' => 'Permiso para el módulo de Bienestar', 'guard_name' => 'web'],
+            ['name' => 'Service Request', 'description' => 'Módulo de honorarios (ex pukaña)', 'guard_name' => 'web'],
+            ['name' => 'Service Request: accept all requests', 'description' => 'Permite acepta todas las solicitudes de contrato de honorario', 'guard_name' => 'web'],
+            ['name' => 'Service Request: active contracts report', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: add fulfillments', 'description' => 'Permiso para agregar fulfillments de forma individual', 'guard_name' => 'web'],
+            ['name' => 'Service Request: additional data', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: additional data finanzas', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: additional data oficina partes', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: additional data rrhh', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: audit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: change signature flow', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: compliance', 'description' => 'Permiso para ver reporte de cumplimiento', 'guard_name' => 'web'],
+            ['name' => 'Service Request: consolidated data', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: delete fulfillments', 'description' => 'Permiso para eliminar fulfillments de forma individual', 'guard_name' => 'web'],
+            ['name' => 'Service Request: delete request', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: delete signed certificate', 'description' => 'Borrar certificado de cumplimiento firmado', 'guard_name' => 'web'],
+            ['name' => 'Service Request: derive requests', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: export sirh', 'description' => 'Permite exportar contratos creados a Sirh', 'guard_name' => 'web'],
+            ['name' => 'Service Request: export sirh mantenedores', 'description' => 'Acceso a mantenedores para usuarios que hacen exportación sirh', 'guard_name' => 'web'],
+            ['name' => 'Service Request: fulfillments', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: fulfillments finance', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: fulfillments responsable', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: fulfillments rrhh', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: maintainers', 'description' => 'mantenedores del sistema de honorarios', 'guard_name' => 'web'],
+            ['name' => 'Service Request: pending requests', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: program_consolidated_report', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: report excel', 'description' => 'para que puedan descargar excel', 'guard_name' => 'web'],
+            ['name' => 'Service Request: report payed', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: report sr continuity', 'description' => 'Reporte continuidad de solicitudes', 'guard_name' => 'web'],
+            ['name' => 'Service Request: report to pay', 'description' => 'Acceso a reporte para pagos', 'guard_name' => 'web'],
+            ['name' => 'Service Request: sign document', 'description' => 'Firmar documentos Service Request', 'guard_name' => 'web'],
+            ['name' => 'Service Request: transfer requests', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: turno de llamado', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Service Request: with resolution', 'description' => 'Acceso a reporte de Contratación Honorarios \'Solicitudes con resolución cargada\'', 'guard_name' => 'web'],
+            ['name' => 'Shift Management: approval extra day request', 'description' => 'Módulo de turno, habilitado para aprobar y rechazar solicitudes de dias extras', 'guard_name' => 'web'],
+            ['name' => 'Shift Management: view', 'description' => 'Módulo de turno, Ver', 'guard_name' => 'web'],
+            ['name' => 'Store', 'description' => 'Permite acceder al menú de bodega', 'guard_name' => 'web'],
+            ['name' => 'Store: add invoice', 'description' => 'Permite cargar facturas a uno o más ingresos', 'guard_name' => 'web'],
+            ['name' => 'Store: bincard report', 'description' => 'Permite visualizar el reporte bincard', 'guard_name' => 'web'],
+            ['name' => 'Store: Cenabast', 'description' => 'Permiso para acceso a bodega de CENABAST donde se sube el Acta firmada de acuerdo a un DTE', 'guard_name' => 'web'],
+            ['name' => 'Store: create dispatch', 'description' => 'Permite crear egreso', 'guard_name' => 'web'],
+            ['name' => 'Store: create reception by donation', 'description' => 'Permite crear ingreso normal o por donación', 'guard_name' => 'web'],
+            ['name' => 'Store: create reception by purcharse order', 'description' => 'Permite crear ingreso por orden de compra', 'guard_name' => 'web'],
+            ['name' => 'Store: index', 'description' => 'Listar las bodegas', 'guard_name' => 'web'],
+            ['name' => 'Store: list dispatchs', 'description' => 'Permite visualizar la lista de los egresos', 'guard_name' => 'web'],
+            ['name' => 'Store: list receptions', 'description' => 'Permite visualizar la lista de los ingresos', 'guard_name' => 'web'],
+            ['name' => 'Store: maintainer programs', 'description' => 'Permite acceder al mantenedor de programas', 'guard_name' => 'web'],
+            ['name' => 'Store: maintainers', 'description' => 'Permite acceder a los mantenedores de la bodega', 'guard_name' => 'web'],
+            ['name' => 'Store: warehouse manager', 'description' => 'Permite gestionar todas las bodegas', 'guard_name' => 'web'],
+            ['name' => 'Suitability: admin', 'description' => 'Encargado de Idoneidad de cada Colegio', 'guard_name' => 'web'],
+            ['name' => 'Suitability: ssi', 'description' => 'Encargado de Idoneidad dentro del SSI', 'guard_name' => 'web'],
+            ['name' => 'Summary: admin', 'description' => 'Permiso de módulo de Sumario de administrador', 'guard_name' => 'web'],
+            ['name' => 'Summary: admin viewer', 'description' => 'Administrador del módulo de sumarios pero con permisos solamente para ver los sumarios y no modificar nada del contenido', 'guard_name' => 'web'],
+            ['name' => 'Summary: user', 'description' => 'Permiso de usuario de Summario', 'guard_name' => 'web'],
+            ['name' => 'Tickets: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Tickets: manage', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Tickets: TI', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'TrainingItem: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'TrainingItem: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'TrainingItem: view', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: assign permission', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: assign roles', 'description' => 'Asignar roles a usuarios', 'guard_name' => 'web'],
+            ['name' => 'Users: create', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: delete', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: edit', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: must change password', 'description' => '', 'guard_name' => 'web'],
+            ['name' => 'Users: no attendance record manager', 'description' => 'Para quien registra la justificación cuando no se marca en el reloj control', 'guard_name' => 'web'],
+            ['name' => 'Users: reset password option', 'description' => 'Permite ver el botón para resetear password del usuario', 'guard_name' => 'web'],
+            ['name' => 'Users: send mail verification', 'description' => 'Permite enviar un email de verificación de correo al usuario', 'guard_name' => 'web'],
+            ['name' => 'Users: show access logs', 'description' => 'Permite ver el registro de accesos al sistema de los usuarios', 'guard_name' => 'web'],
+        ];
 
-
-        Permission::create(['name' => 'Agenda UST: Administrador', 'description' => 'Permiso administrador de módulo reservas Unidad Salud del Trabajador']);
-        Permission::create(['name' => 'Agenda UST: Funcionario', 'description' => 'Permiso funcionario de módulo reservas Unidad Salud del Trabajador']);
-        Permission::create(['name' => 'Agenda UST: Secretaria', 'description' => 'Permiso secretaria de módulo reservas Unidad Salud del Trabajador']);
-        Permission::create(['name' => 'Agreement: delete', 'description' => '']);
-        Permission::create(['name' => 'Agreement: edit', 'description' => '']);
-        Permission::create(['name' => 'Agreement: manage municipalities and signers', 'description' => '']);
-        Permission::create(['name' => 'Agreement: view', 'description' => '']);
-        Permission::create(['name' => 'Allowances: all', 'description' => 'Permite visualizar todos los viáticos']);
-        Permission::create(['name' => 'Allowances: all establishment', 'description' => 'Permite visualizar todos los viáticos de todos los establecimientos']);
-        Permission::create(['name' => 'Allowances: contabilidad', 'description' => 'Permite revisión inicial del formulario contabilidad']);
-        Permission::create(['name' => 'Allowances: create', 'description' => 'Permite crear viáticos']);
-        Permission::create(['name' => 'Allowances: director', 'description' => 'Permite visualizar viáticos que requieren firma de dirección']);
-        Permission::create(['name' => 'Allowances: reports', 'description' => 'Permite acceder a los reportes del módulo']);
-        Permission::create(['name' => 'Allowances: sirh', 'description' => 'Permite revisión inicial del formulario e ingreso de folio sirh']);
-        Permission::create(['name' => 'amiPASS', 'description' => 'Permiso para acceder al modulo de bienestar/amipass']);
-        Permission::create(['name' => 'Asignacion Estimulos', 'description' => '']);
-        Permission::create(['name' => 'Authorities: create', 'description' => 'Permite crear autoridades']);
-        Permission::create(['name' => 'Authorities: edit', 'description' => 'Permite editar una autoridad (sólo para expertos)']);
-        Permission::create(['name' => 'Authorities: view', 'description' => 'Permite ver el módulo de autoridades']);
-        Permission::create(['name' => 'Calendar: aps', 'description' => 'Poder ver Mesa Técnica APS']);
-        Permission::create(['name' => 'Calendar: view', 'description' => '']);
-        Permission::create(['name' => 'Communefiles: create', 'description' => '']);
-        Permission::create(['name' => 'Communefiles: edit', 'description' => '']);
-        Permission::create(['name' => 'Communefiles: upload', 'description' => '']);
-        Permission::create(['name' => 'Communefiles: view', 'description' => '']);
-        Permission::create(['name' => 'Documents: add number', 'description' => 'Para oficina de partes o secretarias, asignar un número a un documento']);
-        Permission::create(['name' => 'Documents: admin', 'description' => 'Permite eliminar número, archivo adjunto y documento completo']);
-        Permission::create(['name' => 'Documents: create', 'description' => 'Permite crear un documento']);
-        Permission::create(['name' => 'Documents: delete document', 'description' => 'Permite borrar un documento que no tenga archivo adjunto o firmas (Sólo Administradores)']);
-        Permission::create(['name' => 'Documents: edit', 'description' => 'Permite editar un documento creado']);
-        Permission::create(['name' => 'Documents: signatures and distribution', 'description' => 'Permite acceso al módulo de firmas y distribución']);
-        Permission::create(['name' => 'Documents: signatures and distribution v2', 'description' => 'Permite acceder al crear solicitud de firma nuevo modulo v2']);
-        Permission::create(['name' => 'Drugs', 'description' => 'Permite acceder al menú del módulo de drogas']);
-        Permission::create(['name' => 'Drugs: add protocols', 'description' => '']);
-        Permission::create(['name' => 'Drugs: add results from ISP', 'description' => 'Permite poder agregar resultados de análisis realizado por el ISP']);
-        Permission::create(['name' => 'Drugs: create receptions', 'description' => '']);
-        Permission::create(['name' => 'Drugs: delete destructions', 'description' => '']);
-        Permission::create(['name' => 'Drugs: destroy drugs', 'description' => '']);
-        Permission::create(['name' => 'Drugs: edit date receptions', 'description' => 'Permite editar la fecha de una recepción']);
-        Permission::create(['name' => 'Drugs: edit receptions', 'description' => '']);
-        Permission::create(['name' => 'Drugs: manage courts', 'description' => '']);
-        Permission::create(['name' => 'Drugs: manage parameters', 'description' => '']);
-        Permission::create(['name' => 'Drugs: manage police units', 'description' => '']);
-        Permission::create(['name' => 'Drugs: manage substances', 'description' => '']);
-        Permission::create(['name' => 'Drugs: view receptions', 'description' => '']);
-        Permission::create(['name' => 'Drugs: view reports', 'description' => '']);
-        Permission::create(['name' => 'Ges: user', 'description' => '']);
-        Permission::create(['name' => 'Health Plan', 'description' => '']);
-        Permission::create(['name' => 'HIS Modification Request: Manager', 'description' => 'Administrador de solicitudes de modificación del HIS APS (Referente SIDRA)']);
-        Permission::create(['name' => 'HIS Modification Request: User', 'description' => 'Permite hacer solicitudes de modificación al HIS APS']);
-        Permission::create(['name' => 'HotelBooking: Administrador', 'description' => 'Administrador del módulo de reserva de cabañas']);
-        Permission::create(['name' => 'HotelBooking: User', 'description' => 'Permiso para los usuarios del modulo de reserva de cabañas']);
-        Permission::create(['name' => 'Identify Need: create', 'description' => 'Permite crear procesos de Detección de Necesidades de Capacitación']);
-        Permission::create(['name' => 'Indicators: manager', 'description' => '']);
-        Permission::create(['name' => 'Indicators: manager meta7', 'description' => 'Permiso para administrar meta 7 en Metas Sanitarias Ley N° 19.813']);
-        Permission::create(['name' => 'Indicators: view', 'description' => '']);
-        Permission::create(['name' => 'Integrity: manage complaints', 'description' => '']);
-        Permission::create(['name' => 'Inventory', 'description' => 'Permite acceder al menú de inventario']);
-        Permission::create(['name' => 'Inventory: edit', 'description' => 'Permite editar el item de inventario']);
-        Permission::create(['name' => 'Inventory: edit act reception confirmation', 'description' => 'Permite editar los datos del acta de recepción de confirmación']);
-        Permission::create(['name' => 'Inventory: index', 'description' => 'Permite visualizar todos los productos inventariados']);
-        Permission::create(['name' => 'Inventory: last receptions', 'description' => 'Permite visualizar los últimos ingresos de la bodega']);
-        Permission::create(['name' => 'Inventory: mainteners', 'description' => 'Permite acceder a los mantenedores de inventario']);
-        Permission::create(['name' => 'Inventory: manager', 'description' => 'Permite acceder a todas las funcionalidades de inventario']);
-        Permission::create(['name' => 'Inventory: pending inventory', 'description' => 'Permite visualizar todos los inventarios pendientes']);
-        Permission::create(['name' => 'Inventory: place maintainer', 'description' => 'Permite acceder al mantenedor de lugares']);
-        Permission::create(['name' => 'Job Position Profile: all', 'description' => 'Permite acceder a todo el listado de perfiles de cargo']);
-        Permission::create(['name' => 'Job Position Profile: audit', 'description' => 'Permite acceder al registro de auditoría del módulo']);
-        Permission::create(['name' => 'Job Position Profile: create', 'description' => 'Permite crear la creación de perfiles de cargo']);
-        Permission::create(['name' => 'Job Position Profile: edit', 'description' => 'Permite editar cualquier perfil de cargo']);
-        Permission::create(['name' => 'Job Position Profile: review', 'description' => 'Permite realizar la revisión del perfil de cargo para aprobación']);
-        Permission::create(['name' => 'LE Extra Plan: Carga', 'description' => '']);
-        Permission::create(['name' => 'LE Extra Plan: Monitoreo', 'description' => '']);
-        Permission::create(['name' => 'Mammography: admin', 'description' => 'Permite acceder a los resultados del booking de Mammography']);
-        Permission::create(['name' => 'News: create', 'description' => 'Permite crear noticias']);
-        Permission::create(['name' => 'OrganizationalUnits: create', 'description' => '']);
-        Permission::create(['name' => 'OrganizationalUnits: delete', 'description' => '']);
-        Permission::create(['name' => 'OrganizationalUnits: edit', 'description' => '']);
-        Permission::create(['name' => 'OrganizationalUnits: sirh association', 'description' => 'Permite asociar unidades organizacionales ionline con unidades organizacionales sirh']);
-        Permission::create(['name' => 'Parameters: Classification', 'description' => 'Permiso para poder clasificar el tipo de inventario']);
-        Permission::create(['name' => 'Parameters: COMGES cutoffdates', 'description' => 'Mantenedor fecha de corte de COMGES']);
-        Permission::create(['name' => 'Parameters: holidays', 'description' => 'Mantenedor de días feriados']);
-        Permission::create(['name' => 'Parameters: locations', 'description' => 'Mantenedor de ubicaciones (edificios)']);
-        Permission::create(['name' => 'Parameters: places', 'description' => 'Mantenedor de lugares (oficinas, pasillos, comedores, etc.)']);
-        Permission::create(['name' => 'Parameters: professions', 'description' => 'Mantenedor de profesiones']);
-        Permission::create(['name' => 'Parameters: programs', 'description' => 'Mantenedor de programas']);
-        Permission::create(['name' => 'Parameters: UNSPSC', 'description' => 'Mantenedores de segmentos y productos del estandard UNSPSC que ocupa mercado público']);
-        Permission::create(['name' => 'Partes: delete', 'description' => 'Permite borrar un parte']);
-        Permission::create(['name' => 'Partes: director', 'description' => '']);
-        Permission::create(['name' => 'Partes: numerator', 'description' => 'Aquellos que pueden numerar un documento, les llega un mail por cada documento a enumerar']);
-        Permission::create(['name' => 'Partes: oficina', 'description' => '']);
-        Permission::create(['name' => 'Partes: user', 'description' => '']);
-        Permission::create(['name' => 'Payments', 'description' => 'Permite acceso al módulo de Estados de pago']);
-        Permission::create(['name' => 'Payments: cenabast bypass', 'description' => 'permiso para poder hacer bypass cuando se sube un documento ya firmado anteriormente por ende no debería entrar al proceso de firma por farmaceutico-jefe (carga retroactiva)']);
-        Permission::create(['name' => 'Payments: return to review', 'description' => 'Retorna las facturas a la bandeja de revisión']);
-        Permission::create(['name' => 'Payments: viewer', 'description' => 'Permite acceso al módulo de Estados de pago, pero solamente puede ver y no modificar nada']);
-        Permission::create(['name' => 'Pharmacy', 'description' => 'Permiso general para ingresar a módulo']);
-        Permission::create(['name' => 'Pharmacy: Administrator', 'description' => 'administrador del sistema']);
-        Permission::create(['name' => 'Pharmacy: change pharmacy', 'description' => 'Sirve para que usuario del hospital pueda cambiarse de farmacias segun requiera']);
-        Permission::create(['name' => 'Pharmacy: create', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: create establishments', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: create products', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: create programs', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: create suppliers', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: deliver', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: dispatch', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: edit_delete', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: inventory adjustment', 'description' => 'permite realizar ajustes de inventario']);
-        Permission::create(['name' => 'Pharmacy: mantenedores', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: purchase', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: receiving', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: reports', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: Servicios generales (id:4)', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: sign', 'description' => 'Permite firmar actas de recepción en modulo de compras.']);
-        Permission::create(['name' => 'Pharmacy: transfer', 'description' => '']);
-        Permission::create(['name' => 'Pharmacy: transfer view AHO', 'description' => 'Vista perfil comuna Alto Hospicio ayudas técnicas']);
-        Permission::create(['name' => 'Pharmacy: transfer view IQQ', 'description' => 'Vista perfil comuna de Iquique ayudas técnicas']);
-        Permission::create(['name' => 'Pharmacy: transfer view ortesis', 'description' => '']);
-        Permission::create(['name' => 'ProfessionalHour: view', 'description' => '']);
-        Permission::create(['name' => 'Programming: audit', 'description' => 'Auditoría para el módulo de Programación Numérica']);
-        Permission::create(['name' => 'Programming: create', 'description' => '']);
-        Permission::create(['name' => 'Programming: create action type', 'description' => '']);
-        Permission::create(['name' => 'Programming: create activity', 'description' => '']);
-        Permission::create(['name' => 'Programming: create ministerial', 'description' => '']);
-        Permission::create(['name' => 'Programming: create professional', 'description' => '']);
-        Permission::create(['name' => 'Programming: edit', 'description' => '']);
-        Permission::create(['name' => 'Programming: report', 'description' => '']);
-        Permission::create(['name' => 'Programming: status', 'description' => '']);
-        Permission::create(['name' => 'Programming: view', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingDay: view', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingItem: delete', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingItem: duplicate', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingItem: edit', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingItem: evaluate', 'description' => '']);
-        Permission::create(['name' => 'ProgrammingItem: view', 'description' => '']);
-        Permission::create(['name' => 'Purchase Plan: all', 'description' => 'Permite visualizar todos los planes de compras']);
-        Permission::create(['name' => 'Purchase Plan: create', 'description' => 'Permite crear planes de compras']);
-        Permission::create(['name' => 'Purchase Plan: reports', 'description' => 'Permite acceder a los reportes del módulo de plan de compras']);
-        Permission::create(['name' => 'Receptions: admin', 'description' => 'Usuario administrador']);
-        Permission::create(['name' => 'Receptions: load file retroactive', 'description' => 'Permite cargar actas firmadas retroactivamente']);
-        Permission::create(['name' => 'Receptions: load support file', 'description' => 'Permite cargar documentos de respaldo']);
-        Permission::create(['name' => 'Receptions: upload to mercado público', 'description' => 'Permite marcar la recepción como subido a mercado público\'']);
-        Permission::create(['name' => 'Receptions: user', 'description' => 'Usuario normal']);
-        Permission::create(['name' => 'Rem: admin', 'description' => 'Administrador de carga de REMs']);
-        Permission::create(['name' => 'Rem: user', 'description' => 'Usuario cargador de REMs']);
-        Permission::create(['name' => 'Replacement Staff: admin', 'description' => 'Administrador de staff de reemplazo']);
-        Permission::create(['name' => 'Replacement Staff: assign request', 'description' => 'Permite asignar solicitudes a funcionarios de la unidad de reclutamiento y selección']);
-        Permission::create(['name' => 'Replacement Staff: create request', 'description' => 'Permite crear solicitudes de reemplazo']);
-        Permission::create(['name' => 'Replacement Staff: create staff', 'description' => 'Permite crear staff (postulantes)']);
-        Permission::create(['name' => 'Replacement Staff: list rrhh', 'description' => 'Permite visualizar el listado de staff de reemplazo']);
-        Permission::create(['name' => 'Replacement Staff: manage', 'description' => 'Permite editar parámetros del módulo']);
-        Permission::create(['name' => 'Replacement Staff: personal sign', 'description' => 'Permite a funcionarios de unidad de personal aprobar o declinar solicitudes']);
-        Permission::create(['name' => 'Replacement Staff: staff manage', 'description' => 'Permite gestionar staff por unidad organizacional']);
-        Permission::create(['name' => 'Replacement Staff: technical evaluation', 'description' => 'Permite acceder al listado de solicitudes aceptadas para evaluación técnica']);
-        Permission::create(['name' => 'Replacement Staff: view requests', 'description' => 'Permite visualizar requerimientos']);
-        Permission::create(['name' => 'Request Forms: all', 'description' => 'Ver todos los formularios de requerimiento independiente de su estado']);
-        Permission::create(['name' => 'Request Forms: audit', 'description' => 'Auditoría para el módulo de abastecimiento']);
-        Permission::create(['name' => 'Request Forms: boss', 'description' => 'Permisos para la jefatura de abastecimiento']);
-        Permission::create(['name' => 'Request Forms: config', 'description' => 'Permite editar mantenedores de Request Forms']);
-        Permission::create(['name' => 'Request Forms: purchaser', 'description' => 'Permite acceso a módulo de compradores']);
-        Permission::create(['name' => 'Request Forms: reports', 'description' => 'Permite acceder a los reportes del módulo de abastecimiento']);
-        Permission::create(['name' => 'Requirements: create', 'description' => '']);
-        Permission::create(['name' => 'Requirements: delete', 'description' => '']);
-        Permission::create(['name' => 'Resolutions', 'description' => '']);
-        Permission::create(['name' => 'Resources: create', 'description' => '']);
-        Permission::create(['name' => 'Resources: delete', 'description' => '']);
-        Permission::create(['name' => 'Resources: edit', 'description' => '']);
-        Permission::create(['name' => 'Reviews: create', 'description' => '']);
-        Permission::create(['name' => 'Reviews: delete', 'description' => '']);
-        Permission::create(['name' => 'Reviews: edit', 'description' => '']);
-        Permission::create(['name' => 'Reviews: rectify', 'description' => '']);
-        Permission::create(['name' => 'Reviews: view', 'description' => '']);
-        Permission::create(['name' => 'RNI Database: admin', 'description' => 'Acceso a carga de base datos RNI']);
-        Permission::create(['name' => 'RNI Database: view', 'description' => 'Acceso a descarga de base datos RNI']);
-        Permission::create(['name' => 'Rrhh: birthday', 'description' => '']);
-        Permission::create(['name' => 'Rrhh: wellfair', 'description' => 'Permiso para el módulo de Bienestar']);
-        Permission::create(['name' => 'Service Request', 'description' => 'Módulo de honorarios (ex pukaña)']);
-        Permission::create(['name' => 'Service Request: accept all requests', 'description' => 'Permite acepta todas las solicitudes de contrato de honorario']);
-        Permission::create(['name' => 'Service Request: active contracts report', 'description' => '']);
-        Permission::create(['name' => 'Service Request: add fulfillments', 'description' => 'Permiso para agregar fulfillments de forma individual']);
-        Permission::create(['name' => 'Service Request: additional data', 'description' => '']);
-        Permission::create(['name' => 'Service Request: additional data finanzas', 'description' => '']);
-        Permission::create(['name' => 'Service Request: additional data oficina partes', 'description' => '']);
-        Permission::create(['name' => 'Service Request: additional data rrhh', 'description' => '']);
-        Permission::create(['name' => 'Service Request: audit', 'description' => '']);
-        Permission::create(['name' => 'Service Request: change signature flow', 'description' => '']);
-        Permission::create(['name' => 'Service Request: compliance', 'description' => 'Permiso para ver reporte de cumplimiento']);
-        Permission::create(['name' => 'Service Request: consolidated data', 'description' => '']);
-        Permission::create(['name' => 'Service Request: delete fulfillments', 'description' => 'Permiso para eliminar fulfillments de forma individual']);
-        Permission::create(['name' => 'Service Request: delete request', 'description' => '']);
-        Permission::create(['name' => 'Service Request: delete signed certificate', 'description' => 'Borrar certificado de cumplimiento firmado']);
-        Permission::create(['name' => 'Service Request: derive requests', 'description' => '']);
-        Permission::create(['name' => 'Service Request: export sirh', 'description' => 'Permite exportar contratos creados a Sirh']);
-        Permission::create(['name' => 'Service Request: export sirh mantenedores', 'description' => 'Acceso a mantenedores para usuarios que hacen exportación sirh']);
-        Permission::create(['name' => 'Service Request: fulfillments', 'description' => '']);
-        Permission::create(['name' => 'Service Request: fulfillments finance', 'description' => '']);
-        Permission::create(['name' => 'Service Request: fulfillments responsable', 'description' => '']);
-        Permission::create(['name' => 'Service Request: fulfillments rrhh', 'description' => '']);
-        Permission::create(['name' => 'Service Request: maintainers', 'description' => 'mantenedores del sistema de honorarios']);
-        Permission::create(['name' => 'Service Request: pending requests', 'description' => '']);
-        Permission::create(['name' => 'Service Request: program_consolidated_report', 'description' => '']);
-        Permission::create(['name' => 'Service Request: report excel', 'description' => 'para que puedan descargar excel']);
-        Permission::create(['name' => 'Service Request: report payed', 'description' => '']);
-        Permission::create(['name' => 'Service Request: report sr continuity', 'description' => 'Reporte continuidad de solicitudes']);
-        Permission::create(['name' => 'Service Request: report to pay', 'description' => 'Acceso a reporte para pagos']);
-        Permission::create(['name' => 'Service Request: sign document', 'description' => 'Firmar documentos Service Request']);
-        Permission::create(['name' => 'Service Request: transfer requests', 'description' => '']);
-        Permission::create(['name' => 'Service Request: turno de llamado', 'description' => '']);
-        Permission::create(['name' => 'Service Request: with resolution', 'description' => 'Acceso a reporte de Contratación Honorarios \'Solicitudes con resolución cargada\'']);
-        Permission::create(['name' => 'Shift Management: approval extra day request', 'description' => 'Módulo de turno, habilitado para aprobar y rechazar solicitudes de dias extras']);
-        Permission::create(['name' => 'Shift Management: view', 'description' => 'Módulo de turno, Ver']);
-        Permission::create(['name' => 'Store', 'description' => 'Permite acceder al menú de bodega']);
-        Permission::create(['name' => 'Store: add invoice', 'description' => 'Permite cargar facturas a uno o más ingresos']);
-        Permission::create(['name' => 'Store: bincard report', 'description' => 'Permite visualizar el reporte bincard']);
-        Permission::create(['name' => 'Store: Cenabast', 'description' => 'Permiso para acceso a bodega de CENABAST donde se sube el Acta firmada de acuerdo a un DTE']);
-        Permission::create(['name' => 'Store: create dispatch', 'description' => 'Permite crear egreso']);
-        Permission::create(['name' => 'Store: create reception by donation', 'description' => 'Permite crear ingreso normal o por donación']);
-        Permission::create(['name' => 'Store: create reception by purcharse order', 'description' => 'Permite crear ingreso por orden de compra']);
-        Permission::create(['name' => 'Store: index', 'description' => 'Listar las bodegas']);
-        Permission::create(['name' => 'Store: list dispatchs', 'description' => 'Permite visualizar la lista de los egresos']);
-        Permission::create(['name' => 'Store: list receptions', 'description' => 'Permite visualizar la lista de los ingresos']);
-        Permission::create(['name' => 'Store: maintainer programs', 'description' => 'Permite acceder al mantenedor de programas']);
-        Permission::create(['name' => 'Store: maintainers', 'description' => 'Permite acceder a los mantenedores de la bodega']);
-        Permission::create(['name' => 'Store: warehouse manager', 'description' => 'Permite gestionar todas las bodegas']);
-        Permission::create(['name' => 'Suitability: admin', 'description' => 'Encargado de Idoneidad de cada Colegio']);
-        Permission::create(['name' => 'Suitability: ssi', 'description' => 'Encargado de Idoneidad dentro del SSI']);
-        Permission::create(['name' => 'Summary: admin', 'description' => 'Permiso de módulo de Sumario de administrador']);
-        Permission::create(['name' => 'Summary: admin viewer', 'description' => 'Administrador del módulo de sumarios pero con permisos solamente para ver los sumarios y no modificar nada del contenido']);
-        Permission::create(['name' => 'Summary: user', 'description' => 'Permiso de usuario de Summario']);
-        Permission::create(['name' => 'Tickets: create', 'description' => '']);
-        Permission::create(['name' => 'Tickets: manage', 'description' => '']);
-        Permission::create(['name' => 'Tickets: TI', 'description' => '']);
-        Permission::create(['name' => 'TrainingItem: delete', 'description' => '']);
-        Permission::create(['name' => 'TrainingItem: edit', 'description' => '']);
-        Permission::create(['name' => 'TrainingItem: view', 'description' => '']);
-        Permission::create(['name' => 'Users: assign permission', 'description' => '']);
-        Permission::create(['name' => 'Users: assign roles', 'description' => 'Asignar roles a usuarios']);
-        Permission::create(['name' => 'Users: create', 'description' => '']);
-        Permission::create(['name' => 'Users: delete', 'description' => '']);
-        Permission::create(['name' => 'Users: edit', 'description' => '']);
-        Permission::create(['name' => 'Users: must change password', 'description' => '']);
-        Permission::create(['name' => 'Users: no attendance record manager', 'description' => 'Para quien registra la justificación cuando no se marca en el reloj control']);
-        Permission::create(['name' => 'Users: reset password option', 'description' => 'Permite ver el botón para resetear password del usuario']);
-        Permission::create(['name' => 'Users: send mail verification', 'description' => 'Permite enviar un email de verificación de correo al usuario']);
-        Permission::create(['name' => 'Users: show access logs', 'description' => 'Permite ver el registro de accesos al sistema de los usuarios']);
+    Permission::insert($permissions);
 
         $role = Role::create(['name' => 'Agenda Salud del Trabajdor: Administrador', 'description' => '']);
         $role->givePermissionTo('Agenda UST: Administrador');

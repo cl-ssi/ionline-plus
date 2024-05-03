@@ -13,252 +13,256 @@ class CountrySeeder extends Seeder
      */
     public function run(): void
     {
-        Country::create(['name' => 'Afganistán', 'id_minsal' =>459]);
-        Country::create(['name' => 'Albania', 'id_minsal' =>460]);
-        Country::create(['name' => 'Alemania', 'id_minsal' =>461]);
-        Country::create(['name' => 'Algeria', 'id_minsal' =>462]);
-        Country::create(['name' => 'Andorra', 'id_minsal' =>463]);
-        Country::create(['name' => 'Angola', 'id_minsal' =>464]);
-        Country::create(['name' => 'Anguila', 'id_minsal' =>465]);
-        Country::create(['name' => 'Antártida', 'id_minsal' =>466]);
-        Country::create(['name' => 'Antigua y Barbuda', 'id_minsal' =>467]);
-        Country::create(['name' => 'Antillas Neerlandesas', 'id_minsal' =>468]);
-        Country::create(['name' => 'Arabia Saudita', 'id_minsal' =>469]);
-        Country::create(['name' => 'Argentina', 'id_minsal' =>470]);
-        Country::create(['name' => 'Armenia', 'id_minsal' =>471]);
-        Country::create(['name' => 'Aruba', 'id_minsal' =>472]);
-        Country::create(['name' => 'Australia', 'id_minsal' =>473]);
-        Country::create(['name' => 'Austria', 'id_minsal' =>474]);
-        Country::create(['name' => 'Azerbayán', 'id_minsal' =>475]);
-        Country::create(['name' => 'Bélgica', 'id_minsal' =>476]);
-        Country::create(['name' => 'Bahamas', 'id_minsal' =>477]);
-        Country::create(['name' => 'Bahrein', 'id_minsal' =>478]);
-        Country::create(['name' => 'Bangladesh', 'id_minsal' =>479]);
-        Country::create(['name' => 'Barbados', 'id_minsal' =>480]);
-        Country::create(['name' => 'Belice', 'id_minsal' =>481]);
-        Country::create(['name' => 'Benín', 'id_minsal' =>482]);
-        Country::create(['name' => 'Bhután', 'id_minsal' =>483]);
-        Country::create(['name' => 'Bielorrusia', 'id_minsal' =>484]);
-        Country::create(['name' => 'Birmania', 'id_minsal' =>485]);
-        Country::create(['name' => 'Bolivia', 'id_minsal' =>486]);
-        Country::create(['name' => 'Bosnia y Herzegovina', 'id_minsal' =>487]);
-        Country::create(['name' => 'Botsuana', 'id_minsal' =>488]);
-        Country::create(['name' => 'Brasil', 'id_minsal' =>489]);
-        Country::create(['name' => 'Brunéi', 'id_minsal' =>490]);
-        Country::create(['name' => 'Bulgaria', 'id_minsal' =>491]);
-        Country::create(['name' => 'Burkina Faso', 'id_minsal' =>492]);
-        Country::create(['name' => 'Burundi', 'id_minsal' =>493]);
-        Country::create(['name' => 'Cabo Verde', 'id_minsal' =>494]);
-        Country::create(['name' => 'Camboya', 'id_minsal' =>495]);
-        Country::create(['name' => 'Camerún', 'id_minsal' =>496]);
-        Country::create(['name' => 'Canadá', 'id_minsal' =>497]);
-        Country::create(['name' => 'Chad', 'id_minsal' =>498]);
-        Country::create(['name' => 'Chile', 'id_minsal' =>499]);
-        Country::create(['name' => 'China', 'id_minsal' =>500]);
-        Country::create(['name' => 'Chipre', 'id_minsal' =>501]);
-        Country::create(['name' => 'Ciudad del Vaticano', 'id_minsal' =>502]);
-        Country::create(['name' => 'Colombia', 'id_minsal' =>503]);
-        Country::create(['name' => 'Comoras', 'id_minsal' =>504]);
-        Country::create(['name' => 'Congo', 'id_minsal' =>505]);
-        Country::create(['name' => 'Congo', 'id_minsal' =>506]);
-        Country::create(['name' => 'Corea del Norte', 'id_minsal' =>507]);
-        Country::create(['name' => 'Corea del Sur', 'id_minsal' =>508]);
-        Country::create(['name' => 'Costa de Marfil', 'id_minsal' =>509]);
-        Country::create(['name' => 'Costa Rica', 'id_minsal' =>510]);
-        Country::create(['name' => 'Croacia', 'id_minsal' =>511]);
-        Country::create(['name' => 'Cuba', 'id_minsal' =>512]);
-        Country::create(['name' => 'Dinamarca', 'id_minsal' =>513]);
-        Country::create(['name' => 'Dominica', 'id_minsal' =>514]);
-        Country::create(['name' => 'Ecuador', 'id_minsal' =>515]);
-        Country::create(['name' => 'Egipto', 'id_minsal' =>516]);
-        Country::create(['name' => 'El Salvador', 'id_minsal' =>517]);
-        Country::create(['name' => 'Emiratos Árabes Unidos', 'id_minsal' =>518]);
-        Country::create(['name' => 'Eritrea', 'id_minsal' =>519]);
-        Country::create(['name' => 'Eslovaquia', 'id_minsal' =>520]);
-        Country::create(['name' => 'Eslovenia', 'id_minsal' =>521]);
-        Country::create(['name' => 'España', 'id_minsal' =>522]);
-        Country::create(['name' => 'Estados Unidos de América', 'id_minsal' =>523]);
-        Country::create(['name' => 'Estonia', 'id_minsal' =>524]);
-        Country::create(['name' => 'Etiopía', 'id_minsal' =>525]);
-        Country::create(['name' => 'Filipinas', 'id_minsal' =>526]);
-        Country::create(['name' => 'Finlandia', 'id_minsal' =>527]);
-        Country::create(['name' => 'Fiyi', 'id_minsal' =>528]);
-        Country::create(['name' => 'Francia', 'id_minsal' =>529]);
-        Country::create(['name' => 'Gabón', 'id_minsal' =>530]);
-        Country::create(['name' => 'Gambia', 'id_minsal' =>531]);
-        Country::create(['name' => 'Georgia', 'id_minsal' =>532]);
-        Country::create(['name' => 'Ghana', 'id_minsal' =>533]);
-        Country::create(['name' => 'Gibraltar', 'id_minsal' =>534]);
-        Country::create(['name' => 'Granada', 'id_minsal' =>535]);
-        Country::create(['name' => 'Grecia', 'id_minsal' =>536]);
-        Country::create(['name' => 'Groenlandia', 'id_minsal' =>537]);
-        Country::create(['name' => 'Guadalupe', 'id_minsal' =>538]);
-        Country::create(['name' => 'Guam', 'id_minsal' =>539]);
-        Country::create(['name' => 'Guatemala', 'id_minsal' =>540]);
-        Country::create(['name' => 'Guayana Francesa', 'id_minsal' =>541]);
-        Country::create(['name' => 'Guernsey', 'id_minsal' =>542]);
-        Country::create(['name' => 'Guinea', 'id_minsal' =>543]);
-        Country::create(['name' => 'Guinea Ecuatorial', 'id_minsal' =>544]);
-        Country::create(['name' => 'Guinea-Bissau', 'id_minsal' =>545]);
-        Country::create(['name' => 'Guyana', 'id_minsal' =>546]);
-        Country::create(['name' => 'Haití', 'id_minsal' =>547]);
-        Country::create(['name' => 'Honduras', 'id_minsal' =>548]);
-        Country::create(['name' => 'Hong kong', 'id_minsal' =>549]);
-        Country::create(['name' => 'Hungría', 'id_minsal' =>550]);
-        Country::create(['name' => 'India', 'id_minsal' =>551]);
-        Country::create(['name' => 'Indonesia', 'id_minsal' =>552]);
-        Country::create(['name' => 'Irán', 'id_minsal' =>553]);
-        Country::create(['name' => 'Irak', 'id_minsal' =>554]);
-        Country::create(['name' => 'Irlanda', 'id_minsal' =>555]);
-        Country::create(['name' => 'Isla Bouvet', 'id_minsal' =>556]);
-        Country::create(['name' => 'Isla de Man', 'id_minsal' =>557]);
-        Country::create(['name' => 'Isla de Navidad', 'id_minsal' =>558]);
-        Country::create(['name' => 'Isla Norfolk', 'id_minsal' =>559]);
-        Country::create(['name' => 'Islandia', 'id_minsal' =>560]);
-        Country::create(['name' => 'Islas Bermudas', 'id_minsal' =>561]);
-        Country::create(['name' => 'Islas Caimán', 'id_minsal' =>562]);
-        Country::create(['name' => 'Islas Cocos (Keeling)', 'id_minsal' =>563]);
-        Country::create(['name' => 'Islas Cook', 'id_minsal' =>564]);
-        Country::create(['name' => 'Islas de Åland', 'id_minsal' =>565]);
-        Country::create(['name' => 'Islas Feroe', 'id_minsal' =>566]);
-        Country::create(['name' => 'Islas Georgias del Sur y Sandwich del Sur', 'id_minsal' =>567]);
-        Country::create(['name' => 'Islas Heard y McDonald', 'id_minsal' =>568]);
-        Country::create(['name' => 'Islas Maldivas', 'id_minsal' =>569]);
-        Country::create(['name' => 'Islas Malvinas', 'id_minsal' =>570]);
-        Country::create(['name' => 'Islas Marianas del Norte', 'id_minsal' =>571]);
-        Country::create(['name' => 'Islas Marshall', 'id_minsal' =>572]);
-        Country::create(['name' => 'Islas Pitcairn', 'id_minsal' =>573]);
-        Country::create(['name' => 'Islas Salomón', 'id_minsal' =>574]);
-        Country::create(['name' => 'Islas Turcas y Caicos', 'id_minsal' =>575]);
-        Country::create(['name' => 'Islas Ultramarinas Menores de Estados Unidos', 'id_minsal' =>576]);
-        Country::create(['name' => 'Islas Vírgenes Británicas', 'id_minsal' =>577]);
-        Country::create(['name' => 'Islas Vírgenes de los Estados Unidos', 'id_minsal' =>578]);
-        Country::create(['name' => 'Israel', 'id_minsal' =>579]);
-        Country::create(['name' => 'Italia', 'id_minsal' =>580]);
-        Country::create(['name' => 'Jamaica', 'id_minsal' =>581]);
-        Country::create(['name' => 'Japón', 'id_minsal' =>582]);
-        Country::create(['name' => 'Jersey', 'id_minsal' =>583]);
-        Country::create(['name' => 'Jordania', 'id_minsal' =>584]);
-        Country::create(['name' => 'Kazajistán', 'id_minsal' =>585]);
-        Country::create(['name' => 'Kenia', 'id_minsal' =>586]);
-        Country::create(['name' => 'Kirgizstán', 'id_minsal' =>587]);
-        Country::create(['name' => 'Kiribati', 'id_minsal' =>588]);
-        Country::create(['name' => 'Kuwait', 'id_minsal' =>589]);
-        Country::create(['name' => 'Líbano', 'id_minsal' =>590]);
-        Country::create(['name' => 'Laos', 'id_minsal' =>591]);
-        Country::create(['name' => 'Lesoto', 'id_minsal' =>592]);
-        Country::create(['name' => 'Letonia', 'id_minsal' =>593]);
-        Country::create(['name' => 'Liberia', 'id_minsal' =>594]);
-        Country::create(['name' => 'Libia', 'id_minsal' =>595]);
-        Country::create(['name' => 'Liechtenstein', 'id_minsal' =>596]);
-        Country::create(['name' => 'Lituania', 'id_minsal' =>597]);
-        Country::create(['name' => 'Luxemburgo', 'id_minsal' =>598]);
-        Country::create(['name' => 'México', 'id_minsal' =>599]);
-        Country::create(['name' => 'Mónaco', 'id_minsal' =>600]);
-        Country::create(['name' => 'Macao', 'id_minsal' =>601]);
-        Country::create(['name' => 'Macedônia', 'id_minsal' =>602]);
-        Country::create(['name' => 'Madagascar', 'id_minsal' =>603]);
-        Country::create(['name' => 'Malasia', 'id_minsal' =>604]);
-        Country::create(['name' => 'Malawi', 'id_minsal' =>605]);
-        Country::create(['name' => 'Mali', 'id_minsal' =>606]);
-        Country::create(['name' => 'Malta', 'id_minsal' =>607]);
-        Country::create(['name' => 'Marruecos', 'id_minsal' =>608]);
-        Country::create(['name' => 'Martinica', 'id_minsal' =>609]);
-        Country::create(['name' => 'Mauricio', 'id_minsal' =>610]);
-        Country::create(['name' => 'Mauritania', 'id_minsal' =>611]);
-        Country::create(['name' => 'Mayotte', 'id_minsal' =>612]);
-        Country::create(['name' => 'Micronesia', 'id_minsal' =>613]);
-        Country::create(['name' => 'Moldavia', 'id_minsal' =>614]);
-        Country::create(['name' => 'Mongolia', 'id_minsal' =>615]);
-        Country::create(['name' => 'Montenegro', 'id_minsal' =>616]);
-        Country::create(['name' => 'Montserrat', 'id_minsal' =>617]);
-        Country::create(['name' => 'Mozambique', 'id_minsal' =>618]);
-        Country::create(['name' => 'Namibia', 'id_minsal' =>619]);
-        Country::create(['name' => 'Nauru', 'id_minsal' =>620]);
-        Country::create(['name' => 'Nepal', 'id_minsal' =>621]);
-        Country::create(['name' => 'Nicaragua', 'id_minsal' =>622]);
-        Country::create(['name' => 'Niger', 'id_minsal' =>623]);
-        Country::create(['name' => 'Nigeria', 'id_minsal' =>624]);
-        Country::create(['name' => 'Niue', 'id_minsal' =>625]);
-        Country::create(['name' => 'Noruega', 'id_minsal' =>626]);
-        Country::create(['name' => 'Nueva Caledonia', 'id_minsal' =>627]);
-        Country::create(['name' => 'Nueva Zelanda', 'id_minsal' =>628]);
-        Country::create(['name' => 'Omán', 'id_minsal' =>629]);
-        Country::create(['name' => 'Países Bajos', 'id_minsal' =>630]);
-        Country::create(['name' => 'Pakistán', 'id_minsal' =>631]);
-        Country::create(['name' => 'Palau', 'id_minsal' =>632]);
-        Country::create(['name' => 'Palestina', 'id_minsal' =>633]);
-        Country::create(['name' => 'Panamá', 'id_minsal' =>634]);
-        Country::create(['name' => 'Papúa Nueva Guinea', 'id_minsal' =>635]);
-        Country::create(['name' => 'Paraguay', 'id_minsal' =>636]);
-        Country::create(['name' => 'Perú', 'id_minsal' =>637]);
-        Country::create(['name' => 'Polinesia Francesa', 'id_minsal' =>638]);
-        Country::create(['name' => 'Polonia', 'id_minsal' =>639]);
-        Country::create(['name' => 'Portugal', 'id_minsal' =>640]);
-        Country::create(['name' => 'Puerto Rico', 'id_minsal' =>641]);
-        Country::create(['name' => 'Qatar', 'id_minsal' =>642]);
-        Country::create(['name' => 'Reino Unido', 'id_minsal' =>643]);
-        Country::create(['name' => 'República Centroafricana', 'id_minsal' =>644]);
-        Country::create(['name' => 'República Checa', 'id_minsal' =>645]);
-        Country::create(['name' => 'República Dominicana', 'id_minsal' =>646]);
-        Country::create(['name' => 'Reunión', 'id_minsal' =>647]);
-        Country::create(['name' => 'Ruanda', 'id_minsal' =>648]);
-        Country::create(['name' => 'Rumanía', 'id_minsal' =>649]);
-        Country::create(['name' => 'Rusia', 'id_minsal' =>650]);
-        Country::create(['name' => 'Sahara Occidental', 'id_minsal' =>651]);
-        Country::create(['name' => 'Samoa', 'id_minsal' =>652]);
-        Country::create(['name' => 'Samoa Americana', 'id_minsal' =>653]);
-        Country::create(['name' => 'San Bartolomé', 'id_minsal' =>654]);
-        Country::create(['name' => 'San Cristóbal y Nieves', 'id_minsal' =>655]);
-        Country::create(['name' => 'San Marino', 'id_minsal' =>656]);
-        Country::create(['name' => 'San Martín (Francia)', 'id_minsal' =>657]);
-        Country::create(['name' => 'San Pedro y Miquelón', 'id_minsal' =>658]);
-        Country::create(['name' => 'San Vicente y las Granadinas', 'id_minsal' =>659]);
-        Country::create(['name' => 'Santa Elena', 'id_minsal' =>660]);
-        Country::create(['name' => 'Santa Lucía', 'id_minsal' =>661]);
-        Country::create(['name' => 'Santo Tomé y Príncipe', 'id_minsal' =>662]);
-        Country::create(['name' => 'Senegal', 'id_minsal' =>663]);
-        Country::create(['name' => 'Serbia', 'id_minsal' =>664]);
-        Country::create(['name' => 'Seychelles', 'id_minsal' =>665]);
-        Country::create(['name' => 'Sierra Leona', 'id_minsal' =>666]);
-        Country::create(['name' => 'Singapur', 'id_minsal' =>667]);
-        Country::create(['name' => 'Siria', 'id_minsal' =>668]);
-        Country::create(['name' => 'Somalia', 'id_minsal' =>669]);
-        Country::create(['name' => 'Sri lanka', 'id_minsal' =>670]);
-        Country::create(['name' => 'Sudáfrica', 'id_minsal' =>671]);
-        Country::create(['name' => 'Sudán', 'id_minsal' =>672]);
-        Country::create(['name' => 'Suecia', 'id_minsal' =>673]);
-        Country::create(['name' => 'Suiza', 'id_minsal' =>674]);
-        Country::create(['name' => 'Surinám', 'id_minsal' =>675]);
-        Country::create(['name' => 'Svalbard y Jan Mayen', 'id_minsal' =>676]);
-        Country::create(['name' => 'Swazilandia', 'id_minsal' =>677]);
-        Country::create(['name' => 'Tadjikistán', 'id_minsal' =>678]);
-        Country::create(['name' => 'Tailandia', 'id_minsal' =>679]);
-        Country::create(['name' => 'Taiwán', 'id_minsal' =>680]);
-        Country::create(['name' => 'Tanzania', 'id_minsal' =>681]);
-        Country::create(['name' => 'Territorio Británico del Océano Índico', 'id_minsal' =>682]);
-        Country::create(['name' => 'Territorios Australes y Antárticas Franceses', 'id_minsal' =>683]);
-        Country::create(['name' => 'Timor Oriental', 'id_minsal' =>684]);
-        Country::create(['name' => 'Togo', 'id_minsal' =>685]);
-        Country::create(['name' => 'Tokelau', 'id_minsal' =>686]);
-        Country::create(['name' => 'Tonga', 'id_minsal' =>687]);
-        Country::create(['name' => 'Trinidad y Tobago', 'id_minsal' =>688]);
-        Country::create(['name' => 'Tunez', 'id_minsal' =>689]);
-        Country::create(['name' => 'Turkmenistán', 'id_minsal' =>690]);
-        Country::create(['name' => 'Turquía', 'id_minsal' =>691]);
-        Country::create(['name' => 'Tuvalu', 'id_minsal' =>692]);
-        Country::create(['name' => 'Ucrania', 'id_minsal' =>693]);
-        Country::create(['name' => 'Uganda', 'id_minsal' =>694]);
-        Country::create(['name' => 'Uruguay', 'id_minsal' =>695]);
-        Country::create(['name' => 'Uzbekistán', 'id_minsal' =>696]);
-        Country::create(['name' => 'Vanuatu', 'id_minsal' =>697]);
-        Country::create(['name' => 'Venezuela', 'id_minsal' =>698]);
-        Country::create(['name' => 'Vietnam', 'id_minsal' =>699]);
-        Country::create(['name' => 'Wallis y Futuna', 'id_minsal' =>700]);
-        Country::create(['name' => 'Yemen', 'id_minsal' =>701]);
-        Country::create(['name' => 'Yibuti', 'id_minsal' =>702]);
-        Country::create(['name' => 'Zambia', 'id_minsal' =>703]);
-        Country::create(['name' => 'Zimbabue', 'id_minsal' =>704]);
+        $countries = [
+            ['name' => 'Afganistán', 'id_minsal' =>459],
+            ['name' => 'Albania', 'id_minsal' =>460],
+            ['name' => 'Alemania', 'id_minsal' =>461],
+            ['name' => 'Algeria', 'id_minsal' =>462],
+            ['name' => 'Andorra', 'id_minsal' =>463],
+            ['name' => 'Angola', 'id_minsal' =>464],
+            ['name' => 'Anguila', 'id_minsal' =>465],
+            ['name' => 'Antártida', 'id_minsal' =>466],
+            ['name' => 'Antigua y Barbuda', 'id_minsal' =>467],
+            ['name' => 'Antillas Neerlandesas', 'id_minsal' =>468],
+            ['name' => 'Arabia Saudita', 'id_minsal' =>469],
+            ['name' => 'Argentina', 'id_minsal' =>470],
+            ['name' => 'Armenia', 'id_minsal' =>471],
+            ['name' => 'Aruba', 'id_minsal' =>472],
+            ['name' => 'Australia', 'id_minsal' =>473],
+            ['name' => 'Austria', 'id_minsal' =>474],
+            ['name' => 'Azerbayán', 'id_minsal' =>475],
+            ['name' => 'Bélgica', 'id_minsal' =>476],
+            ['name' => 'Bahamas', 'id_minsal' =>477],
+            ['name' => 'Bahrein', 'id_minsal' =>478],
+            ['name' => 'Bangladesh', 'id_minsal' =>479],
+            ['name' => 'Barbados', 'id_minsal' =>480],
+            ['name' => 'Belice', 'id_minsal' =>481],
+            ['name' => 'Benín', 'id_minsal' =>482],
+            ['name' => 'Bhután', 'id_minsal' =>483],
+            ['name' => 'Bielorrusia', 'id_minsal' =>484],
+            ['name' => 'Birmania', 'id_minsal' =>485],
+            ['name' => 'Bolivia', 'id_minsal' =>486],
+            ['name' => 'Bosnia y Herzegovina', 'id_minsal' =>487],
+            ['name' => 'Botsuana', 'id_minsal' =>488],
+            ['name' => 'Brasil', 'id_minsal' =>489],
+            ['name' => 'Brunéi', 'id_minsal' =>490],
+            ['name' => 'Bulgaria', 'id_minsal' =>491],
+            ['name' => 'Burkina Faso', 'id_minsal' =>492],
+            ['name' => 'Burundi', 'id_minsal' =>493],
+            ['name' => 'Cabo Verde', 'id_minsal' =>494],
+            ['name' => 'Camboya', 'id_minsal' =>495],
+            ['name' => 'Camerún', 'id_minsal' =>496],
+            ['name' => 'Canadá', 'id_minsal' =>497],
+            ['name' => 'Chad', 'id_minsal' =>498],
+            ['name' => 'Chile', 'id_minsal' =>499],
+            ['name' => 'China', 'id_minsal' =>500],
+            ['name' => 'Chipre', 'id_minsal' =>501],
+            ['name' => 'Ciudad del Vaticano', 'id_minsal' =>502],
+            ['name' => 'Colombia', 'id_minsal' =>503],
+            ['name' => 'Comoras', 'id_minsal' =>504],
+            ['name' => 'Congo', 'id_minsal' =>505],
+            ['name' => 'Congo', 'id_minsal' =>506],
+            ['name' => 'Corea del Norte', 'id_minsal' =>507],
+            ['name' => 'Corea del Sur', 'id_minsal' =>508],
+            ['name' => 'Costa de Marfil', 'id_minsal' =>509],
+            ['name' => 'Costa Rica', 'id_minsal' =>510],
+            ['name' => 'Croacia', 'id_minsal' =>511],
+            ['name' => 'Cuba', 'id_minsal' =>512],
+            ['name' => 'Dinamarca', 'id_minsal' =>513],
+            ['name' => 'Dominica', 'id_minsal' =>514],
+            ['name' => 'Ecuador', 'id_minsal' =>515],
+            ['name' => 'Egipto', 'id_minsal' =>516],
+            ['name' => 'El Salvador', 'id_minsal' =>517],
+            ['name' => 'Emiratos Árabes Unidos', 'id_minsal' =>518],
+            ['name' => 'Eritrea', 'id_minsal' =>519],
+            ['name' => 'Eslovaquia', 'id_minsal' =>520],
+            ['name' => 'Eslovenia', 'id_minsal' =>521],
+            ['name' => 'España', 'id_minsal' =>522],
+            ['name' => 'Estados Unidos de América', 'id_minsal' =>523],
+            ['name' => 'Estonia', 'id_minsal' =>524],
+            ['name' => 'Etiopía', 'id_minsal' =>525],
+            ['name' => 'Filipinas', 'id_minsal' =>526],
+            ['name' => 'Finlandia', 'id_minsal' =>527],
+            ['name' => 'Fiyi', 'id_minsal' =>528],
+            ['name' => 'Francia', 'id_minsal' =>529],
+            ['name' => 'Gabón', 'id_minsal' =>530],
+            ['name' => 'Gambia', 'id_minsal' =>531],
+            ['name' => 'Georgia', 'id_minsal' =>532],
+            ['name' => 'Ghana', 'id_minsal' =>533],
+            ['name' => 'Gibraltar', 'id_minsal' =>534],
+            ['name' => 'Granada', 'id_minsal' =>535],
+            ['name' => 'Grecia', 'id_minsal' =>536],
+            ['name' => 'Groenlandia', 'id_minsal' =>537],
+            ['name' => 'Guadalupe', 'id_minsal' =>538],
+            ['name' => 'Guam', 'id_minsal' =>539],
+            ['name' => 'Guatemala', 'id_minsal' =>540],
+            ['name' => 'Guayana Francesa', 'id_minsal' =>541],
+            ['name' => 'Guernsey', 'id_minsal' =>542],
+            ['name' => 'Guinea', 'id_minsal' =>543],
+            ['name' => 'Guinea Ecuatorial', 'id_minsal' =>544],
+            ['name' => 'Guinea-Bissau', 'id_minsal' =>545],
+            ['name' => 'Guyana', 'id_minsal' =>546],
+            ['name' => 'Haití', 'id_minsal' =>547],
+            ['name' => 'Honduras', 'id_minsal' =>548],
+            ['name' => 'Hong kong', 'id_minsal' =>549],
+            ['name' => 'Hungría', 'id_minsal' =>550],
+            ['name' => 'India', 'id_minsal' =>551],
+            ['name' => 'Indonesia', 'id_minsal' =>552],
+            ['name' => 'Irán', 'id_minsal' =>553],
+            ['name' => 'Irak', 'id_minsal' =>554],
+            ['name' => 'Irlanda', 'id_minsal' =>555],
+            ['name' => 'Isla Bouvet', 'id_minsal' =>556],
+            ['name' => 'Isla de Man', 'id_minsal' =>557],
+            ['name' => 'Isla de Navidad', 'id_minsal' =>558],
+            ['name' => 'Isla Norfolk', 'id_minsal' =>559],
+            ['name' => 'Islandia', 'id_minsal' =>560],
+            ['name' => 'Islas Bermudas', 'id_minsal' =>561],
+            ['name' => 'Islas Caimán', 'id_minsal' =>562],
+            ['name' => 'Islas Cocos (Keeling)', 'id_minsal' =>563],
+            ['name' => 'Islas Cook', 'id_minsal' =>564],
+            ['name' => 'Islas de Åland', 'id_minsal' =>565],
+            ['name' => 'Islas Feroe', 'id_minsal' =>566],
+            ['name' => 'Islas Georgias del Sur y Sandwich del Sur', 'id_minsal' =>567],
+            ['name' => 'Islas Heard y McDonald', 'id_minsal' =>568],
+            ['name' => 'Islas Maldivas', 'id_minsal' =>569],
+            ['name' => 'Islas Malvinas', 'id_minsal' =>570],
+            ['name' => 'Islas Marianas del Norte', 'id_minsal' =>571],
+            ['name' => 'Islas Marshall', 'id_minsal' =>572],
+            ['name' => 'Islas Pitcairn', 'id_minsal' =>573],
+            ['name' => 'Islas Salomón', 'id_minsal' =>574],
+            ['name' => 'Islas Turcas y Caicos', 'id_minsal' =>575],
+            ['name' => 'Islas Ultramarinas Menores de Estados Unidos', 'id_minsal' =>576],
+            ['name' => 'Islas Vírgenes Británicas', 'id_minsal' =>577],
+            ['name' => 'Islas Vírgenes de los Estados Unidos', 'id_minsal' =>578],
+            ['name' => 'Israel', 'id_minsal' =>579],
+            ['name' => 'Italia', 'id_minsal' =>580],
+            ['name' => 'Jamaica', 'id_minsal' =>581],
+            ['name' => 'Japón', 'id_minsal' =>582],
+            ['name' => 'Jersey', 'id_minsal' =>583],
+            ['name' => 'Jordania', 'id_minsal' =>584],
+            ['name' => 'Kazajistán', 'id_minsal' =>585],
+            ['name' => 'Kenia', 'id_minsal' =>586],
+            ['name' => 'Kirgizstán', 'id_minsal' =>587],
+            ['name' => 'Kiribati', 'id_minsal' =>588],
+            ['name' => 'Kuwait', 'id_minsal' =>589],
+            ['name' => 'Líbano', 'id_minsal' =>590],
+            ['name' => 'Laos', 'id_minsal' =>591],
+            ['name' => 'Lesoto', 'id_minsal' =>592],
+            ['name' => 'Letonia', 'id_minsal' =>593],
+            ['name' => 'Liberia', 'id_minsal' =>594],
+            ['name' => 'Libia', 'id_minsal' =>595],
+            ['name' => 'Liechtenstein', 'id_minsal' =>596],
+            ['name' => 'Lituania', 'id_minsal' =>597],
+            ['name' => 'Luxemburgo', 'id_minsal' =>598],
+            ['name' => 'México', 'id_minsal' =>599],
+            ['name' => 'Mónaco', 'id_minsal' =>600],
+            ['name' => 'Macao', 'id_minsal' =>601],
+            ['name' => 'Macedônia', 'id_minsal' =>602],
+            ['name' => 'Madagascar', 'id_minsal' =>603],
+            ['name' => 'Malasia', 'id_minsal' =>604],
+            ['name' => 'Malawi', 'id_minsal' =>605],
+            ['name' => 'Mali', 'id_minsal' =>606],
+            ['name' => 'Malta', 'id_minsal' =>607],
+            ['name' => 'Marruecos', 'id_minsal' =>608],
+            ['name' => 'Martinica', 'id_minsal' =>609],
+            ['name' => 'Mauricio', 'id_minsal' =>610],
+            ['name' => 'Mauritania', 'id_minsal' =>611],
+            ['name' => 'Mayotte', 'id_minsal' =>612],
+            ['name' => 'Micronesia', 'id_minsal' =>613],
+            ['name' => 'Moldavia', 'id_minsal' =>614],
+            ['name' => 'Mongolia', 'id_minsal' =>615],
+            ['name' => 'Montenegro', 'id_minsal' =>616],
+            ['name' => 'Montserrat', 'id_minsal' =>617],
+            ['name' => 'Mozambique', 'id_minsal' =>618],
+            ['name' => 'Namibia', 'id_minsal' =>619],
+            ['name' => 'Nauru', 'id_minsal' =>620],
+            ['name' => 'Nepal', 'id_minsal' =>621],
+            ['name' => 'Nicaragua', 'id_minsal' =>622],
+            ['name' => 'Niger', 'id_minsal' =>623],
+            ['name' => 'Nigeria', 'id_minsal' =>624],
+            ['name' => 'Niue', 'id_minsal' =>625],
+            ['name' => 'Noruega', 'id_minsal' =>626],
+            ['name' => 'Nueva Caledonia', 'id_minsal' =>627],
+            ['name' => 'Nueva Zelanda', 'id_minsal' =>628],
+            ['name' => 'Omán', 'id_minsal' =>629],
+            ['name' => 'Países Bajos', 'id_minsal' =>630],
+            ['name' => 'Pakistán', 'id_minsal' =>631],
+            ['name' => 'Palau', 'id_minsal' =>632],
+            ['name' => 'Palestina', 'id_minsal' =>633],
+            ['name' => 'Panamá', 'id_minsal' =>634],
+            ['name' => 'Papúa Nueva Guinea', 'id_minsal' =>635],
+            ['name' => 'Paraguay', 'id_minsal' =>636],
+            ['name' => 'Perú', 'id_minsal' =>637],
+            ['name' => 'Polinesia Francesa', 'id_minsal' =>638],
+            ['name' => 'Polonia', 'id_minsal' =>639],
+            ['name' => 'Portugal', 'id_minsal' =>640],
+            ['name' => 'Puerto Rico', 'id_minsal' =>641],
+            ['name' => 'Qatar', 'id_minsal' =>642],
+            ['name' => 'Reino Unido', 'id_minsal' =>643],
+            ['name' => 'República Centroafricana', 'id_minsal' =>644],
+            ['name' => 'República Checa', 'id_minsal' =>645],
+            ['name' => 'República Dominicana', 'id_minsal' =>646],
+            ['name' => 'Reunión', 'id_minsal' =>647],
+            ['name' => 'Ruanda', 'id_minsal' =>648],
+            ['name' => 'Rumanía', 'id_minsal' =>649],
+            ['name' => 'Rusia', 'id_minsal' =>650],
+            ['name' => 'Sahara Occidental', 'id_minsal' =>651],
+            ['name' => 'Samoa', 'id_minsal' =>652],
+            ['name' => 'Samoa Americana', 'id_minsal' =>653],
+            ['name' => 'San Bartolomé', 'id_minsal' =>654],
+            ['name' => 'San Cristóbal y Nieves', 'id_minsal' =>655],
+            ['name' => 'San Marino', 'id_minsal' =>656],
+            ['name' => 'San Martín (Francia)', 'id_minsal' =>657],
+            ['name' => 'San Pedro y Miquelón', 'id_minsal' =>658],
+            ['name' => 'San Vicente y las Granadinas', 'id_minsal' =>659],
+            ['name' => 'Santa Elena', 'id_minsal' =>660],
+            ['name' => 'Santa Lucía', 'id_minsal' =>661],
+            ['name' => 'Santo Tomé y Príncipe', 'id_minsal' =>662],
+            ['name' => 'Senegal', 'id_minsal' =>663],
+            ['name' => 'Serbia', 'id_minsal' =>664],
+            ['name' => 'Seychelles', 'id_minsal' =>665],
+            ['name' => 'Sierra Leona', 'id_minsal' =>666],
+            ['name' => 'Singapur', 'id_minsal' =>667],
+            ['name' => 'Siria', 'id_minsal' =>668],
+            ['name' => 'Somalia', 'id_minsal' =>669],
+            ['name' => 'Sri lanka', 'id_minsal' =>670],
+            ['name' => 'Sudáfrica', 'id_minsal' =>671],
+            ['name' => 'Sudán', 'id_minsal' =>672],
+            ['name' => 'Suecia', 'id_minsal' =>673],
+            ['name' => 'Suiza', 'id_minsal' =>674],
+            ['name' => 'Surinám', 'id_minsal' =>675],
+            ['name' => 'Svalbard y Jan Mayen', 'id_minsal' =>676],
+            ['name' => 'Swazilandia', 'id_minsal' =>677],
+            ['name' => 'Tadjikistán', 'id_minsal' =>678],
+            ['name' => 'Tailandia', 'id_minsal' =>679],
+            ['name' => 'Taiwán', 'id_minsal' =>680],
+            ['name' => 'Tanzania', 'id_minsal' =>681],
+            ['name' => 'Territorio Británico del Océano Índico', 'id_minsal' =>682],
+            ['name' => 'Territorios Australes y Antárticas Franceses', 'id_minsal' =>683],
+            ['name' => 'Timor Oriental', 'id_minsal' =>684],
+            ['name' => 'Togo', 'id_minsal' =>685],
+            ['name' => 'Tokelau', 'id_minsal' =>686],
+            ['name' => 'Tonga', 'id_minsal' =>687],
+            ['name' => 'Trinidad y Tobago', 'id_minsal' =>688],
+            ['name' => 'Tunez', 'id_minsal' =>689],
+            ['name' => 'Turkmenistán', 'id_minsal' =>690],
+            ['name' => 'Turquía', 'id_minsal' =>691],
+            ['name' => 'Tuvalu', 'id_minsal' =>692],
+            ['name' => 'Ucrania', 'id_minsal' =>693],
+            ['name' => 'Uganda', 'id_minsal' =>694],
+            ['name' => 'Uruguay', 'id_minsal' =>695],
+            ['name' => 'Uzbekistán', 'id_minsal' =>696],
+            ['name' => 'Vanuatu', 'id_minsal' =>697],
+            ['name' => 'Venezuela', 'id_minsal' =>698],
+            ['name' => 'Vietnam', 'id_minsal' =>699],
+            ['name' => 'Wallis y Futuna', 'id_minsal' =>700],
+            ['name' => 'Yemen', 'id_minsal' =>701],
+            ['name' => 'Yibuti', 'id_minsal' =>702],
+            ['name' => 'Zambia', 'id_minsal' =>703],
+            ['name' => 'Zimbabue', 'id_minsal' =>704],
+        ];
+
+        Country::insert($countries);
 
     }
 }

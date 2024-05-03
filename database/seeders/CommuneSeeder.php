@@ -13,352 +13,356 @@ class CommuneSeeder extends Seeder
      */
     public function run(): void
     {
-        Commune::create(['name'=>'Arica', 'region_id' => 15, 'code_deis' => 15101]);
-        Commune::create(['name'=>'Putre', 'region_id' => 15, 'code_deis' => 15201]);
-        Commune::create(['name'=>'General Lagos', 'region_id' => 15, 'code_deis' => 15202]);
-        Commune::create(['name'=>'Camarones', 'region_id' => 15, 'code_deis' => 15102]);
-        Commune::create(['name'=>'Iquique', 'region_id' => 1, 'code_deis' => 1101]);
-        Commune::create(['name'=>'Pica', 'region_id' => 1, 'code_deis' => 1405]);
-        Commune::create(['name'=>'Alto Hospicio', 'region_id' => 1, 'code_deis' => 1107]);
-        Commune::create(['name'=>'Pozo Almonte', 'region_id' => 1, 'code_deis' => 1401]);
-        Commune::create(['name'=>'Huara', 'region_id' => 1, 'code_deis' => 1404]);
-        Commune::create(['name'=>'Camiña', 'region_id' => 1, 'code_deis' => 1402]);
-        Commune::create(['name'=>'Colchane', 'region_id' => 1, 'code_deis' => 1403]);
-        Commune::create(['name'=>'Antofagasta', 'region_id' => 2, 'code_deis' => 2101]);
-        Commune::create(['name'=>'Calama', 'region_id' => 2, 'code_deis' => 2201]);
-        Commune::create(['name'=>'Tocopilla', 'region_id' => 2, 'code_deis' => 2301]);
-        Commune::create(['name'=>'Taltal', 'region_id' => 2, 'code_deis' => 2104]);
-        Commune::create(['name'=>'Mejillones', 'region_id' => 2, 'code_deis' => 2102]);
-        Commune::create(['name'=>'Maria Elena', 'region_id' => 2, 'code_deis' => 2302]);
-        Commune::create(['name'=>'San Pedro de Atacama', 'region_id' => 2, 'code_deis' => 2203]);
-        Commune::create(['name'=>'Sierra Gorda', 'region_id' => 2, 'code_deis' => 2103]);
-        Commune::create(['name'=>'Ollagüe', 'region_id' => 2, 'code_deis' => 2202]);
-        Commune::create(['name'=>'Copiapó', 'region_id' => 3, 'code_deis' => 3101]);
-        Commune::create(['name'=>'Chañaral', 'region_id' => 3, 'code_deis' => 3201]);
-        Commune::create(['name'=>'Diego de Almagro', 'region_id' => 3, 'code_deis' => 3202]);
-        Commune::create(['name'=>'Vallenar', 'region_id' => 3, 'code_deis' => 3301]);
-        Commune::create(['name'=>'Huasco', 'region_id' => 3, 'code_deis' => 3304]);
-        Commune::create(['name'=>'Caldera', 'region_id' => 3, 'code_deis' => 3102]);
-        Commune::create(['name'=>'Tierra Amarilla', 'region_id' => 3, 'code_deis' => 3103]);
-        Commune::create(['name'=>'Freirina', 'region_id' => 3, 'code_deis' => 3303]);
-        Commune::create(['name'=>'Alto del Carmen', 'region_id' => 3, 'code_deis' => 3302]);
-        Commune::create(['name'=>'La Serena', 'region_id' => 4, 'code_deis' => 4101]);
-        Commune::create(['name'=>'Monte Patria', 'region_id' => 4, 'code_deis' => 4303]);
-        Commune::create(['name'=>'Coquimbo', 'region_id' => 4, 'code_deis' => 4102]);
-        Commune::create(['name'=>'Ovalle', 'region_id' => 4, 'code_deis' => 4301]);
-        Commune::create(['name'=>'Illapel', 'region_id' => 4, 'code_deis' => 4201]);
-        Commune::create(['name'=>'Salamanca', 'region_id' => 4, 'code_deis' => 4204]);
-        Commune::create(['name'=>'Combarbalá', 'region_id' => 4, 'code_deis' => 4302]);
-        Commune::create(['name'=>'Andacollo', 'region_id' => 4, 'code_deis' => 4103]);
-        Commune::create(['name'=>'Vicuña', 'region_id' => 4, 'code_deis' => 4106]);
-        Commune::create(['name'=>'Los Vilos', 'region_id' => 4, 'code_deis' => 4203]);
-        Commune::create(['name'=>'Paihuano', 'region_id' => 4, 'code_deis' => 4105]);
-        Commune::create(['name'=>'Punitaqui', 'region_id' => 4, 'code_deis' => 4304]);
-        Commune::create(['name'=>'Canela', 'region_id' => 4, 'code_deis' => 4202]);
-        Commune::create(['name'=>'Río Hurtado', 'region_id' => 4, 'code_deis' => 4305]);
-        Commune::create(['name'=>'La Higuera', 'region_id' => 4, 'code_deis' => 4104]);
-        Commune::create(['name'=>'Valparaíso', 'region_id' => 5, 'code_deis' => 5101]);
-        Commune::create(['name'=>'San Antonio', 'region_id' => 5, 'code_deis' => 5601]);
-        Commune::create(['name'=>'Casablanca', 'region_id' => 5, 'code_deis' => 5102]);
-        Commune::create(['name'=>'Cartagena', 'region_id' => 5, 'code_deis' => 5603]);
-        Commune::create(['name'=>'Algarrobo', 'region_id' => 5, 'code_deis' => 5602]);
-        Commune::create(['name'=>'El Quisco', 'region_id' => 5, 'code_deis' => 5604]);
-        Commune::create(['name'=>'Santo Domingo', 'region_id' => 5, 'code_deis' => 5606]);
-        Commune::create(['name'=>'El Tabo', 'region_id' => 5, 'code_deis' => 5605]);
-        Commune::create(['name'=>'Juan Fernández', 'region_id' => 5, 'code_deis' => 5104]);
-        Commune::create(['name'=>'Viña del Mar', 'region_id' => 5, 'code_deis' => 5109]);
-        Commune::create(['name'=>'Quillota', 'region_id' => 5, 'code_deis' => 5501]);
-        Commune::create(['name'=>'Quilpue', 'region_id' => 5, 'code_deis' => 5801]);
-        Commune::create(['name'=>'Calera', 'region_id' => 5, 'code_deis' => 5502]);
-        Commune::create(['name'=>'Limache', 'region_id' => 5, 'code_deis' => 5802]);
-        Commune::create(['name'=>'La Ligua', 'region_id' => 5, 'code_deis' => 5401]);
-        Commune::create(['name'=>'Cabildo', 'region_id' => 5, 'code_deis' => 5402]);
-        Commune::create(['name'=>'Petorca', 'region_id' => 5, 'code_deis' => 5404]);
-        Commune::create(['name'=>'Quintero', 'region_id' => 5, 'code_deis' => 5107]);
-        Commune::create(['name'=>'Villa Alemana', 'region_id' => 5, 'code_deis' => 5804]);
-        Commune::create(['name'=>'Con Con', 'region_id' => 5, 'code_deis' => 5103]);
-        Commune::create(['name'=>'La Cruz', 'region_id' => 5, 'code_deis' => 5504]);
-        Commune::create(['name'=>'Puchuncaví', 'region_id' => 5, 'code_deis' => 5105]);
-        Commune::create(['name'=>'Olmué', 'region_id' => 5, 'code_deis' => 5803]);
-        Commune::create(['name'=>'Hijuelas', 'region_id' => 5, 'code_deis' => 5503]);
-        Commune::create(['name'=>'Nogales', 'region_id' => 5, 'code_deis' => 5506]);
-        Commune::create(['name'=>'Papudo', 'region_id' => 5, 'code_deis' => 5403]);
-        Commune::create(['name'=>'Zapallar', 'region_id' => 5, 'code_deis' => 5405]);
-        Commune::create(['name'=>'San Felipe', 'region_id' => 5, 'code_deis' => 5701]);
-        Commune::create(['name'=>'Los Andes', 'region_id' => 5, 'code_deis' => 5301]);
-        Commune::create(['name'=>'Llaillay', 'region_id' => 5, 'code_deis' => 5703]);
-        Commune::create(['name'=>'Putaendo', 'region_id' => 5, 'code_deis' => 5705]);
-        Commune::create(['name'=>'Rinconada', 'region_id' => 5, 'code_deis' => 5303]);
-        Commune::create(['name'=>'San Esteban', 'region_id' => 5, 'code_deis' => 5304]);
-        Commune::create(['name'=>'Catemu', 'region_id' => 5, 'code_deis' => 5702]);
-        Commune::create(['name'=>'Calle Larga', 'region_id' => 5, 'code_deis' => 5302]);
-        Commune::create(['name'=>'Santa Maria', 'region_id' => 5, 'code_deis' => 5706]);
-        Commune::create(['name'=>'Panquehue', 'region_id' => 5, 'code_deis' => 5704]);
-        Commune::create(['name'=>'Independencia', 'region_id' => 13, 'code_deis' => 13108]);
-        Commune::create(['name'=>'Tiltil', 'region_id' => 13, 'code_deis' => 13303]);
-        Commune::create(['name'=>'Recoleta', 'region_id' => 13, 'code_deis' => 13127]);
-        Commune::create(['name'=>'Huechuraba', 'region_id' => 13, 'code_deis' => 13107]);
-        Commune::create(['name'=>'Quilicura', 'region_id' => 13, 'code_deis' => 13125]);
-        Commune::create(['name'=>'Colina', 'region_id' => 13, 'code_deis' => 13301]);
-        Commune::create(['name'=>'Conchalí', 'region_id' => 13, 'code_deis' => 13104]);
-        Commune::create(['name'=>'Lampa', 'region_id' => 13, 'code_deis' => 13302]);
-        Commune::create(['name'=>'Santiago', 'region_id' => 13, 'code_deis' => 13101]);
-        Commune::create(['name'=>'Curacaví', 'region_id' => 13, 'code_deis' => 13503]);
-        Commune::create(['name'=>'Quinta Normal', 'region_id' => 13, 'code_deis' => 13126]);
-        Commune::create(['name'=>'Talagante', 'region_id' => 13, 'code_deis' => 13601]);
-        Commune::create(['name'=>'Peñaflor', 'region_id' => 13, 'code_deis' => 13605]);
-        Commune::create(['name'=>'Melipilla', 'region_id' => 13, 'code_deis' => 13501]);
-        Commune::create(['name'=>'Pudahuel', 'region_id' => 13, 'code_deis' => 13124]);
-        Commune::create(['name'=>'Lo Prado', 'region_id' => 13, 'code_deis' => 13117]);
-        Commune::create(['name'=>'Cerro Navia', 'region_id' => 13, 'code_deis' => 13103]);
-        Commune::create(['name'=>'Renca', 'region_id' => 13, 'code_deis' => 13128]);
-        Commune::create(['name'=>'Padre Hurtado', 'region_id' => 13, 'code_deis' => 13604]);
-        Commune::create(['name'=>'El Monte', 'region_id' => 13, 'code_deis' => 13602]);
-        Commune::create(['name'=>'Isla de Maipo', 'region_id' => 13, 'code_deis' => 13603]);
-        Commune::create(['name'=>'Maria Pinto', 'region_id' => 13, 'code_deis' => 13504]);
-        Commune::create(['name'=>'San Pedro', 'region_id' => 13, 'code_deis' => 13505]);
-        Commune::create(['name'=>'Alhué', 'region_id' => 13, 'code_deis' => 13502]);
-        Commune::create(['name'=>'Maipú', 'region_id' => 13, 'code_deis' => 13119]);
-        Commune::create(['name'=>'Estación Central', 'region_id' => 13, 'code_deis' => 13106]);
-        Commune::create(['name'=>'Cerrillos', 'region_id' => 13, 'code_deis' => 13102]);
-        Commune::create(['name'=>'Pedro Aguirre Cerda', 'region_id' => 13, 'code_deis' => 13121]);
-        Commune::create(['name'=>'Providencia', 'region_id' => 13, 'code_deis' => 13123]);
-        Commune::create(['name'=>'Peñalolén', 'region_id' => 13, 'code_deis' => 13122]);
-        Commune::create(['name'=>'Isla de Pascua', 'region_id' => 5, 'code_deis' => 5201]);
-        Commune::create(['name'=>'Vitacura', 'region_id' => 13, 'code_deis' => 13132]);
-        Commune::create(['name'=>'Las Condes', 'region_id' => 13, 'code_deis' => 13114]);
-        Commune::create(['name'=>'Macul', 'region_id' => 13, 'code_deis' => 13118]);
-        Commune::create(['name'=>'Ñuñoa', 'region_id' => 13, 'code_deis' => 13120]);
-        Commune::create(['name'=>'La Reina', 'region_id' => 13, 'code_deis' => 13113]);
-        Commune::create(['name'=>'Lo Barnechea', 'region_id' => 13, 'code_deis' => 13115]);
-        Commune::create(['name'=>'San Miguel', 'region_id' => 13, 'code_deis' => 13130]);
-        Commune::create(['name'=>'Buin', 'region_id' => 13, 'code_deis' => 13402]);
-        Commune::create(['name'=>'Puente Alto', 'region_id' => 13, 'code_deis' => 13201]);
-        Commune::create(['name'=>'San Bernardo', 'region_id' => 13, 'code_deis' => 13401]);
-        Commune::create(['name'=>'Lo Espejo', 'region_id' => 13, 'code_deis' => 13116]);
-        Commune::create(['name'=>'San Joaquín', 'region_id' => 13, 'code_deis' => 13129]);
-        Commune::create(['name'=>'Paine', 'region_id' => 13, 'code_deis' => 13404]);
-        Commune::create(['name'=>'El Bosque', 'region_id' => 13, 'code_deis' => 13105]);
-        Commune::create(['name'=>'La Cisterna', 'region_id' => 13, 'code_deis' => 13109]);
-        Commune::create(['name'=>'La Granja', 'region_id' => 13, 'code_deis' => 13111]);
-        Commune::create(['name'=>'Calera de Tango', 'region_id' => 13, 'code_deis' => 13403]);
-        Commune::create(['name'=>'San José de Maipo', 'region_id' => 13, 'code_deis' => 13203]);
-        Commune::create(['name'=>'San Ramón', 'region_id' => 13, 'code_deis' => 13131]);
-        Commune::create(['name'=>'La Florida', 'region_id' => 13, 'code_deis' => 13110]);
-        Commune::create(['name'=>'La Pintana', 'region_id' => 13, 'code_deis' => 13112]);
-        Commune::create(['name'=>'Pirque', 'region_id' => 13, 'code_deis' => 13202]);
-        Commune::create(['name'=>'Rancagua', 'region_id' => 6, 'code_deis' => 6101]);
-        Commune::create(['name'=>'Graneros', 'region_id' => 6, 'code_deis' => 6106]);
-        Commune::create(['name'=>'Coinco', 'region_id' => 6, 'code_deis' => 6103]);
-        Commune::create(['name'=>'Peumo', 'region_id' => 6, 'code_deis' => 6112]);
-        Commune::create(['name'=>'Rengo', 'region_id' => 6, 'code_deis' => 6115]);
-        Commune::create(['name'=>'San Vicente', 'region_id' => 6, 'code_deis' => 6117]);
-        Commune::create(['name'=>'Pichidegua', 'region_id' => 6, 'code_deis' => 6113]);
-        Commune::create(['name'=>'San Fernando', 'region_id' => 6, 'code_deis' => 6301]);
-        Commune::create(['name'=>'Chimbarongo', 'region_id' => 6, 'code_deis' => 6303]);
-        Commune::create(['name'=>'Nancagua', 'region_id' => 6, 'code_deis' => 6305]);
-        Commune::create(['name'=>'Santa Cruz', 'region_id' => 6, 'code_deis' => 6310]);
-        Commune::create(['name'=>'Marchihue', 'region_id' => 6, 'code_deis' => 6204]);
-        Commune::create(['name'=>'Pichilemu', 'region_id' => 6, 'code_deis' => 6201]);
-        Commune::create(['name'=>'Lolol', 'region_id' => 6, 'code_deis' => 6304]);
-        Commune::create(['name'=>'Litueche', 'region_id' => 6, 'code_deis' => 6203]);
-        Commune::create(['name'=>'Machalí', 'region_id' => 6, 'code_deis' => 6108]);
-        Commune::create(['name'=>'Mostazal', 'region_id' => 6, 'code_deis' => 6110]);
-        Commune::create(['name'=>'Codegua', 'region_id' => 6, 'code_deis' => 6102]);
-        Commune::create(['name'=>'Doñihue', 'region_id' => 6, 'code_deis' => 6105]);
-        Commune::create(['name'=>'Coltauco', 'region_id' => 6, 'code_deis' => 6104]);
-        Commune::create(['name'=>'Requínoa', 'region_id' => 6, 'code_deis' => 6116]);
-        Commune::create(['name'=>'Las Cabras', 'region_id' => 6, 'code_deis' => 6107]);
-        Commune::create(['name'=>'Quinta de Tilcoco', 'region_id' => 6, 'code_deis' => 6114]);
-        Commune::create(['name'=>'Peralillo', 'region_id' => 6, 'code_deis' => 6307]);
-        Commune::create(['name'=>'La Estrella', 'region_id' => 6, 'code_deis' => 6202]);
-        Commune::create(['name'=>'Chepica', 'region_id' => 6, 'code_deis' => 6302]);
-        Commune::create(['name'=>'Paredones', 'region_id' => 6, 'code_deis' => 6206]);
-        Commune::create(['name'=>'Placilla', 'region_id' => 6, 'code_deis' => 6308]);
-        Commune::create(['name'=>'Navidad', 'region_id' => 6, 'code_deis' => 6205]);
-        Commune::create(['name'=>'Malloa', 'region_id' => 6, 'code_deis' => 6109]);
-        Commune::create(['name'=>'Olivar', 'region_id' => 6, 'code_deis' => 6111]);
-        Commune::create(['name'=>'Palmilla', 'region_id' => 6, 'code_deis' => 6306]);
-        Commune::create(['name'=>'Pumanque', 'region_id' => 6, 'code_deis' => 6309]);
-        Commune::create(['name'=>'Talca', 'region_id' => 7, 'code_deis' => 7101]);
-        Commune::create(['name'=>'Curicó', 'region_id' => 7, 'code_deis' => 7301]);
-        Commune::create(['name'=>'Teno', 'region_id' => 7, 'code_deis' => 7308]);
-        Commune::create(['name'=>'Molina', 'region_id' => 7, 'code_deis' => 7304]);
-        Commune::create(['name'=>'Hualañé', 'region_id' => 7, 'code_deis' => 7302]);
-        Commune::create(['name'=>'Licantén', 'region_id' => 7, 'code_deis' => 7303]);
-        Commune::create(['name'=>'Curepto', 'region_id' => 7, 'code_deis' => 7103]);
-        Commune::create(['name'=>'Constitución', 'region_id' => 7, 'code_deis' => 7102]);
-        Commune::create(['name'=>'Linares', 'region_id' => 7, 'code_deis' => 7401]);
-        Commune::create(['name'=>'San Javier', 'region_id' => 7, 'code_deis' => 7406]);
-        Commune::create(['name'=>'Parral', 'region_id' => 7, 'code_deis' => 7404]);
-        Commune::create(['name'=>'Cauquenes', 'region_id' => 7, 'code_deis' => 7201]);
-        Commune::create(['name'=>'Chanco', 'region_id' => 7, 'code_deis' => 7202]);
-        Commune::create(['name'=>'Villa Alegre', 'region_id' => 7, 'code_deis' => 7407]);
-        Commune::create(['name'=>'Pencahue', 'region_id' => 7, 'code_deis' => 7107]);
-        Commune::create(['name'=>'San Clemente', 'region_id' => 7, 'code_deis' => 7109]);
-        Commune::create(['name'=>'Maule', 'region_id' => 7, 'code_deis' => 7105]);
-        Commune::create(['name'=>'Pelarco', 'region_id' => 7, 'code_deis' => 7106]);
-        Commune::create(['name'=>'Río Claro', 'region_id' => 7, 'code_deis' => 7108]);
-        Commune::create(['name'=>'Colbún', 'region_id' => 7, 'code_deis' => 7402]);
-        Commune::create(['name'=>'Yerbas Buenas', 'region_id' => 7, 'code_deis' => 7408]);
-        Commune::create(['name'=>'Longaví', 'region_id' => 7, 'code_deis' => 7403]);
-        Commune::create(['name'=>'Retiro', 'region_id' => 7, 'code_deis' => 7405]);
-        Commune::create(['name'=>'Pelluhue', 'region_id' => 7, 'code_deis' => 7203]);
-        Commune::create(['name'=>'San Rafael', 'region_id' => 7, 'code_deis' => 7110]);
-        Commune::create(['name'=>'Sagrada Familia', 'region_id' => 7, 'code_deis' => 7307]);
-        Commune::create(['name'=>'Vichuquén', 'region_id' => 7, 'code_deis' => 7309]);
-        Commune::create(['name'=>'Romeral', 'region_id' => 7, 'code_deis' => 7306]);
-        Commune::create(['name'=>'Rauco', 'region_id' => 7, 'code_deis' => 7305]);
-        Commune::create(['name'=>'Empedrado', 'region_id' => 7, 'code_deis' => 7104]);
-        Commune::create(['name'=>'Chillán', 'region_id' => 16, 'code_deis' => 16101]);
-        Commune::create(['name'=>'San Carlos', 'region_id' => 16, 'code_deis' => 16301]);
-        Commune::create(['name'=>'Bulnes', 'region_id' => 16, 'code_deis' => 16102]);
-        Commune::create(['name'=>'Yungay', 'region_id' => 16, 'code_deis' => 16109]);
-        Commune::create(['name'=>'Quirihue', 'region_id' => 16, 'code_deis' => 16201]);
-        Commune::create(['name'=>'El Carmen', 'region_id' => 16, 'code_deis' => 16104]);
-        Commune::create(['name'=>'Coelemu', 'region_id' => 16, 'code_deis' => 16203]);
-        Commune::create(['name'=>'Portezuelo', 'region_id' => 16, 'code_deis' => 16205]);
-        Commune::create(['name'=>'Quillón', 'region_id' => 16, 'code_deis' => 16107]);
-        Commune::create(['name'=>'Cobquecura', 'region_id' => 16, 'code_deis' => 16202]);
-        Commune::create(['name'=>'San Ignacio', 'region_id' => 16, 'code_deis' => 16108]);
-        Commune::create(['name'=>'San Fabián', 'region_id' => 16, 'code_deis' => 16304]);
-        Commune::create(['name'=>'Pemuco', 'region_id' => 16, 'code_deis' => 16105]);
-        Commune::create(['name'=>'San Nicolás', 'region_id' => 16, 'code_deis' => 16305]);
-        Commune::create(['name'=>'Ñiquén', 'region_id' => 16, 'code_deis' => 16303]);
-        Commune::create(['name'=>'Ninhue', 'region_id' => 16, 'code_deis' => 16204]);
-        Commune::create(['name'=>'Ránquil', 'region_id' => 16, 'code_deis' => 16206]);
-        Commune::create(['name'=>'Pinto', 'region_id' => 16, 'code_deis' => 16106]);
-        Commune::create(['name'=>'Coihueco', 'region_id' => 16, 'code_deis' => 16302]);
-        Commune::create(['name'=>'Treguaco', 'region_id' => 16, 'code_deis' => 16207]);
-        Commune::create(['name'=>'Chillán Viejo', 'region_id' => 16, 'code_deis' => 16103]);
-        Commune::create(['name'=>'Concepción', 'region_id' => 8, 'code_deis' => 8101]);
-        Commune::create(['name'=>'Coronel', 'region_id' => 8, 'code_deis' => 8102]);
-        Commune::create(['name'=>'Lota', 'region_id' => 8, 'code_deis' => 8106]);
-        Commune::create(['name'=>'Santa Juana', 'region_id' => 8, 'code_deis' => 8109]);
-        Commune::create(['name'=>'Florida', 'region_id' => 8, 'code_deis' => 8104]);
-        Commune::create(['name'=>'Talcahuano', 'region_id' => 8, 'code_deis' => 8110]);
-        Commune::create(['name'=>'Hualpén', 'region_id' => 8, 'code_deis' => 8112]);
-        Commune::create(['name'=>'San Pedro de la Paz', 'region_id' => 8, 'code_deis' => 8108]);
-        Commune::create(['name'=>'Chiguayante', 'region_id' => 8, 'code_deis' => 8103]);
-        Commune::create(['name'=>'Hualqui', 'region_id' => 8, 'code_deis' => 8105]);
-        Commune::create(['name'=>'Tome', 'region_id' => 8, 'code_deis' => 8111]);
-        Commune::create(['name'=>'Penco', 'region_id' => 8, 'code_deis' => 8107]);
-        Commune::create(['name'=>'Los Ángeles', 'region_id' => 8, 'code_deis' => 8301]);
-        Commune::create(['name'=>'Tucapel', 'region_id' => 8, 'code_deis' => 8312]);
-        Commune::create(['name'=>'Santa Bárbara', 'region_id' => 8, 'code_deis' => 8311]);
-        Commune::create(['name'=>'Yumbel', 'region_id' => 8, 'code_deis' => 8313]);
-        Commune::create(['name'=>'Mulchén', 'region_id' => 8, 'code_deis' => 8305]);
-        Commune::create(['name'=>'Nacimiento', 'region_id' => 8, 'code_deis' => 8306]);
-        Commune::create(['name'=>'Laja', 'region_id' => 8, 'code_deis' => 8304]);
-        Commune::create(['name'=>'Cabrero', 'region_id' => 8, 'code_deis' => 8303]);
-        Commune::create(['name'=>'Antuco', 'region_id' => 8, 'code_deis' => 8302]);
-        Commune::create(['name'=>'Quilleco', 'region_id' => 8, 'code_deis' => 8309]);
-        Commune::create(['name'=>'Negrete', 'region_id' => 8, 'code_deis' => 8307]);
-        Commune::create(['name'=>'San Rosendo', 'region_id' => 8, 'code_deis' => 8310]);
-        Commune::create(['name'=>'Alto Biobío', 'region_id' => 8, 'code_deis' => 8314]);
-        Commune::create(['name'=>'Quilaco', 'region_id' => 8, 'code_deis' => 8308]);
-        Commune::create(['name'=>'Temuco', 'region_id' => 9, 'code_deis' => 9101]);
-        Commune::create(['name'=>'Lautaro', 'region_id' => 9, 'code_deis' => 9108]);
-        Commune::create(['name'=>'Galvarino', 'region_id' => 9, 'code_deis' => 9106]);
-        Commune::create(['name'=>'Vilcún', 'region_id' => 9, 'code_deis' => 9119]);
-        Commune::create(['name'=>'Cunco', 'region_id' => 9, 'code_deis' => 9103]);
-        Commune::create(['name'=>'Nueva Imperial', 'region_id' => 9, 'code_deis' => 9111]);
-        Commune::create(['name'=>'Carahue', 'region_id' => 9, 'code_deis' => 9102]);
-        Commune::create(['name'=>'Saavedra', 'region_id' => 9, 'code_deis' => 9116]);
-        Commune::create(['name'=>'Pitrufquén', 'region_id' => 9, 'code_deis' => 9114]);
-        Commune::create(['name'=>'Toltén', 'region_id' => 9, 'code_deis' => 9118]);
-        Commune::create(['name'=>'Gorbea', 'region_id' => 9, 'code_deis' => 9107]);
-        Commune::create(['name'=>'Loncoche', 'region_id' => 9, 'code_deis' => 9109]);
-        Commune::create(['name'=>'Villarrica', 'region_id' => 9, 'code_deis' => 9120]);
-        Commune::create(['name'=>'Pucón', 'region_id' => 9, 'code_deis' => 9115]);
-        Commune::create(['name'=>'Padre Las Casas', 'region_id' => 9, 'code_deis' => 9112]);
-        Commune::create(['name'=>'Freire', 'region_id' => 9, 'code_deis' => 9105]);
-        Commune::create(['name'=>'Melipeuco', 'region_id' => 9, 'code_deis' => 9110]);
-        Commune::create(['name'=>'Teodoro Schmidt', 'region_id' => 9, 'code_deis' => 9117]);
-        Commune::create(['name'=>'Curarrehue', 'region_id' => 9, 'code_deis' => 9104]);
-        Commune::create(['name'=>'Perquenco', 'region_id' => 9, 'code_deis' => 9113]);
-        Commune::create(['name'=>'Cholchol', 'region_id' => 9, 'code_deis' => 9121]);
-        Commune::create(['name'=>'Valdivia', 'region_id' => 14, 'code_deis' => 14101]);
-        Commune::create(['name'=>'Corral', 'region_id' => 14, 'code_deis' => 14102]);
-        Commune::create(['name'=>'Los Lagos', 'region_id' => 14, 'code_deis' => 14104]);
-        Commune::create(['name'=>'Lanco', 'region_id' => 14, 'code_deis' => 14103]);
-        Commune::create(['name'=>'La Unión', 'region_id' => 14, 'code_deis' => 14201]);
-        Commune::create(['name'=>'Río Bueno', 'region_id' => 14, 'code_deis' => 14204]);
-        Commune::create(['name'=>'Paillaco', 'region_id' => 14, 'code_deis' => 14107]);
-        Commune::create(['name'=>'Mariquina', 'region_id' => 14, 'code_deis' => 14106]);
-        Commune::create(['name'=>'Panguipulli', 'region_id' => 14, 'code_deis' => 14108]);
-        Commune::create(['name'=>'Futrono', 'region_id' => 14, 'code_deis' => 14202]);
-        Commune::create(['name'=>'Lago Ranco', 'region_id' => 14, 'code_deis' => 14203]);
-        Commune::create(['name'=>'Máfil', 'region_id' => 14, 'code_deis' => 14105]);
-        Commune::create(['name'=>'Osorno', 'region_id' => 10, 'code_deis' => 10301]);
-        Commune::create(['name'=>'Purranque', 'region_id' => 10, 'code_deis' => 10303]);
-        Commune::create(['name'=>'Río Negro', 'region_id' => 10, 'code_deis' => 10305]);
-        Commune::create(['name'=>'Puerto Octay', 'region_id' => 10, 'code_deis' => 10302]);
-        Commune::create(['name'=>'San Juan de la Costa', 'region_id' => 10, 'code_deis' => 10306]);
-        Commune::create(['name'=>'San Pablo', 'region_id' => 10, 'code_deis' => 10307]);
-        Commune::create(['name'=>'Puyehue', 'region_id' => 10, 'code_deis' => 10304]);
-        Commune::create(['name'=>'Puerto Montt', 'region_id' => 10, 'code_deis' => 10101]);
-        Commune::create(['name'=>'Llanquihue', 'region_id' => 10, 'code_deis' => 10107]);
-        Commune::create(['name'=>'Frutillar', 'region_id' => 10, 'code_deis' => 10105]);
-        Commune::create(['name'=>'Fresia', 'region_id' => 10, 'code_deis' => 10104]);
-        Commune::create(['name'=>'Maullín', 'region_id' => 10, 'code_deis' => 10108]);
-        Commune::create(['name'=>'Calbuco', 'region_id' => 10, 'code_deis' => 10102]);
-        Commune::create(['name'=>'Palena', 'region_id' => 10, 'code_deis' => 10404]);
-        Commune::create(['name'=>'Futaleufú', 'region_id' => 10, 'code_deis' => 10402]);
-        Commune::create(['name'=>'Puerto Varas', 'region_id' => 10, 'code_deis' => 10109]);
-        Commune::create(['name'=>'Los Muermos', 'region_id' => 10, 'code_deis' => 10106]);
-        Commune::create(['name'=>'Hualaihué', 'region_id' => 10, 'code_deis' => 10403]);
-        Commune::create(['name'=>'Cochamó', 'region_id' => 10, 'code_deis' => 10103]);
-        Commune::create(['name'=>'Chaitén', 'region_id' => 10, 'code_deis' => 10401]);
-        Commune::create(['name'=>'Coyhaique', 'region_id' => 11, 'code_deis' => 11101]);
-        Commune::create(['name'=>'Aisén', 'region_id' => 11, 'code_deis' => 11201]);
-        Commune::create(['name'=>'Chile Chico', 'region_id' => 11, 'code_deis' => 11401]);
-        Commune::create(['name'=>'Cochrane', 'region_id' => 11, 'code_deis' => 11301]);
-        Commune::create(['name'=>'Cisnes', 'region_id' => 11, 'code_deis' => 11202]);
-        Commune::create(['name'=>'Guaitecas', 'region_id' => 11, 'code_deis' => 11203]);
-        Commune::create(['name'=>'Lago Verde', 'region_id' => 11, 'code_deis' => 11102]);
-        Commune::create(['name'=>'Río Ibáñez', 'region_id' => 11, 'code_deis' => 11402]);
-        Commune::create(['name'=>'OHiggins', 'region_id' => 11, 'code_deis' => 11302]);
-        Commune::create(['name'=>'Tortel', 'region_id' => 11, 'code_deis' => 11303]);
-        Commune::create(['name'=>'Punta Arenas', 'region_id' => 12, 'code_deis' => 12101]);
-        Commune::create(['name'=>'Natales', 'region_id' => 12, 'code_deis' => 12401]);
-        Commune::create(['name'=>'Porvenir', 'region_id' => 12, 'code_deis' => 12301]);
-        Commune::create(['name'=>'Cabo de Hornos', 'region_id' => 12, 'code_deis' => 12201]);
-        Commune::create(['name'=>'Primavera', 'region_id' => 12, 'code_deis' => 12302]);
-        Commune::create(['name'=>'Torres del Paine', 'region_id' => 12, 'code_deis' => 12402]);
-        Commune::create(['name'=>'Río Verde', 'region_id' => 12, 'code_deis' => 12103]);
-        Commune::create(['name'=>'Laguna Blanca', 'region_id' => 12, 'code_deis' => 12102]);
-        Commune::create(['name'=>'San Gregorio', 'region_id' => 12, 'code_deis' => 12104]);
-        Commune::create(['name'=>'Timaukel', 'region_id' => 12, 'code_deis' => 12303]);
-        Commune::create(['name'=>'Lebu', 'region_id' => 8, 'code_deis' => 8201]);
-        Commune::create(['name'=>'Curanilahue', 'region_id' => 8, 'code_deis' => 8205]);
-        Commune::create(['name'=>'Cañete', 'region_id' => 8, 'code_deis' => 8203]);
-        Commune::create(['name'=>'Contulmo', 'region_id' => 8, 'code_deis' => 8204]);
-        Commune::create(['name'=>'Arauco', 'region_id' => 8, 'code_deis' => 8202]);
-        Commune::create(['name'=>'Tirúa', 'region_id' => 8, 'code_deis' => 8207]);
-        Commune::create(['name'=>'Los Álamos', 'region_id' => 8, 'code_deis' => 8206]);
-        Commune::create(['name'=>'Angol', 'region_id' => 9, 'code_deis' => 9201]);
-        Commune::create(['name'=>'Purén', 'region_id' => 9, 'code_deis' => 9208]);
-        Commune::create(['name'=>'Los Sauces', 'region_id' => 9, 'code_deis' => 9206]);
-        Commune::create(['name'=>'Collipulli', 'region_id' => 9, 'code_deis' => 9202]);
-        Commune::create(['name'=>'Traiguén', 'region_id' => 9, 'code_deis' => 9210]);
-        Commune::create(['name'=>'Lumaco', 'region_id' => 9, 'code_deis' => 9207]);
-        Commune::create(['name'=>'Victoria', 'region_id' => 9, 'code_deis' => 9211]);
-        Commune::create(['name'=>'Curacautín', 'region_id' => 9, 'code_deis' => 9203]);
-        Commune::create(['name'=>'Lonquimay', 'region_id' => 9, 'code_deis' => 9205]);
-        Commune::create(['name'=>'Renaico', 'region_id' => 9, 'code_deis' => 9209]);
-        Commune::create(['name'=>'Ercilla', 'region_id' => 9, 'code_deis' => 9204]);
-        Commune::create(['name'=>'Castro', 'region_id' => 10, 'code_deis' => 10201]);
-        Commune::create(['name'=>'Ancud', 'region_id' => 10, 'code_deis' => 10202]);
-        Commune::create(['name'=>'Quinchao', 'region_id' => 10, 'code_deis' => 10210]);
-        Commune::create(['name'=>'Quellón', 'region_id' => 10, 'code_deis' => 10208]);
-        Commune::create(['name'=>'Queilén', 'region_id' => 10, 'code_deis' => 10207]);
-        Commune::create(['name'=>'Quemchi', 'region_id' => 10, 'code_deis' => 10209]);
-        Commune::create(['name'=>'Chonchi', 'region_id' => 10, 'code_deis' => 10203]);
-        Commune::create(['name'=>'Dalcahue', 'region_id' => 10, 'code_deis' => 10205]);
-        Commune::create(['name'=>'Puqueldón', 'region_id' => 10, 'code_deis' => 10206]);
-        Commune::create(['name'=>'Curaco de Vélez', 'region_id' => 10, 'code_deis' => 10204]);
-        Commune::create(['name'=>'Coñaripe', 'region_id' => 14, 'code_deis' => 14108]);
+        $communes = [
+            ['name'=>'Arica', 'region_id' => 15, 'code_deis' => 15101],
+            ['name'=>'Putre', 'region_id' => 15, 'code_deis' => 15201],
+            ['name'=>'General Lagos', 'region_id' => 15, 'code_deis' => 15202],
+            ['name'=>'Camarones', 'region_id' => 15, 'code_deis' => 15102],
+            ['name'=>'Iquique', 'region_id' => 1, 'code_deis' => 1101],
+            ['name'=>'Pica', 'region_id' => 1, 'code_deis' => 1405],
+            ['name'=>'Alto Hospicio', 'region_id' => 1, 'code_deis' => 1107],
+            ['name'=>'Pozo Almonte', 'region_id' => 1, 'code_deis' => 1401],
+            ['name'=>'Huara', 'region_id' => 1, 'code_deis' => 1404],
+            ['name'=>'Camiña', 'region_id' => 1, 'code_deis' => 1402],
+            ['name'=>'Colchane', 'region_id' => 1, 'code_deis' => 1403],
+            ['name'=>'Antofagasta', 'region_id' => 2, 'code_deis' => 2101],
+            ['name'=>'Calama', 'region_id' => 2, 'code_deis' => 2201],
+            ['name'=>'Tocopilla', 'region_id' => 2, 'code_deis' => 2301],
+            ['name'=>'Taltal', 'region_id' => 2, 'code_deis' => 2104],
+            ['name'=>'Mejillones', 'region_id' => 2, 'code_deis' => 2102],
+            ['name'=>'Maria Elena', 'region_id' => 2, 'code_deis' => 2302],
+            ['name'=>'San Pedro de Atacama', 'region_id' => 2, 'code_deis' => 2203],
+            ['name'=>'Sierra Gorda', 'region_id' => 2, 'code_deis' => 2103],
+            ['name'=>'Ollagüe', 'region_id' => 2, 'code_deis' => 2202],
+            ['name'=>'Copiapó', 'region_id' => 3, 'code_deis' => 3101],
+            ['name'=>'Chañaral', 'region_id' => 3, 'code_deis' => 3201],
+            ['name'=>'Diego de Almagro', 'region_id' => 3, 'code_deis' => 3202],
+            ['name'=>'Vallenar', 'region_id' => 3, 'code_deis' => 3301],
+            ['name'=>'Huasco', 'region_id' => 3, 'code_deis' => 3304],
+            ['name'=>'Caldera', 'region_id' => 3, 'code_deis' => 3102],
+            ['name'=>'Tierra Amarilla', 'region_id' => 3, 'code_deis' => 3103],
+            ['name'=>'Freirina', 'region_id' => 3, 'code_deis' => 3303],
+            ['name'=>'Alto del Carmen', 'region_id' => 3, 'code_deis' => 3302],
+            ['name'=>'La Serena', 'region_id' => 4, 'code_deis' => 4101],
+            ['name'=>'Monte Patria', 'region_id' => 4, 'code_deis' => 4303],
+            ['name'=>'Coquimbo', 'region_id' => 4, 'code_deis' => 4102],
+            ['name'=>'Ovalle', 'region_id' => 4, 'code_deis' => 4301],
+            ['name'=>'Illapel', 'region_id' => 4, 'code_deis' => 4201],
+            ['name'=>'Salamanca', 'region_id' => 4, 'code_deis' => 4204],
+            ['name'=>'Combarbalá', 'region_id' => 4, 'code_deis' => 4302],
+            ['name'=>'Andacollo', 'region_id' => 4, 'code_deis' => 4103],
+            ['name'=>'Vicuña', 'region_id' => 4, 'code_deis' => 4106],
+            ['name'=>'Los Vilos', 'region_id' => 4, 'code_deis' => 4203],
+            ['name'=>'Paihuano', 'region_id' => 4, 'code_deis' => 4105],
+            ['name'=>'Punitaqui', 'region_id' => 4, 'code_deis' => 4304],
+            ['name'=>'Canela', 'region_id' => 4, 'code_deis' => 4202],
+            ['name'=>'Río Hurtado', 'region_id' => 4, 'code_deis' => 4305],
+            ['name'=>'La Higuera', 'region_id' => 4, 'code_deis' => 4104],
+            ['name'=>'Valparaíso', 'region_id' => 5, 'code_deis' => 5101],
+            ['name'=>'San Antonio', 'region_id' => 5, 'code_deis' => 5601],
+            ['name'=>'Casablanca', 'region_id' => 5, 'code_deis' => 5102],
+            ['name'=>'Cartagena', 'region_id' => 5, 'code_deis' => 5603],
+            ['name'=>'Algarrobo', 'region_id' => 5, 'code_deis' => 5602],
+            ['name'=>'El Quisco', 'region_id' => 5, 'code_deis' => 5604],
+            ['name'=>'Santo Domingo', 'region_id' => 5, 'code_deis' => 5606],
+            ['name'=>'El Tabo', 'region_id' => 5, 'code_deis' => 5605],
+            ['name'=>'Juan Fernández', 'region_id' => 5, 'code_deis' => 5104],
+            ['name'=>'Viña del Mar', 'region_id' => 5, 'code_deis' => 5109],
+            ['name'=>'Quillota', 'region_id' => 5, 'code_deis' => 5501],
+            ['name'=>'Quilpue', 'region_id' => 5, 'code_deis' => 5801],
+            ['name'=>'Calera', 'region_id' => 5, 'code_deis' => 5502],
+            ['name'=>'Limache', 'region_id' => 5, 'code_deis' => 5802],
+            ['name'=>'La Ligua', 'region_id' => 5, 'code_deis' => 5401],
+            ['name'=>'Cabildo', 'region_id' => 5, 'code_deis' => 5402],
+            ['name'=>'Petorca', 'region_id' => 5, 'code_deis' => 5404],
+            ['name'=>'Quintero', 'region_id' => 5, 'code_deis' => 5107],
+            ['name'=>'Villa Alemana', 'region_id' => 5, 'code_deis' => 5804],
+            ['name'=>'Con Con', 'region_id' => 5, 'code_deis' => 5103],
+            ['name'=>'La Cruz', 'region_id' => 5, 'code_deis' => 5504],
+            ['name'=>'Puchuncaví', 'region_id' => 5, 'code_deis' => 5105],
+            ['name'=>'Olmué', 'region_id' => 5, 'code_deis' => 5803],
+            ['name'=>'Hijuelas', 'region_id' => 5, 'code_deis' => 5503],
+            ['name'=>'Nogales', 'region_id' => 5, 'code_deis' => 5506],
+            ['name'=>'Papudo', 'region_id' => 5, 'code_deis' => 5403],
+            ['name'=>'Zapallar', 'region_id' => 5, 'code_deis' => 5405],
+            ['name'=>'San Felipe', 'region_id' => 5, 'code_deis' => 5701],
+            ['name'=>'Los Andes', 'region_id' => 5, 'code_deis' => 5301],
+            ['name'=>'Llaillay', 'region_id' => 5, 'code_deis' => 5703],
+            ['name'=>'Putaendo', 'region_id' => 5, 'code_deis' => 5705],
+            ['name'=>'Rinconada', 'region_id' => 5, 'code_deis' => 5303],
+            ['name'=>'San Esteban', 'region_id' => 5, 'code_deis' => 5304],
+            ['name'=>'Catemu', 'region_id' => 5, 'code_deis' => 5702],
+            ['name'=>'Calle Larga', 'region_id' => 5, 'code_deis' => 5302],
+            ['name'=>'Santa Maria', 'region_id' => 5, 'code_deis' => 5706],
+            ['name'=>'Panquehue', 'region_id' => 5, 'code_deis' => 5704],
+            ['name'=>'Independencia', 'region_id' => 13, 'code_deis' => 13108],
+            ['name'=>'Tiltil', 'region_id' => 13, 'code_deis' => 13303],
+            ['name'=>'Recoleta', 'region_id' => 13, 'code_deis' => 13127],
+            ['name'=>'Huechuraba', 'region_id' => 13, 'code_deis' => 13107],
+            ['name'=>'Quilicura', 'region_id' => 13, 'code_deis' => 13125],
+            ['name'=>'Colina', 'region_id' => 13, 'code_deis' => 13301],
+            ['name'=>'Conchalí', 'region_id' => 13, 'code_deis' => 13104],
+            ['name'=>'Lampa', 'region_id' => 13, 'code_deis' => 13302],
+            ['name'=>'Santiago', 'region_id' => 13, 'code_deis' => 13101],
+            ['name'=>'Curacaví', 'region_id' => 13, 'code_deis' => 13503],
+            ['name'=>'Quinta Normal', 'region_id' => 13, 'code_deis' => 13126],
+            ['name'=>'Talagante', 'region_id' => 13, 'code_deis' => 13601],
+            ['name'=>'Peñaflor', 'region_id' => 13, 'code_deis' => 13605],
+            ['name'=>'Melipilla', 'region_id' => 13, 'code_deis' => 13501],
+            ['name'=>'Pudahuel', 'region_id' => 13, 'code_deis' => 13124],
+            ['name'=>'Lo Prado', 'region_id' => 13, 'code_deis' => 13117],
+            ['name'=>'Cerro Navia', 'region_id' => 13, 'code_deis' => 13103],
+            ['name'=>'Renca', 'region_id' => 13, 'code_deis' => 13128],
+            ['name'=>'Padre Hurtado', 'region_id' => 13, 'code_deis' => 13604],
+            ['name'=>'El Monte', 'region_id' => 13, 'code_deis' => 13602],
+            ['name'=>'Isla de Maipo', 'region_id' => 13, 'code_deis' => 13603],
+            ['name'=>'Maria Pinto', 'region_id' => 13, 'code_deis' => 13504],
+            ['name'=>'San Pedro', 'region_id' => 13, 'code_deis' => 13505],
+            ['name'=>'Alhué', 'region_id' => 13, 'code_deis' => 13502],
+            ['name'=>'Maipú', 'region_id' => 13, 'code_deis' => 13119],
+            ['name'=>'Estación Central', 'region_id' => 13, 'code_deis' => 13106],
+            ['name'=>'Cerrillos', 'region_id' => 13, 'code_deis' => 13102],
+            ['name'=>'Pedro Aguirre Cerda', 'region_id' => 13, 'code_deis' => 13121],
+            ['name'=>'Providencia', 'region_id' => 13, 'code_deis' => 13123],
+            ['name'=>'Peñalolén', 'region_id' => 13, 'code_deis' => 13122],
+            ['name'=>'Isla de Pascua', 'region_id' => 5, 'code_deis' => 5201],
+            ['name'=>'Vitacura', 'region_id' => 13, 'code_deis' => 13132],
+            ['name'=>'Las Condes', 'region_id' => 13, 'code_deis' => 13114],
+            ['name'=>'Macul', 'region_id' => 13, 'code_deis' => 13118],
+            ['name'=>'Ñuñoa', 'region_id' => 13, 'code_deis' => 13120],
+            ['name'=>'La Reina', 'region_id' => 13, 'code_deis' => 13113],
+            ['name'=>'Lo Barnechea', 'region_id' => 13, 'code_deis' => 13115],
+            ['name'=>'San Miguel', 'region_id' => 13, 'code_deis' => 13130],
+            ['name'=>'Buin', 'region_id' => 13, 'code_deis' => 13402],
+            ['name'=>'Puente Alto', 'region_id' => 13, 'code_deis' => 13201],
+            ['name'=>'San Bernardo', 'region_id' => 13, 'code_deis' => 13401],
+            ['name'=>'Lo Espejo', 'region_id' => 13, 'code_deis' => 13116],
+            ['name'=>'San Joaquín', 'region_id' => 13, 'code_deis' => 13129],
+            ['name'=>'Paine', 'region_id' => 13, 'code_deis' => 13404],
+            ['name'=>'El Bosque', 'region_id' => 13, 'code_deis' => 13105],
+            ['name'=>'La Cisterna', 'region_id' => 13, 'code_deis' => 13109],
+            ['name'=>'La Granja', 'region_id' => 13, 'code_deis' => 13111],
+            ['name'=>'Calera de Tango', 'region_id' => 13, 'code_deis' => 13403],
+            ['name'=>'San José de Maipo', 'region_id' => 13, 'code_deis' => 13203],
+            ['name'=>'San Ramón', 'region_id' => 13, 'code_deis' => 13131],
+            ['name'=>'La Florida', 'region_id' => 13, 'code_deis' => 13110],
+            ['name'=>'La Pintana', 'region_id' => 13, 'code_deis' => 13112],
+            ['name'=>'Pirque', 'region_id' => 13, 'code_deis' => 13202],
+            ['name'=>'Rancagua', 'region_id' => 6, 'code_deis' => 6101],
+            ['name'=>'Graneros', 'region_id' => 6, 'code_deis' => 6106],
+            ['name'=>'Coinco', 'region_id' => 6, 'code_deis' => 6103],
+            ['name'=>'Peumo', 'region_id' => 6, 'code_deis' => 6112],
+            ['name'=>'Rengo', 'region_id' => 6, 'code_deis' => 6115],
+            ['name'=>'San Vicente', 'region_id' => 6, 'code_deis' => 6117],
+            ['name'=>'Pichidegua', 'region_id' => 6, 'code_deis' => 6113],
+            ['name'=>'San Fernando', 'region_id' => 6, 'code_deis' => 6301],
+            ['name'=>'Chimbarongo', 'region_id' => 6, 'code_deis' => 6303],
+            ['name'=>'Nancagua', 'region_id' => 6, 'code_deis' => 6305],
+            ['name'=>'Santa Cruz', 'region_id' => 6, 'code_deis' => 6310],
+            ['name'=>'Marchihue', 'region_id' => 6, 'code_deis' => 6204],
+            ['name'=>'Pichilemu', 'region_id' => 6, 'code_deis' => 6201],
+            ['name'=>'Lolol', 'region_id' => 6, 'code_deis' => 6304],
+            ['name'=>'Litueche', 'region_id' => 6, 'code_deis' => 6203],
+            ['name'=>'Machalí', 'region_id' => 6, 'code_deis' => 6108],
+            ['name'=>'Mostazal', 'region_id' => 6, 'code_deis' => 6110],
+            ['name'=>'Codegua', 'region_id' => 6, 'code_deis' => 6102],
+            ['name'=>'Doñihue', 'region_id' => 6, 'code_deis' => 6105],
+            ['name'=>'Coltauco', 'region_id' => 6, 'code_deis' => 6104],
+            ['name'=>'Requínoa', 'region_id' => 6, 'code_deis' => 6116],
+            ['name'=>'Las Cabras', 'region_id' => 6, 'code_deis' => 6107],
+            ['name'=>'Quinta de Tilcoco', 'region_id' => 6, 'code_deis' => 6114],
+            ['name'=>'Peralillo', 'region_id' => 6, 'code_deis' => 6307],
+            ['name'=>'La Estrella', 'region_id' => 6, 'code_deis' => 6202],
+            ['name'=>'Chepica', 'region_id' => 6, 'code_deis' => 6302],
+            ['name'=>'Paredones', 'region_id' => 6, 'code_deis' => 6206],
+            ['name'=>'Placilla', 'region_id' => 6, 'code_deis' => 6308],
+            ['name'=>'Navidad', 'region_id' => 6, 'code_deis' => 6205],
+            ['name'=>'Malloa', 'region_id' => 6, 'code_deis' => 6109],
+            ['name'=>'Olivar', 'region_id' => 6, 'code_deis' => 6111],
+            ['name'=>'Palmilla', 'region_id' => 6, 'code_deis' => 6306],
+            ['name'=>'Pumanque', 'region_id' => 6, 'code_deis' => 6309],
+            ['name'=>'Talca', 'region_id' => 7, 'code_deis' => 7101],
+            ['name'=>'Curicó', 'region_id' => 7, 'code_deis' => 7301],
+            ['name'=>'Teno', 'region_id' => 7, 'code_deis' => 7308],
+            ['name'=>'Molina', 'region_id' => 7, 'code_deis' => 7304],
+            ['name'=>'Hualañé', 'region_id' => 7, 'code_deis' => 7302],
+            ['name'=>'Licantén', 'region_id' => 7, 'code_deis' => 7303],
+            ['name'=>'Curepto', 'region_id' => 7, 'code_deis' => 7103],
+            ['name'=>'Constitución', 'region_id' => 7, 'code_deis' => 7102],
+            ['name'=>'Linares', 'region_id' => 7, 'code_deis' => 7401],
+            ['name'=>'San Javier', 'region_id' => 7, 'code_deis' => 7406],
+            ['name'=>'Parral', 'region_id' => 7, 'code_deis' => 7404],
+            ['name'=>'Cauquenes', 'region_id' => 7, 'code_deis' => 7201],
+            ['name'=>'Chanco', 'region_id' => 7, 'code_deis' => 7202],
+            ['name'=>'Villa Alegre', 'region_id' => 7, 'code_deis' => 7407],
+            ['name'=>'Pencahue', 'region_id' => 7, 'code_deis' => 7107],
+            ['name'=>'San Clemente', 'region_id' => 7, 'code_deis' => 7109],
+            ['name'=>'Maule', 'region_id' => 7, 'code_deis' => 7105],
+            ['name'=>'Pelarco', 'region_id' => 7, 'code_deis' => 7106],
+            ['name'=>'Río Claro', 'region_id' => 7, 'code_deis' => 7108],
+            ['name'=>'Colbún', 'region_id' => 7, 'code_deis' => 7402],
+            ['name'=>'Yerbas Buenas', 'region_id' => 7, 'code_deis' => 7408],
+            ['name'=>'Longaví', 'region_id' => 7, 'code_deis' => 7403],
+            ['name'=>'Retiro', 'region_id' => 7, 'code_deis' => 7405],
+            ['name'=>'Pelluhue', 'region_id' => 7, 'code_deis' => 7203],
+            ['name'=>'San Rafael', 'region_id' => 7, 'code_deis' => 7110],
+            ['name'=>'Sagrada Familia', 'region_id' => 7, 'code_deis' => 7307],
+            ['name'=>'Vichuquén', 'region_id' => 7, 'code_deis' => 7309],
+            ['name'=>'Romeral', 'region_id' => 7, 'code_deis' => 7306],
+            ['name'=>'Rauco', 'region_id' => 7, 'code_deis' => 7305],
+            ['name'=>'Empedrado', 'region_id' => 7, 'code_deis' => 7104],
+            ['name'=>'Chillán', 'region_id' => 16, 'code_deis' => 16101],
+            ['name'=>'San Carlos', 'region_id' => 16, 'code_deis' => 16301],
+            ['name'=>'Bulnes', 'region_id' => 16, 'code_deis' => 16102],
+            ['name'=>'Yungay', 'region_id' => 16, 'code_deis' => 16109],
+            ['name'=>'Quirihue', 'region_id' => 16, 'code_deis' => 16201],
+            ['name'=>'El Carmen', 'region_id' => 16, 'code_deis' => 16104],
+            ['name'=>'Coelemu', 'region_id' => 16, 'code_deis' => 16203],
+            ['name'=>'Portezuelo', 'region_id' => 16, 'code_deis' => 16205],
+            ['name'=>'Quillón', 'region_id' => 16, 'code_deis' => 16107],
+            ['name'=>'Cobquecura', 'region_id' => 16, 'code_deis' => 16202],
+            ['name'=>'San Ignacio', 'region_id' => 16, 'code_deis' => 16108],
+            ['name'=>'San Fabián', 'region_id' => 16, 'code_deis' => 16304],
+            ['name'=>'Pemuco', 'region_id' => 16, 'code_deis' => 16105],
+            ['name'=>'San Nicolás', 'region_id' => 16, 'code_deis' => 16305],
+            ['name'=>'Ñiquén', 'region_id' => 16, 'code_deis' => 16303],
+            ['name'=>'Ninhue', 'region_id' => 16, 'code_deis' => 16204],
+            ['name'=>'Ránquil', 'region_id' => 16, 'code_deis' => 16206],
+            ['name'=>'Pinto', 'region_id' => 16, 'code_deis' => 16106],
+            ['name'=>'Coihueco', 'region_id' => 16, 'code_deis' => 16302],
+            ['name'=>'Treguaco', 'region_id' => 16, 'code_deis' => 16207],
+            ['name'=>'Chillán Viejo', 'region_id' => 16, 'code_deis' => 16103],
+            ['name'=>'Concepción', 'region_id' => 8, 'code_deis' => 8101],
+            ['name'=>'Coronel', 'region_id' => 8, 'code_deis' => 8102],
+            ['name'=>'Lota', 'region_id' => 8, 'code_deis' => 8106],
+            ['name'=>'Santa Juana', 'region_id' => 8, 'code_deis' => 8109],
+            ['name'=>'Florida', 'region_id' => 8, 'code_deis' => 8104],
+            ['name'=>'Talcahuano', 'region_id' => 8, 'code_deis' => 8110],
+            ['name'=>'Hualpén', 'region_id' => 8, 'code_deis' => 8112],
+            ['name'=>'San Pedro de la Paz', 'region_id' => 8, 'code_deis' => 8108],
+            ['name'=>'Chiguayante', 'region_id' => 8, 'code_deis' => 8103],
+            ['name'=>'Hualqui', 'region_id' => 8, 'code_deis' => 8105],
+            ['name'=>'Tome', 'region_id' => 8, 'code_deis' => 8111],
+            ['name'=>'Penco', 'region_id' => 8, 'code_deis' => 8107],
+            ['name'=>'Los Ángeles', 'region_id' => 8, 'code_deis' => 8301],
+            ['name'=>'Tucapel', 'region_id' => 8, 'code_deis' => 8312],
+            ['name'=>'Santa Bárbara', 'region_id' => 8, 'code_deis' => 8311],
+            ['name'=>'Yumbel', 'region_id' => 8, 'code_deis' => 8313],
+            ['name'=>'Mulchén', 'region_id' => 8, 'code_deis' => 8305],
+            ['name'=>'Nacimiento', 'region_id' => 8, 'code_deis' => 8306],
+            ['name'=>'Laja', 'region_id' => 8, 'code_deis' => 8304],
+            ['name'=>'Cabrero', 'region_id' => 8, 'code_deis' => 8303],
+            ['name'=>'Antuco', 'region_id' => 8, 'code_deis' => 8302],
+            ['name'=>'Quilleco', 'region_id' => 8, 'code_deis' => 8309],
+            ['name'=>'Negrete', 'region_id' => 8, 'code_deis' => 8307],
+            ['name'=>'San Rosendo', 'region_id' => 8, 'code_deis' => 8310],
+            ['name'=>'Alto Biobío', 'region_id' => 8, 'code_deis' => 8314],
+            ['name'=>'Quilaco', 'region_id' => 8, 'code_deis' => 8308],
+            ['name'=>'Temuco', 'region_id' => 9, 'code_deis' => 9101],
+            ['name'=>'Lautaro', 'region_id' => 9, 'code_deis' => 9108],
+            ['name'=>'Galvarino', 'region_id' => 9, 'code_deis' => 9106],
+            ['name'=>'Vilcún', 'region_id' => 9, 'code_deis' => 9119],
+            ['name'=>'Cunco', 'region_id' => 9, 'code_deis' => 9103],
+            ['name'=>'Nueva Imperial', 'region_id' => 9, 'code_deis' => 9111],
+            ['name'=>'Carahue', 'region_id' => 9, 'code_deis' => 9102],
+            ['name'=>'Saavedra', 'region_id' => 9, 'code_deis' => 9116],
+            ['name'=>'Pitrufquén', 'region_id' => 9, 'code_deis' => 9114],
+            ['name'=>'Toltén', 'region_id' => 9, 'code_deis' => 9118],
+            ['name'=>'Gorbea', 'region_id' => 9, 'code_deis' => 9107],
+            ['name'=>'Loncoche', 'region_id' => 9, 'code_deis' => 9109],
+            ['name'=>'Villarrica', 'region_id' => 9, 'code_deis' => 9120],
+            ['name'=>'Pucón', 'region_id' => 9, 'code_deis' => 9115],
+            ['name'=>'Padre Las Casas', 'region_id' => 9, 'code_deis' => 9112],
+            ['name'=>'Freire', 'region_id' => 9, 'code_deis' => 9105],
+            ['name'=>'Melipeuco', 'region_id' => 9, 'code_deis' => 9110],
+            ['name'=>'Teodoro Schmidt', 'region_id' => 9, 'code_deis' => 9117],
+            ['name'=>'Curarrehue', 'region_id' => 9, 'code_deis' => 9104],
+            ['name'=>'Perquenco', 'region_id' => 9, 'code_deis' => 9113],
+            ['name'=>'Cholchol', 'region_id' => 9, 'code_deis' => 9121],
+            ['name'=>'Valdivia', 'region_id' => 14, 'code_deis' => 14101],
+            ['name'=>'Corral', 'region_id' => 14, 'code_deis' => 14102],
+            ['name'=>'Los Lagos', 'region_id' => 14, 'code_deis' => 14104],
+            ['name'=>'Lanco', 'region_id' => 14, 'code_deis' => 14103],
+            ['name'=>'La Unión', 'region_id' => 14, 'code_deis' => 14201],
+            ['name'=>'Río Bueno', 'region_id' => 14, 'code_deis' => 14204],
+            ['name'=>'Paillaco', 'region_id' => 14, 'code_deis' => 14107],
+            ['name'=>'Mariquina', 'region_id' => 14, 'code_deis' => 14106],
+            ['name'=>'Panguipulli', 'region_id' => 14, 'code_deis' => 14108],
+            ['name'=>'Futrono', 'region_id' => 14, 'code_deis' => 14202],
+            ['name'=>'Lago Ranco', 'region_id' => 14, 'code_deis' => 14203],
+            ['name'=>'Máfil', 'region_id' => 14, 'code_deis' => 14105],
+            ['name'=>'Osorno', 'region_id' => 10, 'code_deis' => 10301],
+            ['name'=>'Purranque', 'region_id' => 10, 'code_deis' => 10303],
+            ['name'=>'Río Negro', 'region_id' => 10, 'code_deis' => 10305],
+            ['name'=>'Puerto Octay', 'region_id' => 10, 'code_deis' => 10302],
+            ['name'=>'San Juan de la Costa', 'region_id' => 10, 'code_deis' => 10306],
+            ['name'=>'San Pablo', 'region_id' => 10, 'code_deis' => 10307],
+            ['name'=>'Puyehue', 'region_id' => 10, 'code_deis' => 10304],
+            ['name'=>'Puerto Montt', 'region_id' => 10, 'code_deis' => 10101],
+            ['name'=>'Llanquihue', 'region_id' => 10, 'code_deis' => 10107],
+            ['name'=>'Frutillar', 'region_id' => 10, 'code_deis' => 10105],
+            ['name'=>'Fresia', 'region_id' => 10, 'code_deis' => 10104],
+            ['name'=>'Maullín', 'region_id' => 10, 'code_deis' => 10108],
+            ['name'=>'Calbuco', 'region_id' => 10, 'code_deis' => 10102],
+            ['name'=>'Palena', 'region_id' => 10, 'code_deis' => 10404],
+            ['name'=>'Futaleufú', 'region_id' => 10, 'code_deis' => 10402],
+            ['name'=>'Puerto Varas', 'region_id' => 10, 'code_deis' => 10109],
+            ['name'=>'Los Muermos', 'region_id' => 10, 'code_deis' => 10106],
+            ['name'=>'Hualaihué', 'region_id' => 10, 'code_deis' => 10403],
+            ['name'=>'Cochamó', 'region_id' => 10, 'code_deis' => 10103],
+            ['name'=>'Chaitén', 'region_id' => 10, 'code_deis' => 10401],
+            ['name'=>'Coyhaique', 'region_id' => 11, 'code_deis' => 11101],
+            ['name'=>'Aisén', 'region_id' => 11, 'code_deis' => 11201],
+            ['name'=>'Chile Chico', 'region_id' => 11, 'code_deis' => 11401],
+            ['name'=>'Cochrane', 'region_id' => 11, 'code_deis' => 11301],
+            ['name'=>'Cisnes', 'region_id' => 11, 'code_deis' => 11202],
+            ['name'=>'Guaitecas', 'region_id' => 11, 'code_deis' => 11203],
+            ['name'=>'Lago Verde', 'region_id' => 11, 'code_deis' => 11102],
+            ['name'=>'Río Ibáñez', 'region_id' => 11, 'code_deis' => 11402],
+            ['name'=>'OHiggins', 'region_id' => 11, 'code_deis' => 11302],
+            ['name'=>'Tortel', 'region_id' => 11, 'code_deis' => 11303],
+            ['name'=>'Punta Arenas', 'region_id' => 12, 'code_deis' => 12101],
+            ['name'=>'Natales', 'region_id' => 12, 'code_deis' => 12401],
+            ['name'=>'Porvenir', 'region_id' => 12, 'code_deis' => 12301],
+            ['name'=>'Cabo de Hornos', 'region_id' => 12, 'code_deis' => 12201],
+            ['name'=>'Primavera', 'region_id' => 12, 'code_deis' => 12302],
+            ['name'=>'Torres del Paine', 'region_id' => 12, 'code_deis' => 12402],
+            ['name'=>'Río Verde', 'region_id' => 12, 'code_deis' => 12103],
+            ['name'=>'Laguna Blanca', 'region_id' => 12, 'code_deis' => 12102],
+            ['name'=>'San Gregorio', 'region_id' => 12, 'code_deis' => 12104],
+            ['name'=>'Timaukel', 'region_id' => 12, 'code_deis' => 12303],
+            ['name'=>'Lebu', 'region_id' => 8, 'code_deis' => 8201],
+            ['name'=>'Curanilahue', 'region_id' => 8, 'code_deis' => 8205],
+            ['name'=>'Cañete', 'region_id' => 8, 'code_deis' => 8203],
+            ['name'=>'Contulmo', 'region_id' => 8, 'code_deis' => 8204],
+            ['name'=>'Arauco', 'region_id' => 8, 'code_deis' => 8202],
+            ['name'=>'Tirúa', 'region_id' => 8, 'code_deis' => 8207],
+            ['name'=>'Los Álamos', 'region_id' => 8, 'code_deis' => 8206],
+            ['name'=>'Angol', 'region_id' => 9, 'code_deis' => 9201],
+            ['name'=>'Purén', 'region_id' => 9, 'code_deis' => 9208],
+            ['name'=>'Los Sauces', 'region_id' => 9, 'code_deis' => 9206],
+            ['name'=>'Collipulli', 'region_id' => 9, 'code_deis' => 9202],
+            ['name'=>'Traiguén', 'region_id' => 9, 'code_deis' => 9210],
+            ['name'=>'Lumaco', 'region_id' => 9, 'code_deis' => 9207],
+            ['name'=>'Victoria', 'region_id' => 9, 'code_deis' => 9211],
+            ['name'=>'Curacautín', 'region_id' => 9, 'code_deis' => 9203],
+            ['name'=>'Lonquimay', 'region_id' => 9, 'code_deis' => 9205],
+            ['name'=>'Renaico', 'region_id' => 9, 'code_deis' => 9209],
+            ['name'=>'Ercilla', 'region_id' => 9, 'code_deis' => 9204],
+            ['name'=>'Castro', 'region_id' => 10, 'code_deis' => 10201],
+            ['name'=>'Ancud', 'region_id' => 10, 'code_deis' => 10202],
+            ['name'=>'Quinchao', 'region_id' => 10, 'code_deis' => 10210],
+            ['name'=>'Quellón', 'region_id' => 10, 'code_deis' => 10208],
+            ['name'=>'Queilén', 'region_id' => 10, 'code_deis' => 10207],
+            ['name'=>'Quemchi', 'region_id' => 10, 'code_deis' => 10209],
+            ['name'=>'Chonchi', 'region_id' => 10, 'code_deis' => 10203],
+            ['name'=>'Dalcahue', 'region_id' => 10, 'code_deis' => 10205],
+            ['name'=>'Puqueldón', 'region_id' => 10, 'code_deis' => 10206],
+            ['name'=>'Curaco de Vélez', 'region_id' => 10, 'code_deis' => 10204],
+            ['name'=>'Coñaripe', 'region_id' => 14, 'code_deis' => 14108],
+        ];
+
+    Commune::insert($communes);
 
     }
 }

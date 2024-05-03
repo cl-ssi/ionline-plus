@@ -44,7 +44,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-install-cmd": [
             "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan filament:upgrade || echo 'Skipping filament upgrade in development mode'",

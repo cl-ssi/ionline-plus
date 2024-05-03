@@ -10,7 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use App\Observers\Document\Signature\ApprovalObserver;
 
+#[ObservedBy([ApprovalObserver::class])]
 class Approval extends Model
 {
     use HasFactory;

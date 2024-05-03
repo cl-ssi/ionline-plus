@@ -69,24 +69,6 @@ class TelephoneResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('users.full_name')
-                    ->label('Usuarios')
-                    ->searchable()
-                    ->sortable()
-                    ->limit(40)
-                    ->bulleted(),
-                Tables\Columns\TextColumn::make('place.location.establishment.name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('number')
-                    ->numeric()
-                    ->sortable()
-                    ->formatStateUsing(function (string $state) {
-                        if (strlen($state) < 9) {
-                            return $state; 
-                        }
-                        return substr($state, 0, 2) . ' ' . substr($state, 2, 3) . ' ' . substr($state, 5);
-                    }),
                 Tables\Columns\TextColumn::make('minsal')
                     ->numeric()
                     ->searchable()
@@ -97,11 +79,32 @@ class TelephoneResource extends Resource
                         }
                         return substr($state, 0, 2) . ' ' . substr($state, 2);
                     }),
+                Tables\Columns\TextColumn::make('number')
+                    ->numeric()
+                    ->sortable()
+                    ->formatStateUsing(function (string $state) {
+                        if (strlen($state) < 9) {
+                            return $state; 
+                        }
+                        return substr($state, 0, 2) . ' ' . substr($state, 2, 3) . ' ' . substr($state, 5);
+                    }),
+                Tables\Columns\TextColumn::make('users.full_name')
+                    ->label('Usuarios')
+                    ->searchable()
+                    ->sortable()
+                    ->limit(40)
+                    ->bulleted(),
+                Tables\Columns\TextColumn::make('place.location.establishment.name')
+                    ->searchable()
+                    ->translateLabel()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('place.name')
                     ->searchable()
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('place.location.name')
                     ->searchable()
+                    ->translateLabel()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -144,5 +147,15 @@ class TelephoneResource extends Resource
             'create' => Pages\CreateTelephone::route('/create'),
             'edit' => Pages\EditTelephone::route('/{record}/edit'),
         ];
+    }
+
+    public static function getLabel(): string
+    {
+        return 'Teléfono';
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return 'Teléfonos';
     }
 }

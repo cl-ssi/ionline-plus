@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Parameter;
 
-use App\Filament\Resources\Parameter\RoleResource\Pages;
-use App\Filament\Resources\Parameter\RoleResource\RelationManagers;
-use Spatie\Permission\Models\Role;
+use App\Filament\Resources\Parameter\PlaceResource\Pages;
+use App\Filament\Resources\Parameter\PlaceResource\RelationManagers;
+use App\Models\Parameter\Place;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,21 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class RoleResource extends Resource
+class PlaceResource extends Resource
 {
-    protected static ?string $model = Role::class;
+    protected static ?string $model = Place::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-lock-closed';
+    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
 
     protected static ?string $navigationGroup = 'Parámetros';
-
-    public static function canViewAny(): bool
-    {
-        return auth()->user()->can([
-            'be god',
-            'dev',
-        ]);
-    }
 
     public static function form(Form $form): Form
     {
@@ -39,15 +31,18 @@ class RoleResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\Select::make('guard_name')
-                    ->options([
-                        'web' => 'web',
-                        'external' => 'external',
-                        'api' => 'api',
-                    ])
-                    ->hiddenOn('edit')
-                    ->default('web')
+                Forms\Components\TextInput::make('architectural_design_code')
+                    ->maxLength(255)
+                    ->default(null),
+                Forms\Components\TextInput::make('floor_number')
+                    ->numeric()
+                    ->default(null),
+                Forms\Components\Select::make('location_id')
+                    ->relationship('location', 'name')
                     ->required(),
+                Forms\Components\Select::make('establishment_id')
+                    ->relationship('establishment', 'name')
+                    ->default(null),
             ]);
     }
 
@@ -56,12 +51,20 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('guard_name')
+                Tables\Columns\TextColumn::make('architectural_design_code')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('floor_number')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('location.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('establishment.name')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -70,8 +73,11 @@ class RoleResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->defaultSort('name')
             ->filters([
                 //
             ])
@@ -88,26 +94,26 @@ class RoleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\PermissionsRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRoles::route('/'),
-            'create' => Pages\CreateRole::route('/create'),
-            'edit' => Pages\EditRole::route('/{record}/edit'),
+            'index' => Pages\ListPlaces::route('/'),
+            'create' => Pages\CreatePlace::route('/create'),
+            'edit' => Pages\EditPlace::route('/{record}/edit'),
         ];
     }
 
     public static function getLabel(): string
     {
-        return 'Rol';
+        return 'Lugar';
     }
 
     public static function getPluralLabel(): string
     {
-        return 'Roles';
+        return 'Lugares';
     }
 }

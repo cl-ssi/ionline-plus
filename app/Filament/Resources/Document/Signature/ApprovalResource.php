@@ -22,7 +22,7 @@ class ApprovalResource extends Resource
 {
     protected static ?string $model = Approval::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-hand-thumb-up';
 
     protected static ?string $navigationGroup = 'Documentos';
 

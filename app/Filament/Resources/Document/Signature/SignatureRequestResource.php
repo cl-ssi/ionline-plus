@@ -28,7 +28,7 @@ class SignatureRequestResource extends Resource
 {
     protected static ?string $model = SignatureRequest::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-pencil';
 
     protected static ?string $navigationGroup = 'Documentos';
 

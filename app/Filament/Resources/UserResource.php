@@ -21,7 +21,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationGroup = 'SDGP';
 
@@ -134,6 +134,8 @@ class UserResource extends Resource
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('full_name')
+                    ->formatStateUsing(fn (string $state) => ucwords(strtolower($state)))
+                    ->translateLabel()
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('fathers_family')
                 //     ->searchable(),
@@ -159,6 +161,7 @@ class UserResource extends Resource
                 //     ->dateTime()
                 //     ->sortable(),
                 Tables\Columns\TextColumn::make('position')
+                    ->translateLabel()
                     ->searchable(),
                 // Tables\Columns\TextColumn::make('birthday')
                 //     ->date()
@@ -168,10 +171,11 @@ class UserResource extends Resource
                 // Tables\Columns\TextColumn::make('vc_alias')
                 //     ->searchable(),
                 Tables\Columns\TextColumn::make('organizationalUnit.name')
-                    ->numeric()
+                    ->translateLabel()
                     ->sortable()
                     ->limit(30),
                 Tables\Columns\IconColumn::make('active')
+                    ->translateLabel()
                     ->boolean(),
                 // Tables\Columns\IconColumn::make('gravatar')
                 //     ->boolean(),

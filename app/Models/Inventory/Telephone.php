@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models\Resource;
+namespace App\Models\Inventory;
 
 use App\Models\Parameter\Place;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -38,9 +39,9 @@ class Telephone extends Model
         return $this->belongsToMany(User::class, 'res_telephone_user')->withTimestamps();
     }
 
-    // Place relationship
     public function place(): BelongsTo
     {
         return $this->belongsTo(Place::class);
     }
+
 }

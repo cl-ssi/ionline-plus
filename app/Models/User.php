@@ -6,7 +6,7 @@ namespace App\Models;
 use App\Models\Parameter\Commune;
 use App\Models\Parameter\Country;
 use App\Models\Parameter\Establishment;
-use App\Models\Resource\Telephone;
+use App\Models\Inventory\Telephone;
 use App\Models\Rrhh\Authority;
 use App\Models\Rrhh\OrganizationalUnit;
 use Filament\Models\Contracts\FilamentUser;
@@ -124,7 +124,7 @@ class User extends Authenticatable implements FilamentUser, Auditable
     }
 
     /**
-     * Get the user's first name.
+     * Get the user's run format.
      */
     protected function run(): Attribute
     {

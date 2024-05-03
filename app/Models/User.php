@@ -118,6 +118,16 @@ class User extends Authenticatable implements FilamentUser, Auditable
     }
 
     /**
+     * Get the user's first name.
+     */
+    protected function run(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => number_format(substr($value, 0, -1), 0, '', '.') . '-' . substr($value, -1),
+        );
+    }
+
+    /**
      * Organizational Units where the user is manager.
      */
     public function isManagerOf(): BelongsToMany

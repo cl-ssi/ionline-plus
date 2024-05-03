@@ -130,57 +130,55 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('run')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('dv')
+                Tables\Columns\TextColumn::make('full_name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('fathers_family')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('mothers_family')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('gender')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('address')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('commune.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('phone_number')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('country.name')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_personal')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('fathers_family')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('mothers_family')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('gender')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('address')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('commune.name')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('phone_number')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('country.name')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('email')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('email_personal')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('email_verified_at')
+                //     ->dateTime()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('position')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('birthday')
-                    ->date()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('vc_link')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('vc_alias')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('birthday')
+                //     ->date()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('vc_link')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('vc_alias')
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('organizationalUnit.name')
                     ->numeric()
-                    ->sortable(),
+                    ->sortable()
+                    ->limit(30),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
-                Tables\Columns\IconColumn::make('gravatar')
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('absent')
-                    ->boolean(),
-                Tables\Columns\IconColumn::make('external')
-                    ->boolean(),
+                // Tables\Columns\IconColumn::make('gravatar')
+                //     ->boolean(),
+                // Tables\Columns\IconColumn::make('absent')
+                //     ->boolean(),
+                // Tables\Columns\IconColumn::make('external')
+                //     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

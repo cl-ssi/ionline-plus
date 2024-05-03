@@ -28,12 +28,15 @@ class AuthoritiesRelationManager extends RelationManager
                     ->required(),
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255)
+                    ->translateLabel()
                     ->required(),
                 Forms\Components\DatePicker::make('date')
                     ->format('Y-m-d')
+                    ->translateLabel()
                     ->required(),
                 Forms\Components\DatePicker::make('until')
                     ->format('Y-m-d')
+                    ->translateLabel()
                     ->required(),
                 Forms\Components\Select::make('type')
                     ->options([
@@ -46,12 +49,12 @@ class AuthoritiesRelationManager extends RelationManager
                     ->default(null),
                 Forms\Components\TextInput::make('decree')
                     ->maxLength(255)
+                    ->translateLabel()
                     ->default(null),
                 Forms\Components\Select::make('representation_id')
-                    ->relationship('representation', 'full_name')
-                    ->searchable()
+                    ->options($this->getOwnerRecord()->managers->pluck('full_name','id'))
+                    ->translateLabel()
                     ->default(null)
-                    ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
             ]);
     }
 

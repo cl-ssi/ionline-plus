@@ -23,7 +23,6 @@ class ListOrganizationalUnits extends ListRecords
 
     public function getTabs(): array
     {
-
         $establishment_ids = json_decode(env('APP_SS_ESTABLISHMENTS'));
 
         Establishment::whereIn('id',$establishment_ids)->get()->each(function($establishment){

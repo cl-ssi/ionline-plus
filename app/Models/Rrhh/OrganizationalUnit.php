@@ -122,4 +122,11 @@ class OrganizationalUnit extends Model
             ->orderBy('level', 'asc');
     }
 
+    public function managers(): HasManyThrough
+    {
+        return $this->hasManyThrough(User::class, Subrogation::class, 'organizational_unit_id', 'id', 'id', 'user_id')
+            ->where('type', Subrogation::TYPE_MANAGER)
+            ->orderBy('level', 'asc');
+    }
+
 }

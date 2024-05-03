@@ -23,6 +23,8 @@ return new class extends Migration
             $table->time('from_time')->nullable();
             $table->time('to_time')->nullable();
             $table->timestamps();
+            $table->softdeletes();
+            $table->unique(['date','organizational_unit_id','type']); 
         });
     }
 

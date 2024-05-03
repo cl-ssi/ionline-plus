@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rrhh_subrogations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('subrogant_id')->constrained('users');
+            $table->foreignId('subrogant_id')->nullable()->constrained('users');
             $table->tinyinteger('level')->unsigned();
             $table->foreignId('organizational_unit_id')->constrainded('organizational_units')->nullable();
             $table->string('type')->nullable();

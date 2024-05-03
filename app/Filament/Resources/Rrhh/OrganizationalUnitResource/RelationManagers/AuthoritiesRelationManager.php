@@ -12,6 +12,7 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Rrhh\Authority;
 
 class AuthoritiesRelationManager extends RelationManager
 {
@@ -22,19 +23,18 @@ class AuthoritiesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
-                    ->relationship(name: 'user', titleAttribute: 'full_name')
-                    // ->options(User::all()->pluck('full_name', 'id'))
-                    ->searchable()
+                    ->options($this->getOwnerRecord()->managers->pluck('full_name','id'))
+                    ->label('Usuario')
                     ->required(),
-                    // ->getOptionLabelFromRecordUsing(fn (User $record) => "{$record->short_name}"),
-                Forms\Components\Select::make('organizational_unit_id')
-                    ->relationship('organizationalUnit', 'name')
-                    ->default(null),
-                Forms\Components\DatePicker::make('date')
-                    ->format('m'),
                 Forms\Components\TextInput::make('position')
                     ->maxLength(255)
-                    ->default(null),
+                    ->required(),
+                Forms\Components\DatePicker::make('date')
+                    ->format('Y-m-d')
+                    ->required(),
+                Forms\Components\DatePicker::make('until')
+                    ->format('Y-m-d')
+                    ->required(),
                 Forms\Components\Select::make('type')
                     ->options([
                         'manager' => 'Jefetura',
@@ -99,10 +99,61 @@ class AuthoritiesRelationManager extends RelationManager
 
             ], layout: FiltersLayout::AboveContent)
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    ->using(function (array $data, string $model): Authority {
+                        $startDate = Carbon::createFromFormat('Y-m-d', $data['date']);
+                        $endDate = Carbon::createFromFormat('Y-m-d', $data['until']);
+                        $authorities = [];
+                
+                        while ($startDate->lte($endDate)) {
+                            $authorities[] = [
+                                'date' => $startDate->toDateString(),
+                                'organizational_unit_id' => $this->getOwnerRecord()->id,
+                                'type' => $data['type'],
+                                'user_id' => $data['user_id'],
+                                'position' => $data['position'],
+                                'decree' => $data['decree'],
+                                'representation_id' => $data['representation_id'],
+                            ];
+                            $startDate->addDay();
+                        }
+
+                        Authority::upsert(
+                            $authorities,
+                            ['date','organizational_unit_id','type'],
+                            ['user_id','position','decree','representation_id']
+                        );
+                        $record = Authority::where('date',$authorities[0]['date'])
+                            ->where('organizational_unit_id',$authorities[0]['organizational_unit_id'])
+                            ->where('type',$authorities[0]['type'])->first();
+                        return $record;
+                    }),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->using(function (Authority $record, array $data): Authority {
+                        $startDate = Carbon::createFromFormat('Y-m-d', $data['date']);
+                        $endDate = Carbon::createFromFormat('Y-m-d', $data['until']);
+                        $authorities = [];
+                        while ($startDate->lte($endDate)) {
+                            $authorities[] = [
+                                'date' => $startDate->toDateString(),
+                                'organizational_unit_id' => $record->organizational_unit_id,
+                                'type' => $record->type,
+                                'user_id' => $data['user_id'],
+                                'position' => $data['position'],
+                                'decree' => $data['decree'],
+                                'representation_id' => $data['representation_id'],
+                            ];
+                            $startDate->addDay();
+                        }
+                        Authority::upsert(
+                            $authorities,
+                            ['date','organizational_unit_id','type'],
+                            ['user_id','position','decree','representation_id']
+                        );
+                        return $record;
+                    }),
             ])
             ->bulkActions([
 

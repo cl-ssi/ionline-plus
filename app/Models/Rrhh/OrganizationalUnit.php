@@ -95,21 +95,21 @@ class OrganizationalUnit extends Model
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_MANAGER)
-            ->where('date', now()->startOfDay());
+            ->where('date', now()->startOfDay()->toDateString());
     }
 
     public function secretary(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_SECRETARY)
-            ->where('date', now()->startOfDay());
+            ->where('date', now()->startOfDay()->toDateString());
     }
 
     public function delegate(): HasOneThrough
     {
         return $this->hasOneThrough(User::class, Authority::class, 'organizational_unit_id', 'id', 'id', 'user_id')
             ->where('type', Authority::TYPE_DELEGATE)
-            ->where('date', now()->startOfDay());
+            ->where('date', now()->startOfDay()->toDateString());
     }
 
     public function subrogations(): HasMany

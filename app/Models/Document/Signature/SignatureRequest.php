@@ -72,10 +72,16 @@ class SignatureRequest extends Model
     /**
      * Get all of the approvations of a model.
      */
+    public function approvals(): MorphMany
+    {
+        return $this->morphMany(Approval::class, 'approvable');
+    }
+
     public function signatures(): MorphMany
     {
         return $this->morphMany(Approval::class, 'approvable')->where('endorse', false);
     }
+
     public function visations(): MorphMany
     {
         return $this->morphMany(Approval::class, 'approvable')->where('endorse', true);

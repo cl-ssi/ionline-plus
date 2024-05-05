@@ -146,7 +146,7 @@ class ApprovalResource extends Resource
                 // Tables\Columns\TextColumn::make('approver_at')
                 //     ->dateTime()
                 //     ->sortable(),
-                Tables\Columns\IconColumn::make('status')
+                Tables\Columns\IconColumn::make('active')
                     ->boolean(),
                 // Tables\Columns\TextColumn::make('callback_controller_method')
                 //     ->searchable(),
@@ -154,9 +154,9 @@ class ApprovalResource extends Resource
                 //     ->searchable(),
                 // Tables\Columns\IconColumn::make('active')
                 //     ->boolean(),
-                // Tables\Columns\TextColumn::make('previousApproval.id')
-                //     ->numeric()
-                //     ->sortable(),
+                Tables\Columns\TextColumn::make('previousApproval.id')
+                    ->numeric()
+                    ->sortable(),
                 // Tables\Columns\IconColumn::make('digital_signature')
                 //     ->boolean(),
                 // Tables\Columns\IconColumn::make('endorse')

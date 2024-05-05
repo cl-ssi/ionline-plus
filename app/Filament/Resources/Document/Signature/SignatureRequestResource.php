@@ -137,6 +137,7 @@ class SignatureRequestResource extends Resource
                                 Forms\Components\Select::make('establishment_id')
                                     ->label('Establecimiento')
                                     ->options(Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
+                                    ->default(auth()->user()->establishment_id)
                                     ->live(),
                                 SelectTree::make('sent_to_ou_id')
                                     ->label('Unidad Organizacional')
@@ -194,6 +195,7 @@ class SignatureRequestResource extends Resource
                                 Forms\Components\Select::make('establishment_id')
                                     ->label('Establecimiento')
                                     ->options(Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
+                                    ->default(auth()->user()->establishment_id)
                                     ->live(),
                                 SelectTree::make('sent_to_ou_id')
                                     ->label('Unidad Organizacional')

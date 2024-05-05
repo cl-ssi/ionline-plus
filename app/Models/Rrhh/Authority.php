@@ -34,7 +34,7 @@ class Authority extends Model implements Auditable
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'date' => 'date:Y-m-d',
         // 'from_time' => 'time',  // No existe casts para time
         // 'to_time' => 'time',
     ];

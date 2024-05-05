@@ -23,36 +23,43 @@ class CreateSignatureRequest extends CreateRecord
         // dd($this->data);
         $signatureRequest = $this->record;
         $endorseType = $signatureRequest->endorse_type_id;
-        $approvals = $signatureRequest->approvals()->orderBy('created_at')->get();
+        $signatures = $signatureRequest->signatures()->orderBy('created_at')->get();
+        $visations = $signatureRequest->visations()->orderBy('created_at')->get();
         $previousApproval = null;
 
         switch ($endorseType) {
-            case 1:
-                foreach ($approvals as $index => $app) {
-                    $app->active = ($index === 0);
-                    $app->previous_approval_id = $previousApproval ? $previousApproval->id : null;
-                    $app->save();
-                    $previousApproval = $app;
+            case 1: // No requiere visación
+                foreach ($signatures as $index => $signature) {
+                    $signature->active = ($index === 0);
+                    $signature->previous_approval_id = $previousApproval ? $previousApproval->id : null;
+                    $signature->save();
+                    $previousApproval = $signature;
                 }
                 break;
-            case 2:
-                foreach ($approvals as $index => $app) {
-                    if ($app->endorse) {
-                        $app->active = true;
-                    } else {
-                        $app->active = ($index === 0);
-                    }
-                    $app->previous_approval_id = $previousApproval ? $previousApproval->id : null;
-                    $app->save();
-                    $previousApproval = $app;
+            case 2: // Visación opcional
+                foreach ($visations as $index => $visation) {
+                    $visation->active = true;
+                    $visation->save();
+                }
+                foreach ($signatures as $index => $signature) {
+                    $signature->active = ($index === 0);
+                    $signature->previous_approval_id = $previousApproval ? $previousApproval->id : null;
+                    $signature->save();
+                    $previousApproval = $signature;
                 }
                 break;
-            case 3:
-                foreach ($approvals as $index => $app) {
-                    $app->active = ($index === 0);
-                    $app->previous_approval_id = $previousApproval ? $previousApproval->id : null;
-                    $app->save();
-                    $previousApproval = $app;
+            case 3: // Visación en cadena de responsabilidad
+                foreach ($visations as $index => $visation) {
+                    $visation->active = ($index === 0);
+                    $visation->previous_approval_id = $previousApproval ? $previousApproval->id : null;
+                    $visation->save();
+                    $previousApproval = $visation;
+                }
+                foreach ($signatures as $index => $signature) {
+                    $signature->active = false;
+                    $signature->previous_approval_id = $previousApproval ? $previousApproval->id : null;
+                    $signature->save();
+                    $previousApproval = $signature;
                 }
                 break;
         }

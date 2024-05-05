@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Permission;
 
 class RoleAndPermissionSeeder extends Seeder
 {
-    public function run() 
+    public function run()
     {
         $permissions = [
             ['name' => 'be god', 'description' => 'God Mode !', 'guard_name' => 'web'],
@@ -260,7 +260,7 @@ class RoleAndPermissionSeeder extends Seeder
             ['name' => 'Users: show access logs', 'description' => 'Permite ver el registro de accesos al sistema de los usuarios', 'guard_name' => 'web'],
         ];
 
-    Permission::insert($permissions);
+        Permission::insert($permissions);
 
         $role = Role::create(['name' => 'Agenda Salud del Trabajdor: Administrador', 'description' => '']);
         $role->givePermissionTo('Agenda UST: Administrador');
@@ -272,17 +272,19 @@ class RoleAndPermissionSeeder extends Seeder
         $role->givePermissionTo('Agenda UST: Secretaria');
 
         $role = Role::create(['name' => 'Director', 'description' => '']);
-        $role->givePermissionTo('Documents: create');
-        $role->givePermissionTo('Documents: edit');
-        $role->givePermissionTo('Calendar: view');
-        $role->givePermissionTo('Requirements: create');
-        $role->givePermissionTo('Partes: user');
-        $role->givePermissionTo('Partes: director');
-        $role->givePermissionTo('Partes: oficina');
-        $role->givePermissionTo('Documents: signatures and distribution');
-        $role->givePermissionTo('Calendar: aps');
-        $role->givePermissionTo('Receptions: user');
-        $role->givePermissionTo('Purchase Plan: reports');
+        $role->givePermissionTo([
+            'Documents: create',
+            'Documents: edit',
+            'Calendar: view',
+            'Requirements: create',
+            'Partes: user',
+            'Partes: director',
+            'Partes: oficina',
+            'Documents: signatures and distribution',
+            'Calendar: aps',
+            'Receptions: user',
+            'Purchase Plan: reports'
+        ]);
 
         $role = Role::create(['name' => 'Drogas: Jefe de unidad', 'description' => 'NO ASIGNAR a funcionarios fuera de la unidad, queda el registro de ingreso.']);
         $role->givePermissionTo('Drugs: view receptions');
@@ -600,44 +602,46 @@ class RoleAndPermissionSeeder extends Seeder
         $role->givePermissionTo('Allowances: director');
 
         $role = Role::create(['name' => 'Secretaria TIC', 'description' => '']);
-        $role->givePermissionTo('be god');
-        $role->givePermissionTo('Users: create');
-        $role->givePermissionTo('Users: edit');
-        $role->givePermissionTo('Users: delete');
-        $role->givePermissionTo('OrganizationalUnits: create');
-        $role->givePermissionTo('OrganizationalUnits: edit');
-        $role->givePermissionTo('OrganizationalUnits: delete');
-        $role->givePermissionTo('Documents: create');
-        $role->givePermissionTo('Documents: edit');
-        $role->givePermissionTo('Resources: create');
-        $role->givePermissionTo('Resources: edit');
-        $role->givePermissionTo('Resources: delete');
-        $role->givePermissionTo('Calendar: view');
-        $role->givePermissionTo('Authorities: view');
-        $role->givePermissionTo('Authorities: create');
-        $role->givePermissionTo('Requirements: create');
-        $role->givePermissionTo('Users: assign permission');
-        $role->givePermissionTo('Service Request');
-        $role->givePermissionTo('Documents: signatures and distribution');
-        $role->givePermissionTo('Requirements: delete');
-        $role->givePermissionTo('Service Request: fulfillments');
-        $role->givePermissionTo('Service Request: fulfillments responsable');
-        $role->givePermissionTo('Authorities: edit');
-        $role->givePermissionTo('Documents: delete document');
-        $role->givePermissionTo('Parameters: programs');
-        $role->givePermissionTo('Parameters: locations');
-        $role->givePermissionTo('Parameters: places');
-        $role->givePermissionTo('Parameters: UNSPSC');
-        $role->givePermissionTo('Parameters: holidays');
-        $role->givePermissionTo('Users: send mail verification');
-        $role->givePermissionTo('Users: reset password option');
-        $role->givePermissionTo('OrganizationalUnits: sirh association');
-        $role->givePermissionTo('Purchase Plan: create');
-        $role->givePermissionTo('Receptions: user');
-        $role->givePermissionTo('Receptions: load support file');
-        $role->givePermissionTo('News: create');
-        $role->givePermissionTo('Users: assign roles');
-        $role->givePermissionTo('Documents: admin');
+        $role->givePermissionTo([
+            'be god',
+            'Users: create',
+            'Users: edit',
+            'Users: delete',
+            'OrganizationalUnits: create',
+            'OrganizationalUnits: edit',
+            'OrganizationalUnits: delete',
+            'Documents: create',
+            'Documents: edit',
+            'Resources: create',
+            'Resources: edit',
+            'Resources: delete',
+            'Calendar: view',
+            'Authorities: view',
+            'Authorities: create',
+            'Requirements: create',
+            'Users: assign permission',
+            'Service Request',
+            'Documents: signatures and distribution',
+            'Requirements: delete',
+            'Service Request: fulfillments',
+            'Service Request: fulfillments responsable',
+            'Authorities: edit',
+            'Documents: delete document',
+            'Parameters: programs',
+            'Parameters: locations',
+            'Parameters: places',
+            'Parameters: UNSPSC',
+            'Parameters: holidays',
+            'Users: send mail verification',
+            'Users: reset password option',
+            'OrganizationalUnits: sirh association',
+            'Purchase Plan: create',
+            'Receptions: user',
+            'Receptions: load support file',
+            'News: create',
+            'Users: assign roles',
+            'Documents: admin',
+        ]);
 
         $role = Role::create(['name' => 'Store: admin', 'description' => '']);
 
@@ -651,19 +655,21 @@ class RoleAndPermissionSeeder extends Seeder
         $role->givePermissionTo('Store: bincard report');
 
         $role = Role::create(['name' => 'Usuario Administrador', 'description' => 'Administrar usuarios, unidades organizacionales y autoridades']);
-        $role->givePermissionTo('Users: create');
-        $role->givePermissionTo('Users: edit');
-        $role->givePermissionTo('Users: delete');
-        $role->givePermissionTo('OrganizationalUnits: create');
-        $role->givePermissionTo('OrganizationalUnits: edit');
-        $role->givePermissionTo('OrganizationalUnits: delete');
-        $role->givePermissionTo('Authorities: view');
-        $role->givePermissionTo('Authorities: create');
-        $role->givePermissionTo('Authorities: edit');
-        $role->givePermissionTo('Users: send mail verification');
-        $role->givePermissionTo('Users: reset password option');
-        $role->givePermissionTo('OrganizationalUnits: sirh association');
-        $role->givePermissionTo('Users: assign roles');
+        $role->givePermissionTo([
+            'Users: create',
+            'Users: edit',
+            'Users: delete',
+            'OrganizationalUnits: create',
+            'OrganizationalUnits: edit',
+            'OrganizationalUnits: delete',
+            'Authorities: view',
+            'Authorities: create',
+            'Authorities: edit',
+            'Users: send mail verification',
+            'Users: reset password option',
+            'OrganizationalUnits: sirh association',
+            'Users: assign roles',
+        ]);
 
         $role = Role::create(['name' => 'Usuario Básico', 'description' => 'Calendario, Documentos, Firmas y SGR']);
         $role->givePermissionTo('Documents: create');
@@ -675,17 +681,19 @@ class RoleAndPermissionSeeder extends Seeder
         $role->givePermissionTo('Receptions: user');
 
         $role = Role::create(['name' => 'Usuario Semi Administrador', 'description' => 'Administrar usuarios, unidades organizacionales y autoridad (No puede borrar)']);
-        $role->givePermissionTo('Users: create');
-        $role->givePermissionTo('Users: edit');
-        $role->givePermissionTo('OrganizationalUnits: create');
-        $role->givePermissionTo('OrganizationalUnits: edit');
-        $role->givePermissionTo('Authorities: view');
-        $role->givePermissionTo('Authorities: create');
-        $role->givePermissionTo('Authorities: edit');
-        $role->givePermissionTo('Users: send mail verification');
-        $role->givePermissionTo('Users: reset password option');
-        $role->givePermissionTo('OrganizationalUnits: sirh association');
-        $role->givePermissionTo('Users: assign roles');
+        $role->givePermissionTo([
+            'Users: create',
+            'Users: edit',
+            'OrganizationalUnits: create',
+            'OrganizationalUnits: edit',
+            'Authorities: view',
+            'Authorities: create',
+            'Authorities: edit',
+            'Users: send mail verification',
+            'Users: reset password option',
+            'OrganizationalUnits: sirh association',
+            'Users: assign roles',
+        ]);
 
 
         // GOD LIKE

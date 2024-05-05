@@ -20,7 +20,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use App\Observers\UserObserver;
 
+#[ObservedBy([UserObserver::class])]
 class User extends Authenticatable implements FilamentUser, Auditable
 {
     use \OwenIt\Auditing\Auditable;
@@ -142,7 +145,7 @@ class User extends Authenticatable implements FilamentUser, Auditable
             ->as('authority')
             ->withPivot('position','type','decree','representation_id')
             ->wherePivot('type', Authority::TYPE_MANAGER)
-            ->wherePivot('date', now()->startOfDay());
+            ->wherePivot('date', now()->toDateString());
     }
 
     /**

@@ -132,6 +132,8 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('run')
                     ->searchable()
+                    ->copyable()
+                    ->copyMessage('Run copiado')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('full_name')
                     ->formatStateUsing(fn (string $state) => ucwords(strtolower($state)))

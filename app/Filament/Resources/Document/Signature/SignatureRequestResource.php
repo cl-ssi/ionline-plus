@@ -269,7 +269,8 @@ class SignatureRequestResource extends Resource
                 Tables\Columns\TextColumn::make('approvals.sentToOu.name')
                     ->label('Firmantes')
                     ->limit(40)
-                    ->bulleted(),
+                    ->bulleted()
+                    ->listWithLineBreaks(),
                 Tables\Columns\IconColumn::make('approvals.icon')
                     ->label('')
                     ->icon(fn (string $state): string => match ($state) {
@@ -333,6 +334,7 @@ class SignatureRequestResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->defaultSort('id', 'desc')
             ->filters([
                 //
             ])

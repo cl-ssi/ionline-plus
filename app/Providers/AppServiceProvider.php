@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Number;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,9 +28,5 @@ class AppServiceProvider extends ServiceProvider
     
             return $policyClass;
         });
-
-        if(config('app.env') == 'production') {
-            \URL::forceScheme('https');
-        }
     }
 }

@@ -27,5 +27,9 @@ class AppServiceProvider extends ServiceProvider
     
             return $policyClass;
         });
+
+        if(config('app.env') == 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }

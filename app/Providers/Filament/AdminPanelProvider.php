@@ -57,6 +57,6 @@ class AdminPanelProvider extends PanelProvider
                 UserMenuItemMiddleware::class,
             ])
             ->databaseNotifications()
-            ->favicon(asset('logo-ionline.ico'));;
+            ->favicon(asset('logo-ionline.ico'));
     }
 }

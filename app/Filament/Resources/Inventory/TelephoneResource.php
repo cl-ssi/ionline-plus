@@ -40,26 +40,42 @@ class TelephoneResource extends Resource
                     ->default(null)
                     ->columnSpan(1),
                 Forms\Components\Select::make('establishment_id')
-                    // ->relationship('place.location.establishment', 'establishment_id')
                     ->label('Establecimiento')
-                    ->options(Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
+                    ->options(
+                        Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))
+                            ->pluck('name', 'id')
+                    )
                     ->live()
                     ->default(38)
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->afterStateUpdated(function ($state, $set) {
+                        $set('location_id', null);
+                        $set('place_id', null);
+                    }),
                 Forms\Components\Select::make('location_id')
-                    // ->relationship('place.location', 'name')
                     ->label('Edificio/Ubicación')
-                    ->options(fn (Get $get) => Location::where('establishment_id', $get('establishment_id'))->orderBy('name')->pluck('name', 'id'))
+                    ->options(function (Get $get) {
+                        if (!$get('establishment_id')) {
+                            return [];
+                        }
+                        return Location::where('establishment_id', $get('establishment_id'))
+                            ->orderBy('name')
+                            ->pluck('name', 'id');
+                    })
                     ->live()
-                    ->default(20)
-                    // ->default(fn (Get $get) => Place::find($get('place_id')->location->id))
+                    ->afterStateUpdated(fn ($state, $set) => $set('place_id', null) )
                     ->columnSpan(1),
                 Forms\Components\Select::make('place_id')
                     ->relationship('place','name')
                     ->label('Lugar/Oficina/Sala/Box')
-                    // ->options(fn (Get $get) => Place::where('location_id', $get('location_id'))->orderBy('name')->pluck('name', 'id'))
-                    ->default(null)
-                    ->live()
+                    ->options(function (Get $get) {
+                        if (!$get('location_id')) {
+                            return [];
+                        }
+                        return Place::where('location_id', $get('location_id'))
+                            ->orderBy('name')
+                            ->pluck('name', 'id');
+                    })
                     ->columnSpan(1),
             ])
             ->columns(3);

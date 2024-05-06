@@ -266,16 +266,22 @@ class SignatureRequestResource extends Resource
                     ->numeric()
                     ->sortable()
                     ->translateLabel(),
-                // Tables\Columns\IconColumn::make('status')
-                //     ->translateLabel()
-                //     ->boolean(),
-                Tables\Columns\TextColumn::make('signatures.sentToOu.name')
+                Tables\Columns\TextColumn::make('approvals.sentToOu.name')
                     ->label('Firmantes')
                     ->limit(40)
                     ->bulleted(),
-                Tables\Columns\IconColumn::make('signatures.status')
+                Tables\Columns\IconColumn::make('approvals.icon')
                     ->label('')
-                    ->boolean()
+                    ->icon(fn (string $state): string => match ($state) {
+                        'approved' => 'heroicon-o-check-circle',
+                        'rejected' => 'heroicon-o-x-circle',
+                        'pending' => 'heroicon-o-clock',
+                    })
+                    ->color(fn (string $state): string => match ($state) {
+                        'approved' => 'success',
+                        'rejected' => 'danger',
+                        'pending' => 'gray',
+                    })
                     ->listWithLineBreaks(),
 
                 // Tables\Columns\TextColumn::make('organizationalUnit.name')

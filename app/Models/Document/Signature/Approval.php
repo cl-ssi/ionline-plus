@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Observers\Document\Signature\ApprovalObserver;
 
 #[ObservedBy([ApprovalObserver::class])]
@@ -103,4 +103,19 @@ class Approval extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * Get the user's first name.
+     */
+    protected function icon(): Attribute
+    {
+        return Attribute::make(
+            get: fn(mixed $value, array $attributes) => match ($attributes['status']) {
+                1 => 'approved',      // Cuando el status es verdadero
+                0 => 'rejected',      // Cuando el status es falso
+                default => 'pending'  // Cuando el status es null o cualquier otro caso
+            }
+        );
+    }
+    protected $appends = ['icon'];
 }

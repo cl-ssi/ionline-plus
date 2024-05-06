@@ -193,38 +193,55 @@ class ApprovalResource extends Resource
             ->actions([
                 Tables\Actions\Action::make('signature')
                     ->form([
-                        Forms\Components\TextInput::make('otp')
-                            ->label('OTP')
-                            ->numeric()
-                            ->required(),
+                        Forms\Components\Grid::make('Label')
+                            ->schema([
+                                Forms\Components\TextInput::make('otp')
+                                    ->label('OTP')
+                                    ->numeric()
+                                    ->required()
+                                    ->columns(1),
+                                Forms\Components\TextInput::make('approver_observation')
+                                    ->label('Observaciones')
+                                    ->columnSpan(3)
+                                ])
+                                ->columns(4)
                     ])
                     ->label('Firmar')
                     ->icon('heroicon-o-pencil')
-                    ->action(function (array $data, Approval $record): void {
-                        $digitalSignature = new DigitalSignature();
-                        $status = $digitalSignature->signature(
-                            auth()->user(), 
-                            $data['otp'], 
-                            array(Storage::get($record->document_pdf_path)), 
-                            array(['margin-bottom' => 20])
-                        );
-                
-                        if($status == true) {
-                            $digitalSignature->storeFirstSignedFile('ionline/approvals/signed_files/'.basename($record->original_file_path));
-                            $record->update(['status' => true]);
-                            Notification::make()
-                                ->title('Archivo firmado correctamente')
-                                ->success()
-                                ->send();
+                    ->extraModalFooterActions(fn (Tables\Actions\Action $action): array => [
+                        $action->makeModalSubmitAction('rechazar', arguments: ['reject' => true])->color('danger'),
+                    ])
+                    ->action(function (array $data, array $arguments, Approval $record): void {
+                        if ($arguments['reject']) {
+                            // Si es un rechazo, se actualiza el registro con la observación del aprobador y se marca como rechazado (status = False)
+                            $record->update(['approver_observation'=>$data['approver_observation'], 'status' => false]);
                         }
                         else {
-                            Notification::make()
-                                ->title($digitalSignature->error)
-                                ->danger()
-                                ->send();
+                            $digitalSignature = new DigitalSignature();
+                            $status = $digitalSignature->signature(
+                                auth()->user(), 
+                                $data['otp'], 
+                                array(Storage::get($record->document_pdf_path)), 
+                                array(['margin-bottom' => 20])
+                            );
+                    
+                            if($status == true) {
+                                $digitalSignature->storeFirstSignedFile('ionline/approvals/signed_files/'.basename($record->original_file_path));
+                                $record->update(['status' => true]);
+                                Notification::make()
+                                    ->title('Archivo firmado correctamente')
+                                    ->success()
+                                    ->send();
+                            }
+                            else {
+                                Notification::make()
+                                    ->title($digitalSignature->error)
+                                    ->danger()
+                                    ->send();
+                            }
                         }
                     })
-                    ->modalButton('Firmar')
+                    ->modalSubmitActionLabel('Firmar')
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     ->modalContent(fn(Approval $record): View => view('filament.documents.pdf-viewer-modal', [
                         'pdfUrl' => Storage::url($record->original_file_path),
@@ -271,5 +288,10 @@ class ApprovalResource extends Resource
     public static function getPluralLabel(): string
     {
         return 'Aprobaciones';
+    }
+
+    public static function boom($another): string
+    {
+        dd($another);
     }
 }

@@ -102,16 +102,19 @@ class ParteResource extends Resource
                 Tables\Columns\TextColumn::make('entered_at')
                     ->dateTime('Y-m-d H:i')
                     ->sortable(),
+                Tables\Columns\IconColumn::make('reserved')
+                    ->label('')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-exclamation-triangle')
+                    ->trueColor('grey'),
                 Tables\Columns\TextColumn::make('type.name')
                     ->numeric()
                     ->sortable(),
-                // Tables\Columns\IconColumn::make('reserved')
-                //     ->boolean(),
                 Tables\Columns\TextColumn::make('date')
                     ->date('Y-m-d')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('number')
-                    ->numeric()
+                    ->numeric(locale: 'cl')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('origin')
                     ->searchable()

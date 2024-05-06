@@ -34,6 +34,7 @@ class UserResource extends Resource
                         ->disabledOn('edit')
                         ->required()
                         ->numeric()
+                        ->unique()
                         ->columnSpan(3),
                     Forms\Components\TextInput::make('dv')
                         ->required()

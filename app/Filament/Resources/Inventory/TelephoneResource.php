@@ -30,10 +30,12 @@ class TelephoneResource extends Resource
                 Forms\Components\TextInput::make('minsal')
                     ->required()
                     ->numeric()
+                    ->unique()
                     ->columnSpan(1),
                 Forms\Components\TextInput::make('number')
                     ->required()
                     ->numeric()
+                    ->unique()
                     ->columnSpan(1),
                 Forms\Components\TextInput::make('mac')
                     ->maxLength(17)

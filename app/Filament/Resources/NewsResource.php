@@ -27,7 +27,7 @@ class NewsResource extends Resource
             ->schema([
                 Forms\Components\FileUpload::make('image')
                     ->directory('ionline/news')
-                    ->image()
+                    ->image() // restringe que sea solo de tipo imagen
                     ->required()
                     ->helperText('IMPORTANTE: Tamaño de la imagen 766x400'),
                 Forms\Components\Select::make('type')
@@ -37,7 +37,8 @@ class NewsResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('title')
                     ->maxLength(255)
-                    ->default(null),
+                    ->default(null)
+                    ->required(),
                 Forms\Components\DateTimePicker::make('until_at'),
                 // Forms\Components\TextInput::make('subtitle')
                 //     ->maxLength(255)
@@ -46,7 +47,8 @@ class NewsResource extends Resource
                 // Forms\Components\Textarea::make('lead')
                 //     ->columnSpanFull(),
                 Forms\Components\Textarea::make('body')
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->rows(6),
             ]);
     }
 

@@ -19,13 +19,15 @@ class LogResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Desarrollador';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
-                    ->default(null),
+                    ->disabled(),
                 Forms\Components\Textarea::make('message')
                     ->required()
                     ->columnSpanFull(),
@@ -39,7 +41,6 @@ class LogResource extends Resource
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('context')
-                    ->required()
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('level')
                     ->required()
@@ -55,7 +56,7 @@ class LogResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('remote_addr')
                     ->maxLength(255)
-                    ->default(null),
+                    ->disabled(),
                 Forms\Components\TextInput::make('user_agent')
                     ->maxLength(255)
                     ->default(null),
@@ -69,6 +70,8 @@ class LogResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('user.short_name')
                     ->wrap()
                     ->sortable(),
@@ -102,7 +105,7 @@ class LogResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->paginated(50)
-            ->defaultSort('record_datetime','desc')
+            ->defaultSort('id','desc')
             ->filters([
                 //
             ])

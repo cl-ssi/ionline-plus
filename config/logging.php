@@ -1,6 +1,7 @@
 <?php
 
 use Actived\MicrosoftTeamsNotifier\LogMonolog;
+use App\Logging\DatabaseLogger;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -52,6 +53,11 @@ return [
     */
 
     'channels' => [
+        'database' => [
+            'driver' => 'custom',
+            'via'    => DatabaseLogger::class,
+            'level'  => env('LOG_LEVEL', 'debug'),
+        ],
 
         'stack' => [
             'driver' => 'stack',

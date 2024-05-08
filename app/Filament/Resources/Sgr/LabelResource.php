@@ -19,6 +19,8 @@ class LabelResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?string $navigationGroup = 'SGR';
+
     public static function form(Form $form): Form
     {
         return $form

@@ -19,6 +19,8 @@ class RequirementResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
 
+    protected static ?string $navigationGroup = 'SGR';
+
     public static function form(Form $form): Form
     {
         return $form

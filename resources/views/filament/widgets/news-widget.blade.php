@@ -9,5 +9,5 @@
         width>
     </x-filament::section>
     <p class="p-1 small">{{ $this->getCurrentNews()->publication_date_at }} - {{ $this->getCurrentNews()->title }}</p>
-    <p>{{ $this->getCurrentNews()->subtitle }}</p>
+    <p>{{ $this->getCurrentNews()->body }}</p>
 </x-filament-widgets::widget>

@@ -18,7 +18,7 @@ class NewsWidget extends Widget
     {
         // Obtén solo las noticias cuya fecha "until_at" aún no ha pasado
         $this->news = News::where('until_at', '>', now())
-                          ->orWhere('unitl_at', null)
+                          ->orWhere('until_at', null)
                           ->orderBy('id', 'desc')
                           ->get();
     }

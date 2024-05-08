@@ -22,7 +22,7 @@
     </div>
     <x-filament::section 
         class="p-1 bg-cover bg-center rounded-lg" 
-        style="height: 420px; background-image: url('{{ Storage::disk('gcs')->url($this->getCurrentNews()->image) }}');">
+        style="height: 420px; background-image: url('{{ Storage::url($this->getCurrentNews()->image) }}');">
     </x-filament::section>
     <p class="p-1">{{ $this->getCurrentNews()->publication_date_at }} - {{ $this->getCurrentNews()->title }}</p>
     <p class="p-1">{{ $this->getCurrentNews()->body }}</p>

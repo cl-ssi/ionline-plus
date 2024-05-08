@@ -31,17 +31,17 @@ class ApprovalObserver
         }
 
         /** Si tiene un aprobador en particular envia la notificación al usuario específico */
-        if ( $approval->sent_to_user_id ) {
-            $approval->sentToUser->notify(new NewApproval($approval));
-        }
+        // if ( $approval->sent_to_user_id ) {
+        //     $approval->sentToUser->notify(new NewApproval($approval));
+        // }
 
         /** Agregar el approval_id al comienzo de los parámetros del callback */
         /** Solo si tiene un callback controller method */
-        if($approval->callback_controller_method) {
-            $params = json_decode($approval->callback_controller_params,true) ?? [];
-            $approval->callback_controller_params = json_encode(array_merge(array('approval_id' => $approval->id), $params));
-            $approval->save();
-        }
+        // if($approval->callback_controller_method) {
+        //     $params = json_decode($approval->callback_controller_params,true) ?? [];
+        //     $approval->callback_controller_params = json_encode(array_merge(array('approval_id' => $approval->id), $params));
+        //     $approval->save();
+        // }
     }
 
     /**

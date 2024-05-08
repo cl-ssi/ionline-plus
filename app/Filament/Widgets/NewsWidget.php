@@ -16,7 +16,10 @@ class NewsWidget extends Widget
 
     public function mount(): void
     {
-        $this->news = News::orderBy('id', 'desc')->get();
+        // Obtén solo las noticias cuya fecha "until_at" aún no ha pasado
+        $this->news = News::where('until_at', '>', now())
+                          ->orderBy('id', 'desc')
+                          ->get();
     }
 
     public function next()

@@ -28,7 +28,8 @@ class NewsResource extends Resource
                 Forms\Components\FileUpload::make('image')
                     ->directory('ionline/news')
                     ->image()
-                    ->required(),
+                    ->required()
+                    ->helperText('IMPORTANTE: Tamaño de la imagen 766x400'),
                 Forms\Components\Select::make('type')
                     ->options([
                         'news' => 'News',
@@ -38,12 +39,12 @@ class NewsResource extends Resource
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\DateTimePicker::make('until_at'),
-                Forms\Components\TextInput::make('subtitle')
-                    ->maxLength(255)
-                    ->default(null)
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('lead')
-                    ->columnSpanFull(),
+                // Forms\Components\TextInput::make('subtitle')
+                //     ->maxLength(255)
+                //     ->default(null)
+                //     ->columnSpanFull(),
+                // Forms\Components\Textarea::make('lead')
+                //     ->columnSpanFull(),
                 Forms\Components\Textarea::make('body')
                     ->columnSpanFull(),
             ]);
@@ -53,19 +54,20 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
+                Tables\Columns\TextColumn::make('publication_date_at')
+                    ->dateTime('Y-m-d H:i')
+                    ->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('title')
+                    ->wrap()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('subtitle')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('publication_date_at')
-                    ->dateTime()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('body')
+                //     ->wrap()
+                //     ->searchable(),
                 Tables\Columns\TextColumn::make('until_at')
-                    ->dateTime()
+                    ->dateTime('Y-m-d H:i')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
+                Tables\Columns\TextColumn::make('user.shortName')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

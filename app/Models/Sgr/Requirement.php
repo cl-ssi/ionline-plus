@@ -27,7 +27,6 @@ class Requirement extends Model implements Auditable
      */
 
     protected $fillable = [
-        'id',
         'subject',
         'priority',
         'event_type_id',
@@ -65,6 +64,9 @@ class Requirement extends Model implements Auditable
 
     public function events(): HasMany {
         return $this->hasMany(Event::class);
+    }
+    public function firstEvent(): HasOne {
+        return $this->hasOne(Event::class);
     }
 
     // funciones

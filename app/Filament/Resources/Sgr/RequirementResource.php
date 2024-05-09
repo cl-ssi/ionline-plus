@@ -42,7 +42,19 @@ class RequirementResource extends Resource
                 Forms\Components\TextInput::make('group_number')
                     ->numeric(),
                 Forms\Components\Select::make('category_id')
-                    ->relationship('category', 'name'),
+                    ->relationship('category', 'name')
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\ColorPicker::make('color')
+                            ->required(),
+                    ]),
+                Forms\Components\Fieldset::make('firstEvent')
+                    ->relationship('firstEvent')
+                    ->schema([
+                        Forms\Components\Textarea::make('body'),
+                    ])
             ]);
     }
 

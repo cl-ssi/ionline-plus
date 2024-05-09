@@ -2,13 +2,17 @@
 
 namespace App\Models\Sgr;
 
+use App\Models\Rrhh\OrganizationalUnit;
 use App\Models\User;
 use App\Models\Sgr\Requirement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use App\Observers\Sgr\EventObserver;
 
+#[ObservedBy([EventObserver::class])]
 class Event extends Model
 {
     use SoftDeletes;
@@ -19,15 +23,14 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'body', 
-        'status',
-        'from_user_id',
-        'from_ou_id',
+        'requirement_id',
+        'body',
+        'event_type_id',
+        'limit_at',
+        'creator_id',
+        'creator_ou_id',
         'to_user_id',
         'to_ou_id',
-        'requirement_id',
-        'limit_at',
-        'to_authority'
     ];
 
     /**
@@ -43,7 +46,23 @@ class Event extends Model
         return $this->belongsTo(Requirement::class);
     }
 
-    public function from_user(): BelongsTo {
-        return $this->belongsTo(User::class, 'from_user_id')->withTrashed();
+    public function eventType(): BelongsTo {
+        return $this->belongsTo(EventType::class);
+    }
+
+    public function creator(): BelongsTo {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function toUser(): BelongsTo {
+        return $this->belongsTo(User::class, 'to_user_id')->withTrashed();
+    }
+
+    public function creatorOu(): BelongsTo {
+        return $this->belongsTo(OrganizationalUnit::class, 'creator_ou_id');
+    }
+
+    public function toOu(): BelongsTo {
+        return $this->belongsTo(OrganizationalUnit::class, 'to_ou_id');
     }
 }

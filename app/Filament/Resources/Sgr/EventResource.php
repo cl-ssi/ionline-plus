@@ -25,29 +25,26 @@ class EventResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('body')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('limit_at'),
-                Forms\Components\TextInput::make('from_user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('from_ou_id')
-                    ->required()
-                    ->numeric()
-                    ->default(69),
-                Forms\Components\TextInput::make('to_user_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('to_ou_id')
-                    ->required()
-                    ->numeric(),
                 Forms\Components\Select::make('requirement_id')
                     ->relationship('requirement', 'id')
                     ->required(),
-                Forms\Components\Toggle::make('to_authority'),
+                Forms\Components\Textarea::make('body')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('event_type_id')
+                    ->relationship('eventType', 'name')
+                    ->required(),
+                Forms\Components\DateTimePicker::make('limit_at'),
+                Forms\Components\Select::make('creator_id')
+                    ->relationship('creator', 'name')
+                    ->required(),
+                Forms\Components\Select::make('creator_ou_id')
+                    ->relationship('creatorOu', 'name')
+                    ->required(),
+                Forms\Components\Select::make('to_user_id')
+                    ->relationship('toUser', 'name'),
+                Forms\Components\Select::make('to_ou_id')
+                    ->relationship('toOu', 'name'),
             ]);
     }
 
@@ -55,27 +52,27 @@ class EventResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('limit_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('from_user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('from_ou_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('to_user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('to_ou_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('requirement.id')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('to_authority')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('eventType.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('limit_at')
+                    ->dateTime()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('creator.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('creatorOu.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('toUser.name')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('toOu.name')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

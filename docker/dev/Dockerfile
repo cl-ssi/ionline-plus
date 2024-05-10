@@ -1,4 +1,6 @@
-FROM php:7.4.3-fpm-alpine
+FROM php:8.2-fpm-alpine
+
+RUN apk add --no-cache nginx wget
 
 # Install dependencies for GD and install GD with support for jpeg, png webp and freetype
 # Info about installing GD in PHP https://www.php.net/manual/en/image.installation.php
@@ -9,6 +11,9 @@ RUN apk add --no-cache \
         freetype-dev \
         libxml2-dev \
         libzip-dev \
+        icu-dev \
+        mdbtools-utils \
+        poppler-utils \
         bash
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
@@ -24,7 +29,33 @@ RUN docker-php-ext-install soap
 
 RUN docker-php-ext-install zip
 
+RUN docker-php-ext-install bcmath
+
+RUN docker-php-ext-configure intl
+
+RUN docker-php-ext-install intl
+
+RUN docker-php-ext-enable intl
+
+RUN docker-php-ext-install opcache
+
+RUN docker-php-ext-install pcntl
+
+RUN mkdir -p /run/nginx
+
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+
+COPY docker/php.ini /usr/local/etc/php/conf.d/docker-php.ini
+
+RUN mkdir -p /app
+COPY . /app
+
 RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar && mv composer.phar /usr/local/bin/composer"
+
+RUN cd /app && \
+    /usr/local/bin/composer install --no-dev
+
+RUN chown -R www-data: /app
 
 # Algunos alias
 RUN echo "PS1='\[\033[01;35m\]UniSalud\[\033[00m\]@\[\033[01;34m\]\w\[\033[00m\]:\\$ '" >> ~/.bashrc
@@ -42,3 +73,4 @@ RUN adduser -G tic -u 1000 -D -h /root -s /bin/bash tic
 # alias drun='docker run --rm -it -v $(pwd):/var/www/html -p 8000:8000 -d --name `basename "$PWD"` `basename "$PWD"`'
 # alias dexec='docker exec -it `basename "$PWD"` /bin/bash'
 # alias dstop='docker stop `basename "$PWD"`'
+ENTRYPOINT ["php", "artisan", "octane:frankenphp"]

@@ -39,6 +39,8 @@ RUN docker-php-ext-enable intl
 
 RUN docker-php-ext-install opcache
 
+RUN docker-php-ext-install pcntl
+
 RUN mkdir -p /run/nginx
 
 COPY docker/nginx.conf /etc/nginx/nginx.conf
@@ -53,5 +55,15 @@ RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 
 RUN chown -R www-data: /app
+
+# Instalar Laravel Octane
+RUN composer require laravel/octane
+RUN php artisan octane:install --server=frankenphp
+
+# Exponer el puerto que FrankenPHP utilizará
+EXPOSE 8000
+
+# Comando para ejecutar Octane con FrankenPHP
+CMD ["frankenphp", "serve", "--host=0.0.0.0", "--port=8000"]
 
 CMD sh /app/docker/startup.sh

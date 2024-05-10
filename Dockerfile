@@ -56,10 +56,6 @@ RUN cd /app && \
 
 RUN chown -R www-data: /app
 
-# Instalar Laravel Octane
-RUN composer require laravel/octane
-RUN php artisan octane:install --server=frankenphp
-
 # Exponer el puerto que FrankenPHP utilizará
 EXPOSE 8000
 

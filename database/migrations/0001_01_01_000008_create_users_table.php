@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -14,11 +15,23 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->char('dv',1);
-            $table->string('run')->storedAs("CONCAT(id,dv)");
+            if (DB::connection()->getDriverName() === 'mysql') {
+                $table->string('run')->storedAs("CONCAT(id,dv)");
+            }
+            else {
+                // Para SQLite y otros DBMS
+                $table->string('run')->nullable();
+            }
             $table->string('name');
             $table->string('fathers_family');
             $table->string('mothers_family');
-            $table->string('full_name')->storedAs("CONCAT(name, ' ', fathers_family, ' ', mothers_family)");
+            if (DB::connection()->getDriverName() === 'mysql') {
+                $table->string('full_name')->storedAs("CONCAT(name, ' ', fathers_family, ' ', mothers_family)");
+            }
+            else {
+                // Para SQLite y otros DBMS
+                $table->string('full_name')->nullable();
+            }
             $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
             $table->string('address')->nullable();

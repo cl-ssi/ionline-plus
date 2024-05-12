@@ -21,8 +21,8 @@ class EditTelephone extends EditRecord
     protected function mutateFormDataBeforeFill(array $data, ): array
     {
         $telephone = Telephone::find($data['id']);
-        $data['establishment_id'] = $telephone->place->location->establishment->id;
-        $data['location_id'] = $telephone->place->location->id;
+        $data['establishment_id'] = $telephone->place?->location->establishment->id;
+        $data['location_id'] = $telephone->place?->location->id;
         return $data;
     }
 

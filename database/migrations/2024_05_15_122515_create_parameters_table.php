@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parameters', function (Blueprint $table) {
+        Schema::create('cfg_parameters', function (Blueprint $table) {
             $table->id();
+            $table->string('module',50);
+            $table->string('parameter');
+            $table->string('value');
+            $table->string('description')->nullable();
+            $table->foreignId('establishment_id')->nullable()->constraint('establishments');
             $table->timestamps();
         });
     }
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parameters');
+        Schema::dropIfExists('cfg_parameters');
     }
 };

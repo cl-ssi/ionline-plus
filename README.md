@@ -17,10 +17,10 @@ iOnline Plus, is a Laravel 11 y Filamentphp version of the tradicional iOnline p
 ### Migration Tasks
  - [ ] php artisan make:model Document/Parte -m
  - [ ] copiar / hacer modelo y migración
- - [ ] php artisan make:filament-resource Document/Parte
+ - [ ] php artisan make:filament-resource Document/Parte --generate
  - [ ] php artisan make:policy Document/PartePolicy --model=Document/Parte
  - [ ] configurar policy con acceso
- - [ ] configurar recurso, menú e icono
+ - [ ] configurar recurso: menú, icono, nombre singular y plural
  - [ ] hacer RelationManager si corresponde
 
 

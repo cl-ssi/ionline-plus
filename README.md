@@ -7,12 +7,21 @@ iOnline Plus, is a Laravel 11 y Filamentphp version of the tradicional iOnline p
 - php 8.2
 
 ## Development Roadmap
-- [ ] Agenda Telefónica
+- [X] Agenda Telefónica
 - [ ] Partes
-- [ ] Autoridades
+- [-] Autoridades
 - [ ] Documentos ( fix editor )
 - [ ] Solitud de firma (Autoridades) (Approval)
 - [ ] Sgr (Cuco)
+
+### Migration Tasks
+ - [ ] php artisan make:model Document/Parte -m
+ - [ ] copiar / hacer modelo y migración
+ - [ ] php artisan make:filament-resource Document/Parte
+ - [ ] php artisan make:policy Document/PartePolicy --model=Document/Parte
+ - [ ] configurar policy con acceso
+ - [ ] configurar recurso, menú e icono
+ - [ ] hacer RelationManager si corresponde
 
 
 ## Deployment

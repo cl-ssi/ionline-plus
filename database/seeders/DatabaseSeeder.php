@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(HealthServiceSeeder::class);
         $this->call(EstablishmentTypeSeeder::class);
         $this->call(EstablishmentSeeder::class);
-        $this->call(OrganizationalUnitSeeder::class);
+        // $this->call(OrganizationalUnitSeeder::class);
+        $this->call(OuSeeder::class);
         $this->call(RoleAndPermissionSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(EndorseTypeSeeder::class);

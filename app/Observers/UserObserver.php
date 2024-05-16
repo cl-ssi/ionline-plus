@@ -12,6 +12,7 @@ class UserObserver
     public function creating(User $user): void
     {
         $user->establishment_id = $user->organizationalUnit->establishment_id;
+        $user->run = $user->id.$user->dv;
     }
 
     /**
@@ -20,6 +21,7 @@ class UserObserver
     public function updating(User $user): void
     {
         $user->establishment_id = $user->organizationalUnit->establishment_id;
+        $user->run = $user->id.$user->dv;
     }
 
     /**

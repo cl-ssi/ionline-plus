@@ -18,6 +18,8 @@ class AuthoritiesRelationManager extends RelationManager
 {
     protected static string $relationship = 'authorities';
 
+    protected static ?string $title = 'Autoridades';
+
     public function form(Form $form): Form
     {
         return $form

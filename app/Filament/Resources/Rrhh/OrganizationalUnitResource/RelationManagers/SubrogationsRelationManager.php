@@ -14,6 +14,8 @@ class SubrogationsRelationManager extends RelationManager
 {
     protected static string $relationship = 'subrogations';
 
+    protected static ?string $title = 'Línea de subrogancia';
+
     public function form(Form $form): Form
     {
         return $form

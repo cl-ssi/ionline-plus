@@ -30,6 +30,10 @@ class AdminPanelProvider extends PanelProvider
             ->path('')
             ->brandLogo(fn () => view('filament.admin.logo'))
             ->login(CustomLogin::class)
+            ->renderHook( 
+                'panels::auth.login.form.after',
+                fn () => view('auth.socialite.claveunica')
+            )
             ->colors([
                 'primary' => Color::Blue,
             ])

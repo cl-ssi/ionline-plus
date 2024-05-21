@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IonlineController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,8 @@ Route::controller(TestController::class)->middleware(['auth'])->prefix('test')->
     //     // Uses first & second middleware...
     // });
 });
+
+Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect'])
+    ->name('socialite.redirect');
+Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback'])
+    ->name('socialite.callback');

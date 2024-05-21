@@ -31,4 +31,10 @@ return [
         ],
     ],
 
+    'claveunica' => [    
+        'client_id' => env('CLAVEUNICA_CLIENT_ID'),
+        'client_secret' => env('CLAVEUNICA_CLIENT_SECRET'),  
+        'redirect' => env('CLAVEUNICA_REDIRECT_URI') 
+    ],
+
 ];

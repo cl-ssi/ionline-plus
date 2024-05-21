@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Number;
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
             $policyClass = str_replace('App\Models', 'App\Policies', $modelClass) . 'Policy';
     
             return $policyClass;
+        });
+
+        Event::listen(function (\SocialiteProviders\Manager\SocialiteWasCalled $event) {
+            $event->extendSocialite('claveunica', \SocialiteProviders\ClaveUnica\Provider::class);
         });
     }
 }

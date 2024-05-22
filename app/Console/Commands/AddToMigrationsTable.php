@@ -32,6 +32,16 @@ class AddToMigrationsTable extends Command
         '2024_04_12_231016_create_approvals_table.php',
         '2024_04_12_231059_create_signature_requests_table.php',
         '2024_04_12_232605_create_files_table.php',
+        '2024_04_29_154027_create_news_table.php',
+        '2024_05_02_085901_create_subrogations_table.php',
+        '2024_05_02_085901_create_subrogations_table',
+        '2024_05_02_150015_create_notifications_table',
+        '2024_05_03_093422_create_locations_table',
+        '2024_05_03_093429_create_places_table',
+        '2024_05_03_094434_create_telephones_table',
+        '2024_05_06_125623_create_partes_table',
+        '2024_05_07_113524_create_logs_table',
+        '2024_05_15_122515_create_parameters_table'
     ];
 
     public function handle()

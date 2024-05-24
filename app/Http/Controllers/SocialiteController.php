@@ -35,12 +35,13 @@ class SocialiteController extends Controller
             }
         } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
             request()->session()->regenerate();
+            dd($e->getMessage());
             Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
             return redirect()->route('filament.admin.auth.login')
                 ->withErrors(['msg' => 'Invalid state exception: ' . $e->getMessage()]);
         } catch (\Exception $e) {
-            dd($e->getMessage());
             request()->session()->regenerate();
+            dd($e->getMessage());
             Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
             return redirect()->route('filament.admin.auth.login')
                 ->withErrors(['msg' => 'General exception: ' . $e->getMessage()]);
@@ -49,9 +50,20 @@ class SocialiteController extends Controller
 
     public function logout(string $provider)
     {
+        $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
+        if($provider == 'claveunica') {
+            $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        }
+        else {
+            $logout_uri = env('APP_URL').'/logout';
+        }
+        $provider = 'claveunica';
+        // Return redirect url
+        dd($logout_uri);
         request()->session()->regenerate();
-        auth()->logout();
-        return redirect()->route('filament.admin.auth.login');
+        // auth()->logout();
+        // return redirect()->route('filament.admin.auth.login');
     }
 
 }

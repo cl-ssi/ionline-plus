@@ -10,6 +10,17 @@
     <span class="texto">Iniciar sesión</span>
 </x-filament::button>
 
+<x-filament::button
+    :href="route('socialite.logout', 'claveunica')"
+    tag="a"
+    color="danger"
+    class="btn-primary" 
+    title="Este es el botón Iniciar sesión de ClaveÚnica"
+>
+    <span class="cl-claveunica"></span>
+    <span class="texto">Cerrar Sesion</span>
+</x-filament::button>
+
 
 <!-- Mostrar todos los errores -->
 @if ($errors->any())

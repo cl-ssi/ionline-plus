@@ -9,15 +9,15 @@ class SocialiteController extends Controller
 {
     public function redirect(string $provider)
     {
-        return Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)
+            ->setScopes(['openid', 'run','name'])
+            ->redirect();
     }
 
     public function callback(string $provider)
     {
         try {
-            $response = Socialite::driver($provider)
-                ->setScopes(['openid', 'run','name'])
-                ->user();
+            $response = Socialite::driver($provider)->user();
 
             $user = User::firstWhere(['id' => $response->getId()]);
 

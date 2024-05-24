@@ -51,17 +51,26 @@ class SocialiteController extends Controller
     public function logout(string $provider)
     {
         switch($provider) {
-            case 'both':
-                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
-                return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
             case 'claveunica':
+                // Si viene de cerrar sessión de clave unica, entonces
+                // Cerrar sesion local y regenerar token
                 auth()->logout();
                 request()->session()->regenerate();
                 return redirect()->route('filament.admin.auth.login');
-                // break;
+            case 'test':
+                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
+                Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
             default:
-                $logout_uri = env('APP_URL').'/logout';
-                break;
+                // Si el ambiente es local, cerrar sesion local y regenerar token
+                if(env('APP_ENV') == 'local') {
+                    auth()->logout();
+                    request()->session()->regenerate();
+                    return redirect()->route('filament.admin.auth.login');
+                }
+                // Si el ambiente es de producción, cerrar sesion de CU que redirecciona 
+                // al case 'claveunica' para cerrar sesion local y regenerar token
+                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
+                return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
         }
 
         // $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
@@ -77,6 +86,7 @@ class SocialiteController extends Controller
         // dd($logout_uri);
         // auth()->logout();
         // return redirect()->route('filament.admin.auth.login');
+        //https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect=https://p.saludtarapaca.gob.cl/auth/claveunica/logout
     }
 
 }

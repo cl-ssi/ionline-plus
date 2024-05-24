@@ -50,18 +50,31 @@ class SocialiteController extends Controller
 
     public function logout(string $provider)
     {
-        $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
-        return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
-        if($provider == 'claveunica') {
-            $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        switch($provider) {
+            case 'both':
+                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
+                return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
+            case 'claveunica':
+                auth()->logout();
+                request()->session()->regenerate();
+                return redirect()->route('filament.admin.auth.login');
+                // break;
+            default:
+                $logout_uri = env('APP_URL').'/logout';
+                break;
         }
-        else {
-            $logout_uri = env('APP_URL').'/logout';
-        }
-        $provider = 'claveunica';
-        // Return redirect url
-        dd($logout_uri);
-        request()->session()->regenerate();
+
+        // $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        
+        // if($provider == 'claveunica') {
+        //     $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        // }
+        // else {
+        //     $logout_uri = env('APP_URL').'/logout';
+        // }
+        // $provider = 'claveunica';
+        // // Return redirect url
+        // dd($logout_uri);
         // auth()->logout();
         // return redirect()->route('filament.admin.auth.login');
     }

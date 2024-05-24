@@ -11,7 +11,7 @@
 </x-filament::button>
 
 <x-filament::button
-    :href="route('socialite.logout', 'claveunica')"
+    :href="route('socialite.logout', 'both')"
     tag="a"
     color="danger"
     class="btn-primary" 

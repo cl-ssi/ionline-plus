@@ -18,30 +18,15 @@ class SocialiteController extends Controller
     {
         try {
             $response = Socialite::driver($provider)->user();
-
             $user = User::firstWhere(['id' => $response->getId()]);
 
-            // dd($user);
-
             if ( $user ) {
-                logger()->info('Entro en el IF', [
-                    'response' => $response,
-                    'user'     => $user,
-                ]);
-                // $user->update([$provider . '_id' => $response->getId()]);
+                auth()->login($user);
+                return redirect()->intended(route('filament.admin.pages.dashboard'));
             } else {
-                logger()->info('No encontró el usuario en la BD');
-                // $user = User::create([
-                //     $provider . '_id' => $response->getId(),
-                //     'name'            => $response->getName(),
-                //     'email'           => $response->getEmail(),
-                //     'password'        => '',
-                // ]);
+                request()->session()->regenerate();
+                abort(403, 'No encontró existe el usuario en el sistema');
             }
-
-            auth()->login($user);
-
-            return redirect()->intended(route('filament.admin.pages.dashboard'));
 
         } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
             abort(403, 'Invalid state exception: ' . $e->getMessage());

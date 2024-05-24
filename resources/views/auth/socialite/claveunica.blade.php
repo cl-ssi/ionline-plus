@@ -9,3 +9,15 @@
     <span class="cl-claveunica"></span>
     <span class="texto">Iniciar sesión</span>
 </x-filament::button>
+
+
+<!-- Mostrar todos los errores -->
+@if ($errors->any())
+    <div class="p-4 text-sm text-danger-600 rounded-lg bg-gray-800 dark:bg-gray-800" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif

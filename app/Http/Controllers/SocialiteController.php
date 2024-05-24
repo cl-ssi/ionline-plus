@@ -25,13 +25,15 @@ class SocialiteController extends Controller
                 return redirect()->intended(route('filament.admin.pages.dashboard'));
             } else {
                 request()->session()->regenerate();
-                abort(403, 'No encontró existe el usuario en el sistema');
+                return redirect()->route('filament.admin.auth.login')
+                    ->withErrors(['msg' => 'No existe el usuario en el sistema.']);
             }
-
         } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
-            abort(403, 'Invalid state exception: ' . $e->getMessage());
+            return redirect()->route('filament.admin.auth.login')
+                ->withErrors(['msg' => 'Invalid state exception: ' . $e->getMessage()]);
         } catch (\Exception $e) {
-            abort(403, 'General exception: ' . $e->getMessage());
+            return redirect()->route('filament.admin.auth.login')
+                ->withErrors(['msg' => 'General exception: ' . $e->getMessage()]);
         }
     }
 

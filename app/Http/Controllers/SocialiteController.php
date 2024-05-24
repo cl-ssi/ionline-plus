@@ -16,7 +16,7 @@ class SocialiteController extends Controller
     {
         try {
             $response = Socialite::driver($provider)
-                ->scopes(['openid', 'run','name'])
+                ->setScopes(['openid', 'run','name'])
                 ->user();
 
             $user = User::firstWhere(['id' => $response->getId()]);

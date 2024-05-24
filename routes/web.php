@@ -30,3 +30,5 @@ Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect']
     ->name('socialite.redirect');
 Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback'])
     ->name('socialite.callback');
+Route::get('/auth/{provider}/logout', [SocialiteController::class, 'logout'])
+    ->name('socialite.logout');

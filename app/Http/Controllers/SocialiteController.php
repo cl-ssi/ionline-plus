@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -52,41 +53,26 @@ class SocialiteController extends Controller
     {
         switch($provider) {
             case 'claveunica':
-                // Si viene de cerrar sessión de clave unica, entonces
-                // Cerrar sesion local y regenerar token
-                auth()->logout();
-                request()->session()->regenerate();
-                return redirect()->route('filament.admin.auth.login');
-            case 'test':
-                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
-                Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
-            default:
-                // Si el ambiente es local, cerrar sesion local y regenerar token
                 if(env('APP_ENV') == 'local') {
-                    auth()->logout();
-                    request()->session()->regenerate();
-                    return redirect()->route('filament.admin.auth.login');
+                    return redirect()->route('socialite.logout', ['provider' => 'local']);
                 }
-                // Si el ambiente es de producción, cerrar sesion de CU que redirecciona 
-                // al case 'claveunica' para cerrar sesion local y regenerar token
-                $logout_uri = env('APP_URL').'/auth/claveunica/logout';
-                return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
+                else {
+                    // si el referer es clave unica, cerrar sesion local y regenerar token
+                    if(request()->headers->get('referer') == 'https://accounts.claveunica.gob.cl/') {
+                        return redirect()->route('socialite.logout', ['provider' => 'local']);
+                    }
+                    // si el referer es local, cerrar sesion de CU y redireccionar a la pagina de inicio
+                    else {
+                        return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.env('APP_URL').'/auth/claveunica/logout');
+                    }
+                }
+            case 'local':
+                Filament::auth()->logout();
+                session()->invalidate();
+                session()->regenerateToken();
+                return redirect()->route('filament.admin.auth.login');
+            case 'redirect':
+                return redirect()->route('filament.admin.auth.login');
         }
-
-        // $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
-        
-        // if($provider == 'claveunica') {
-        //     $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
-        // }
-        // else {
-        //     $logout_uri = env('APP_URL').'/logout';
-        // }
-        // $provider = 'claveunica';
-        // // Return redirect url
-        // dd($logout_uri);
-        // auth()->logout();
-        // return redirect()->route('filament.admin.auth.login');
-        //https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect=https://p.saludtarapaca.gob.cl/auth/claveunica/logout
     }
-
 }

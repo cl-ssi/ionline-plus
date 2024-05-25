@@ -16,7 +16,7 @@
         "laravel/tinker": "^2.9",
         "owen-it/laravel-auditing": "^13.6",
         "setasign/fpdi": "^2.6",
-        "socialiteproviders/claveunica": "^4.1",
+        "socialiteproviders/claveunica": "dev-master",
         "spatie/laravel-google-cloud-storage": "^2.3",
         "spatie/laravel-permission": "^6.4",
         "stechstudio/filament-impersonate": "^3.8",

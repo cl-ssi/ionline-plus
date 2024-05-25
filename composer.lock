@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b6984003e3b1489c613cc10570aa12a6",
+    "content-hash": "7b6b585383aa5d92f75fa6c312f1dafb",
     "packages": [
         {
             "name": "actived/microsoft-teams-notifier",
@@ -6796,7 +6796,7 @@
         },
         {
             "name": "socialiteproviders/claveunica",
-            "version": "dev-master",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/ClaveUnica.git",
@@ -6813,7 +6813,6 @@
                 "php": "^8.0",
                 "socialiteproviders/manager": "^4.4"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -12590,9 +12589,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "socialiteproviders/claveunica": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

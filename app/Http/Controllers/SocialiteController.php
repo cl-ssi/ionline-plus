@@ -65,11 +65,8 @@ class SocialiteController extends Controller
         session()->regenerateToken();
 
         // Si la variable de sesión 'userNotFound' existe, la vuelve a guardar para mostrar en pantalla
-        if( $userNotFound ) {
-            session()->flash('msg', 'No existe el usuario en el sistema.');
-        }
-
-        return redirect()->route('filament.admin.auth.login');
+        return redirect()->route('filament.admin.auth.login')
+            ->withErrors($userNotFound ? ['msg' => 'El usuario no existe'] : []);
     }
 
 }

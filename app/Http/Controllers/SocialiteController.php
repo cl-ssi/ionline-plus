@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Filament\Facades\Filament;
-use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
-use SocialiteProviders\ClaveUnica\ClaveUnicaExtendSocialite;
 
 class SocialiteController extends Controller
 {
@@ -17,7 +15,7 @@ class SocialiteController extends Controller
 
     public function callback(string $provider)
     {
-        // try {
+        try {
             $response = Socialite::driver($provider)->user();
             $user = User::firstWhere(['id' => $response->getId()]);
 
@@ -28,19 +26,17 @@ class SocialiteController extends Controller
                 session(['userNotFound' => true ]);
                 return redirect()->route('socialite.logout-redirect', ['provider' => $provider]);
             }
-        // } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
-        //     request()->session()->regenerate();
-        //     dd($e->getMessage());
-        //     Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
-        //     return redirect()->route('filament.admin.auth.login')
-        //         ->withErrors(['msg' => 'Invalid state exception: ' . $e->getMessage()]);
-        // } catch (\Exception $e) {
-        //     request()->session()->regenerate();
-        //     dd($e->getMessage());
-        //     Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
-        //     return redirect()->route('filament.admin.auth.login')
-        //         ->withErrors(['msg' => 'General exception: ' . $e->getMessage()]);
-        // }
+        } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
+            session()->invalidate();
+            session()->regenerateToken();
+            return redirect()->route('filament.admin.auth.login')
+                ->withErrors(['msg' => 'State inválido: ' . $e->getMessage()]);
+        } catch (\Exception $e) {
+            session()->invalidate();
+            session()->regenerateToken();
+            return redirect()->route('filament.admin.auth.login')
+                ->withErrors(['msg' => 'Excepción general:: ' . $e->getMessage()]);
+        }
     }
 
     public function logoutRedirect(string $provider)

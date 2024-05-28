@@ -16,8 +16,6 @@ class SocialiteController extends Controller
 
     public function callback(string $provider)
     {
-        // $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
-
         // try {
             $response = Socialite::driver($provider)->user();
             $user = User::firstWhere(['id' => $response->getId()]);
@@ -26,17 +24,8 @@ class SocialiteController extends Controller
                 auth()->login($user);
                 return redirect()->intended(route('filament.admin.pages.dashboard'));
             } else {
-                // request()->session()->regenerate();
-                // cerrar sesion de CU llamando a una url con HTTP
-                // session()->invalidate();
-                // session()->regenerateToken();
                 session(['userNotFound' => true ]);
-                // session()->flash('msg', 'No existe el usuario en el sistema.');
-                // $redirect = route('filament.admin.auth.login');
                 return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.env('APP_URL').'/auth/claveunica/logout');
-                // Http::get('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
-                // return redirect()->route('filament.admin.auth.login')
-                //     ->withErrors(['msg' => 'No existe el usuario en el sistema.']);
             }
         // } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
         //     request()->session()->regenerate();
@@ -57,35 +46,42 @@ class SocialiteController extends Controller
     {
         switch($provider) {
             case 'claveunica':
-                // Desarrollo: Local
+                // Local: Ambiente Desarrollo
                 if(env('APP_ENV') == 'local') {
-                    // si el referer es local, redireccionar a la pagina de inicio
+                    // Si el referer es local, redirecciona a la misma funcion pero con el provider 'local'
                     return redirect()->route('socialite.logout', ['provider' => 'local']);
                 }
                 // Proudcción: Clave Unica
                 else {
                     $referer = parse_url( request()->headers->get('referer') );
-                    // si el referer es clave unica, cerrar sesion local y regenerar token
+                    // Si el referer es clave unica, cerrar sesion local y regenerar token
                     if( $referer['host'] == 'accounts.claveunica.gob.cl' ) {
+                        // Hace un redirect a esta misma función pero con el provider 'local'
                         return redirect()->route('socialite.logout', ['provider' => 'local']);
                     }
                     else {
+                        // Si el referer no es clave unica, redirecciona a cerrar sesión de clave única
                         return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.env('APP_URL').'/auth/claveunica/logout');
                     }
                 }
             case 'local':
+                // Si existe la variable de sesión 'userNotFound', la guarda en una variable temporal
                 if( session()->has('userNotFound') ) {
                     $userNotFound = session('userNotFound');
                 }
+
+                // Cerrar la sesión local y renovar los tokens
                 Filament::auth()->logout();
                 session()->invalidate();
                 session()->regenerateToken();
+
+                // Si la variable de sesión 'userNotFound' existe, la vuelve a guardar para mostrar en pantalla
                 if( $userNotFound ) {
                     session()->flash('msg', 'No existe el usuario en el sistema.');
                 }
                 return redirect()->route('filament.admin.auth.login');
-            case 'redirect':
-                // Para el botón de logout que viene por defecto en el panel
+            default:
+                // Para el botón de logout que viene por defecto en el panel 'redirect'
                 return redirect()->route('filament.admin.auth.login');
         }
     }

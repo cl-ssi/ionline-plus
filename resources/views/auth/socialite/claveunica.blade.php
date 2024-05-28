@@ -1,4 +1,5 @@
 <link href="css/cu.min.css" rel="stylesheet">
+<hr>
 <x-filament::button
     :href="route('socialite.redirect', 'claveunica')"
     tag="a"

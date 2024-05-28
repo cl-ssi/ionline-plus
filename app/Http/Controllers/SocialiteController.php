@@ -57,17 +57,19 @@ class SocialiteController extends Controller
     {
         switch($provider) {
             case 'claveunica':
+                // Desarrollo: Local
                 if(env('APP_ENV') == 'local') {
                     // si el referer es local, redireccionar a la pagina de inicio
                     return redirect()->route('socialite.logout', ['provider' => 'local']);
                 }
+                // Proudcción: Clave Unica
                 else {
+                    $referer = parse_url( request()->headers->get('referer') );
                     // si el referer es clave unica, cerrar sesion local y regenerar token
-                    if(request()->headers->get('referer') == 'https://accounts.claveunica.gob.cl/') {
+                    if( $referer['host'] == 'accounts.claveunica.gob.cl' ) {
                         return redirect()->route('socialite.logout', ['provider' => 'local']);
                     }
                     else {
-                        dd(request()->headers->get('referer'));
                         return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.env('APP_URL').'/auth/claveunica/logout');
                     }
                 }
@@ -83,6 +85,7 @@ class SocialiteController extends Controller
                 }
                 return redirect()->route('filament.admin.auth.login');
             case 'redirect':
+                // Para el botón de logout que viene por defecto en el panel
                 return redirect()->route('filament.admin.auth.login');
         }
     }

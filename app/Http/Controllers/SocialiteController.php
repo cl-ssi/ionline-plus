@@ -8,12 +8,12 @@ use Laravel\Socialite\Facades\Socialite;
 
 class SocialiteController extends Controller
 {
-    public function redirect(string $provider)
+    public function authRedirect(string $provider)
     {
         return Socialite::driver($provider)->redirect();
     }
 
-    public function callback(string $provider)
+    public function authCallback(string $provider)
     {
         try {
             $response = Socialite::driver($provider)->user();
@@ -24,7 +24,7 @@ class SocialiteController extends Controller
                 return redirect()->intended(route('filament.admin.pages.dashboard'));
             } else {
                 session(['userNotFound' => true ]);
-                return redirect()->route('socialite.logout-redirect', ['provider' => $provider]);
+                return redirect()->route('socialite.logout.redirect', ['provider' => $provider]);
             }
         } catch (\Laravel\Socialite\Two\InvalidStateException $e) {
             session()->invalidate();
@@ -41,16 +41,17 @@ class SocialiteController extends Controller
 
     public function logoutRedirect(string $provider)
     {
-        $logout_uri = env('APP_URL').'/auth/'.$provider.'/logout';
+        # logout_uri = https://xxx.saludtarapaca.gob.cl/logout/claveunica/callback
+        $logout_uri = env('APP_URL').'/logout/'.$provider.'/callback';
         return redirect()->away('https://accounts.claveunica.gob.cl/api/v1/accounts/app/logout?redirect='.$logout_uri);
     }
     
     public function logoutCallback(string $provider)
     {
-        return redirect()->route('socialite.logout');
+        return redirect()->route('socialite.logout.local');
     }
 
-    public function logout()
+    public function logoutLocal()
     {
         // Comprueba si existe la variable de sesión 'userNotFound'
         $userNotFound = session()->has('userNotFound');

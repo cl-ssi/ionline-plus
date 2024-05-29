@@ -10,9 +10,9 @@ class LogoutResponse implements Responsable
     public function toResponse($request): RedirectResponse
     {
         if ( env('APP_ENV') == 'local' ) {
-            return redirect()->route('socialite.logout');
+            return redirect()->route('socialite.logout.local');
         } else {
-            return redirect()->route('socialite.logout-redirect', ['provider' => 'claveunica']);
+            return redirect()->route('socialite.logout.redirect', ['provider' => 'claveunica']);
         }
     }
 }

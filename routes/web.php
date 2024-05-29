@@ -26,8 +26,9 @@ Route::controller(TestController::class)->middleware(['auth'])->prefix('test')->
     // });
 });
 
-Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect'])->name('socialite.redirect');
-Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback'])->name('socialite.callback');
-Route::get('/logout/{provider}/redirect', [SocialiteController::class, 'logoutRedirect'])->name('socialite.logout-redirect');
-Route::get('/auth/{provider}/logout', [SocialiteController::class, 'logoutCallback']);
-Route::get('/logout/local', [SocialiteController::class, 'logout'])->name('socialite.logout');
+Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'authRedirect'])->name('socialite.auth.redirect');
+Route::get('/auth/{provider}/callback', [SocialiteController::class, 'authCallback'])->name('socialite.auth.callback');
+
+Route::get('/logout/{provider}/redirect', [SocialiteController::class, 'logoutRedirect'])->name('socialite.logout.redirect');
+Route::get('/logout/{provider}/callback', [SocialiteController::class, 'logoutCallback']);
+Route::get('/logout/local', [SocialiteController::class, 'logoutLocal'])->name('socialite.logout.local');

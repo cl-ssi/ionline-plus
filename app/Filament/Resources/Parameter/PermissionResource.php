@@ -23,7 +23,7 @@ class PermissionResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->can([
+        return auth()->user()->canany([
             'be god',
             'dev',
         ]);

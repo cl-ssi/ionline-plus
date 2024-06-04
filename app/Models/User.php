@@ -38,7 +38,7 @@ class User extends Authenticatable implements FilamentUser, Auditable
 
     public function canBeImpersonated()
     {
-        // Let's prevent impersonating other users at our own company
+        // Let's prevent impersonating other users
         return auth()->user()->can('be god');
     }
 

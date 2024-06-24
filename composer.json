@@ -18,7 +18,7 @@
         "setasign/fpdi": "^2.6",
         "socialiteproviders/claveunica": "^4.2",
         "spatie/laravel-google-cloud-storage": "^2.3",
-        "spatie/laravel-permission": "^6.4",
+        "spatie/laravel-permission": "^6.7",
         "stechstudio/filament-impersonate": "^3.8",
         "tapp/filament-auditing": "^3.0"
     },

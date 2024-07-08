@@ -12,7 +12,6 @@
         "codewithdennis/filament-select-tree": "^3.1",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
-        "laravel/octane": "^2.3",
         "laravel/tinker": "^2.9",
         "owen-it/laravel-auditing": "^13.6",
         "setasign/fpdi": "^2.6",
@@ -48,14 +47,6 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan filament:upgrade"
-        ],
-        "post-install-cmd": [
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan filament:upgrade || echo 'Skipping filament upgrade in development mode'",
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan icons:cache || echo 'Skipping icons cache in development mode'",
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan filament:cache-components || echo 'Skipping filament cache components in development mode'",
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan route:cache || echo 'Skipping route cache in development mode'",
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan view:cache || echo 'Skipping view cache in development mode'",
-            "[ \"$COMPOSER_DEV_MODE\" -eq 0 ] && php artisan event:cache || echo 'Skipping event cache in development mode'"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"

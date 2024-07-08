@@ -18,8 +18,8 @@ Route::get('/ionline/return-to-ionline', [IonlineController::class,'returnToIonl
 Route::get('/document/documents/{document}', [PdfController::class,'document'])->name('document.documents.show');
 
 Route::controller(TestController::class)->middleware(['auth'])->prefix('test')->name('test')->group(function () {
-    Route::get('/image', 'image');
-    Route::get('/signature/{otp}', 'signature');
+    Route::get('/image', 'image')->name('image');
+    Route::get('/signature/{otp}', 'signature')->name('signature');
  
     // Route::get('/user/profile', function () {
     //     // Uses first & second middleware...

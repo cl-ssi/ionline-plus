@@ -44,7 +44,9 @@ RUN composer install --no-dev --optimize-autoloader \
     && php artisan event:cache
     # && php artisan config:cache
     # && php artisan optimize \
-    # && php artisan migrate --force
+    
+    #// No reconoce las variables de entorno para poder ejecutar las migraciones
+    # && php artisan migrate --force 
 
 # Comando para iniciar la aplicación
 CMD sh /app/docker/startup.sh

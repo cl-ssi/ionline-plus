@@ -19,6 +19,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use pxlrbt\FilamentEnvironmentIndicator\EnvironmentIndicatorPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -61,6 +62,10 @@ class AdminPanelProvider extends PanelProvider
                 UserMenuItemMiddleware::class,
             ])
             ->databaseNotifications()
-            ->favicon(asset('favicon.ico'));
+            ->favicon(asset('favicon.ico'))
+            ->plugins([
+                EnvironmentIndicatorPlugin::make()
+                    ->visible(fn () => auth()->user()->can('be god')),
+            ]);
     }
 }

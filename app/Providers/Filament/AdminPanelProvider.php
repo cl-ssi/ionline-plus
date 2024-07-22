@@ -65,7 +65,7 @@ class AdminPanelProvider extends PanelProvider
             ->favicon(asset('favicon.ico'))
             ->plugins([
                 EnvironmentIndicatorPlugin::make()
-                    ->visible(fn () => auth()->user()->can('be god')),
+                    ->visible(fn () => app()->environment('local')),
             ]);
     }
 }

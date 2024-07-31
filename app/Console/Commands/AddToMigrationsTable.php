@@ -32,6 +32,15 @@ class AddToMigrationsTable extends Command
         '2024_04_12_231016_create_approvals_table.php',
         '2024_04_12_231059_create_signature_requests_table.php',
         '2024_04_12_232605_create_files_table.php',
+
+        '2024_04_19_144206_create_sgr_labels_table',
+        '2024_04_19_144258_create_sgr_categories_table',
+        '2024_04_19_144341_create_sgr_event_types_table',
+        '2024_04_19_144439_create_sgr_requirements_table',
+        '2024_04_19_144545_create_sgr_events_table',
+        '2024_04_19_144659_create_sgr_participants_table',
+        '2024_04_19_144725_create_sgr_event_vieweds_table',
+
         '2024_04_29_154027_create_news_table.php',
         '2024_05_02_085901_create_subrogations_table.php',
         '2024_05_02_085901_create_subrogations_table',
@@ -41,7 +50,11 @@ class AddToMigrationsTable extends Command
         '2024_05_03_094434_create_telephones_table',
         '2024_05_06_125623_create_partes_table',
         '2024_05_07_113524_create_logs_table',
-        '2024_05_15_122515_create_parameters_table'
+        '2024_05_15_122515_create_parameters_table',
+
+        '2024_07_12_105609_create_imports_table',
+        '2024_07_12_105610_create_exports_table',
+        '2024_07_12_105611_create_failed_import_rows_table'
     ];
 
     public function handle()

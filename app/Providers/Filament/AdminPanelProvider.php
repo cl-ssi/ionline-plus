@@ -63,6 +63,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->databaseNotifications()
             ->favicon(asset('favicon.ico'))
+            
             ->plugins([
                 // EnvironmentIndicatorPlugin::make()
                 //     ->visible(fn () => auth()->user()->can('be god')),

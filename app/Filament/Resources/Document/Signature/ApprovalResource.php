@@ -99,7 +99,12 @@ class ApprovalResource extends Resource
                     ->maxLength(255)
                     ->default(null),
                 Forms\Components\DateTimePicker::make('approver_at'),
-                Forms\Components\Toggle::make('status'),
+
+                Forms\Components\Select::make('status')
+                    ->options([
+                        0 => 'Rechazado',
+                        1 => 'Aprobado',
+                    ]),
                 Forms\Components\TextInput::make('callback_controller_method')
                     ->maxLength(255)
                     ->default(null),

@@ -64,6 +64,7 @@ class ApprovalResource extends Resource
                 Forms\Components\Grid::make(2)
                     ->schema([
                         Forms\Components\Select::make('establishment_id')
+                            ->required()
                             ->label('Establecimiento')
                             ->options(Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
                             ->default(auth()->user()->establishment_id)

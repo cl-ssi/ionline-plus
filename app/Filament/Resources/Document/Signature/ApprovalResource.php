@@ -6,6 +6,8 @@ use App\Filament\Resources\Document\Signature\ApprovalResource\Pages;
 use App\Filament\Resources\Document\Signature\ApprovalResource\RelationManagers;
 use App\Models\Document\Signature\Approval;
 use App\Models\Document\Signature\DigitalSignature;
+use App\Models\Parameter\Establishment;
+use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -56,11 +58,34 @@ class ApprovalResource extends Resource
                 Forms\Components\TextInput::make('document_pdf_path')
                     ->maxLength(255)
                     ->default(null),
-                Forms\Components\Select::make('sent_to_ou_id')
-                    ->relationship('sentToOu', 'name')
-                    ->default(null),
+                // Forms\Components\Select::make('sent_to_ou_id')
+                //     ->relationship('sentToOu', 'name')
+                //     ->default(null),
+                Forms\Components\Grid::make(2)
+                    ->schema([
+                        Forms\Components\Select::make('establishment_id')
+                            ->label('Establecimiento')
+                            ->options(Establishment::whereIn('id', json_decode(env('APP_SS_ESTABLISHMENTS')))->pluck('name', 'id'))
+                            ->default(auth()->user()->establishment_id)
+                            ->live(),
+                        SelectTree::make('sent_to_ou_id')
+                            ->label('Unidad Organizacional')
+                            ->relationship(
+                                relationship: 'sentToOu',
+                                titleAttribute: 'name',
+                                parentAttribute: 'organizational_unit_id',
+                                modifyQueryUsing: fn($query, $get) => $query->where('establishment_id', $get('establishment_id'))->orderBy('name'),
+                                modifyChildQueryUsing: fn($query, $get) => $query->where('establishment_id', $get('establishment_id'))->orderBy('name')
+                            )
+                            ->searchable()
+                            ->parentNullValue(null)
+                            ->enableBranchNode()
+                            ->defaultOpenLevel(1)
+                            ->live(),
+                    ]),
                 Forms\Components\Select::make('sent_to_user_id')
                     ->relationship('sentToUser', 'name')
+                    ->searchable()
                     ->default(null),
                 Forms\Components\Select::make('approver_ou_id')
                     ->relationship('approverOu', 'name')
@@ -113,6 +138,7 @@ class ApprovalResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('module')
                     ->sortable()
@@ -159,8 +185,8 @@ class ApprovalResource extends Resource
                     ->sortable(),
                 // Tables\Columns\IconColumn::make('digital_signature')
                 //     ->boolean(),
-                Tables\Columns\IconColumn::make('endorse')
-                    ->boolean(),
+                // Tables\Columns\IconColumn::make('endorse')
+                //     ->boolean(),
                 // Tables\Columns\TextColumn::make('position')
                 //     ->searchable(),
                 // Tables\Columns\TextColumn::make('start_y')
@@ -203,37 +229,35 @@ class ApprovalResource extends Resource
                                 Forms\Components\TextInput::make('approver_observation')
                                     ->label('Observaciones')
                                     ->columnSpan(3)
-                                ])
-                                ->columns(4)
+                            ])
+                            ->columns(4)
                     ])
                     ->label('Firmar')
                     ->icon('heroicon-o-pencil')
-                    ->extraModalFooterActions(fn (Tables\Actions\Action $action): array => [
+                    ->extraModalFooterActions(fn(Tables\Actions\Action $action): array => [
                         $action->makeModalSubmitAction('rechazar', arguments: ['reject' => true])->color('danger'),
                     ])
                     ->action(function (array $data, array $arguments, Approval $record): void {
-                        if ($arguments['reject']) {
+                        if ( $arguments['reject'] ) {
                             // Si es un rechazo, se actualiza el registro con la observación del aprobador y se marca como rechazado (status = False)
-                            $record->update(['approver_observation'=>$data['approver_observation'], 'status' => false]);
-                        }
-                        else {
+                            $record->update(['approver_observation' => $data['approver_observation'], 'status' => false]);
+                        } else {
                             $digitalSignature = new DigitalSignature();
-                            $status = $digitalSignature->signature(
-                                auth()->user(), 
-                                $data['otp'], 
-                                array(Storage::get($record->document_pdf_path)), 
+                            $status           = $digitalSignature->signature(
+                                auth()->user(),
+                                $data['otp'],
+                                array(Storage::get($record->document_pdf_path)),
                                 array(['margin-bottom' => 20])
                             );
-                    
-                            if($status == true) {
-                                $digitalSignature->storeFirstSignedFile('ionline/approvals/signed_files/'.basename($record->original_file_path));
+
+                            if ( $status == true ) {
+                                $digitalSignature->storeFirstSignedFile('ionline/approvals/signed_files/' . basename($record->original_file_path));
                                 $record->update(['status' => true]);
                                 Notification::make()
                                     ->title('Archivo firmado correctamente')
                                     ->success()
                                     ->send();
-                            }
-                            else {
+                            } else {
                                 Notification::make()
                                     ->title($digitalSignature->error)
                                     ->danger()
@@ -246,14 +270,14 @@ class ApprovalResource extends Resource
                     ->modalContent(fn(Approval $record): View => view('filament.documents.pdf-viewer-modal', [
                         'pdfUrl' => Storage::url($record->original_file_path),
                     ]))
-                    ->hidden(fn (Approval $record): bool => $record->status ?? false),
-                Tables\Actions\Action::make('pdf') 
+                    ->hidden(fn(Approval $record): bool => $record->status ?? false),
+                Tables\Actions\Action::make('pdf')
                     ->label('')
                     ->color('success')
                     ->icon('heroicon-o-document')
-                    ->url(fn (Approval $record) => Storage::url('ionline/signature_requests/signed_files/'.basename($record->original_file_path)))
+                    ->url(fn(Approval $record) => Storage::url('ionline/signature_requests/signed_files/' . basename($record->original_file_path)))
                     ->openUrlInNewTab()
-                    ->visible(fn (Approval $record): bool => $record->status ?? false),
+                    ->visible(fn(Approval $record): bool => $record->status ?? false),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -261,7 +285,7 @@ class ApprovalResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('id','desc');
+            ->defaultSort('id', 'desc');
     }
 
     public static function getRelations(): array
@@ -274,9 +298,9 @@ class ApprovalResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListApprovals::route('/'),
+            'index'  => Pages\ListApprovals::route('/'),
             'create' => Pages\CreateApproval::route('/create'),
-            'edit' => Pages\EditApproval::route('/{record}/edit'),
+            'edit'   => Pages\EditApproval::route('/{record}/edit'),
         ];
     }
 

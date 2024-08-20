@@ -89,9 +89,11 @@ class ApprovalResource extends Resource
                     ->default(null),
                 Forms\Components\Select::make('approver_ou_id')
                     ->relationship('approverOu', 'name')
+                    ->searchable()
                     ->default(null),
                 Forms\Components\Select::make('approver_id')
                     ->relationship('approver', 'name')
+                    ->searchable()
                     ->default(null),
                 Forms\Components\TextInput::make('approver_observation')
                     ->maxLength(255)
@@ -109,6 +111,7 @@ class ApprovalResource extends Resource
                 Forms\Components\Toggle::make('active')
                     ->required(),
                 Forms\Components\Select::make('previous_approval_id')
+                    ->searchable()
                     ->relationship('previousApproval', 'id')
                     ->default(null),
                 Forms\Components\Toggle::make('digital_signature')

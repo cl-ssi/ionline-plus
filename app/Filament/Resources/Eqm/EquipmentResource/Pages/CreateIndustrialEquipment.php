@@ -6,7 +6,7 @@ use App\Filament\Resources\Eqm\EquipmentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateEquipment extends CreateRecord
+class CreateIndustrialEquipment extends CreateRecord
 {
     protected static string $resource = EquipmentResource::class;
 }

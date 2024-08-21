@@ -71,7 +71,7 @@ class RegionResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RegionResource\RelationManagers\CommunesRelationManager::class
         ];
     }
 

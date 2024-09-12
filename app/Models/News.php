@@ -36,5 +36,5 @@ class News extends Model
         'until_at'              => 'datetime',
     ];
 
-    protected $table = 'news';
+    protected $table = 'cfg_news';
 }
